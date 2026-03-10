@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Text, Line } from '@react-three/drei'
+import { Line } from '@react-three/drei'
 import { Group, Vector3 } from 'three'
 import { useParticle } from '../../context/ParticleContext'
 
@@ -47,6 +47,7 @@ export const DetailedParticleView = () => {
           key={`ring-${i}`}
           points={points}
           color={selectedParticle.color}
+          // bold= false // Make the innermost ring bolder
           lineWidth={1}
           transparent
           opacity={0.3 - i * 0.08}
@@ -56,9 +57,9 @@ export const DetailedParticleView = () => {
     return rings
   }
 
-  // Render interaction indicators
+  // Render interaction indicators (visual only, no text labels)
   const renderInteractions = () => {
-    if (!selectedParticle.interactions) return null
+    if (!selectedParticle.interactions) return null 
     
     const interactionColors: Record<string, string> = {
       'Strong': '#f44336',
@@ -83,15 +84,6 @@ export const DetailedParticleView = () => {
               emissiveIntensity={0.5}
             />
           </mesh>
-          <Text
-            position={[0, 0.3, 0]}
-            fontSize={0.15}
-            color={interactionColors[interaction] || '#ffffff'}
-            anchorX="center"
-            anchorY="middle"
-          >
-            {interaction}
-          </Text>
         </group>
       )
     })
@@ -188,37 +180,6 @@ export const DetailedParticleView = () => {
       
       {/* Interaction indicators */}
       {renderInteractions()}
-      
-      {/* Particle name and details */}
-      <Text
-        position={[0, -1.8, 0]}
-        fontSize={0.3}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-        outlineWidth={0.02}
-        outlineColor="black"
-      >
-        {selectedParticle.name}
-      </Text>
-      
-      {/* Properties display */}
-      <group position={[-2.5, 0, 0]}>
-        <Text position={[0, 0.5, 0]} fontSize={0.15} color="#aaaaaa" anchorX="left">
-          Mass: {selectedParticle.mass}
-        </Text>
-        <Text position={[0, 0.2, 0]} fontSize={0.15} color="#aaaaaa" anchorX="left">
-          Charge: {selectedParticle.charge}
-        </Text>
-        <Text position={[0, -0.1, 0]} fontSize={0.15} color="#aaaaaa" anchorX="left">
-          Spin: {selectedParticle.spin}
-        </Text>
-        {selectedParticle.lifetime && (
-          <Text position={[0, -0.4, 0]} fontSize={0.15} color="#aaaaaa" anchorX="left">
-            Lifetime: {selectedParticle.lifetime}
-          </Text>
-        )}
-      </group>
     </group>
   )
 }
