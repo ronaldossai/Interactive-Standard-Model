@@ -120,7 +120,7 @@ export const LEPTON_DATA: ParticleData[] = [
   {
     id: 'electron',
     name: 'Electron',
-    symbol: 'e⁻',
+    symbol: 'e',
     type: 'lepton',
     mass: '0.511 MeV/c²',
     charge: '-1',
@@ -153,7 +153,7 @@ export const LEPTON_DATA: ParticleData[] = [
   {
     id: 'muon',
     name: 'Muon',
-    symbol: 'μ⁻',
+    symbol: 'μ',
     type: 'lepton',
     mass: '105.7 MeV/c²',
     charge: '-1',
@@ -186,7 +186,7 @@ export const LEPTON_DATA: ParticleData[] = [
   {
     id: 'tau',
     name: 'Tau',
-    symbol: 'τ⁻',
+    symbol: 'τ',
     type: 'lepton',
     mass: '1.777 GeV/c²',
     charge: '-1',
@@ -266,7 +266,7 @@ export const BOSON_DATA: ParticleData[] = [
   {
     id: 'z-boson',
     name: 'Z Boson',
-    symbol: 'Z⁰',
+    symbol: 'Z',
     type: 'boson',
     mass: '91.2 GeV/c²',
     charge: '0',
