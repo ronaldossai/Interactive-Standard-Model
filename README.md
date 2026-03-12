@@ -2,7 +2,7 @@
 
 An interactive 3D visualization of the Standard Model of particle physics, built with Three.js, React, and TypeScript.
 
-## 🚀 Features
+## Features
 
 - **3D Particle Visualization**: Interactive representations of quarks, leptons, and bosons
 - **Force Field Visualization**: Visual representation of fundamental forces
@@ -10,7 +10,7 @@ An interactive 3D visualization of the Standard Model of particle physics, built
 - **Educational Interface**: Detailed particle information and properties
 - **Modern Web Technologies**: Built with Vite, React, TypeScript, and Three.js
 
-## 🧬 Physics Content
+## Physics Content
 
 ### Particles Visualized
 - **Quarks**: Up, Down, Charm, Strange, Top, Bottom
@@ -23,7 +23,7 @@ An interactive 3D visualization of the Standard Model of particle physics, built
 - **Strong Nuclear Force**: Mediated by gluons
 - **Mass Generation**: Via the Higgs mechanism
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Frontend
 - **React 19** - Modern React with hooks
@@ -38,7 +38,7 @@ An interactive 3D visualization of the Standard Model of particle physics, built
 - **NumPy/SciPy** - Scientific computing
 - **Particle physics simulations**
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
@@ -97,26 +97,26 @@ src/
 └── App.css                        # Styling
 ```
 
-## 🎯 Future Enhancements
+## Future Enhancements
 
 ### Phase 1 (Current)
-- ✅ Basic 3D particle visualization
-- ✅ Interactive controls
-- ✅ Educational content
+- Basic 3D particle visualization
+- Interactive controls
+- Educational content
 
 ### Phase 2 (Planned)
-- 🔄 Python backend for physics calculations
-- 🔄 Particle interaction simulations
-- 🔄 Advanced animations and effects
-- 🔄 Quantum field visualizations
+- Python backend for physics calculations
+- Particle interaction simulations
+- Advanced animations and effects
+- Quantum field visualizations
 
 ### Phase 3 (Future)
-- 🔄 Virtual reality support
-- 🔄 Advanced particle collision simulations
-- 🔄 Educational curriculum integration
-- 🔄 Multi-language support
+- Virtual reality support
+- Advanced particle collision simulations
+- Educational curriculum integration
+- Multi-language support
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -124,18 +124,18 @@ src/
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📚 Educational Resources
+## Educational Resources
 
 - [Standard Model - CERN](https://home.cern/science/physics/standard-model)
 - [Particle Physics Basics](https://www.symmetrymagazine.org/article/the-standard-model)
 - [Three.js Documentation](https://threejs.org/docs/)
 - [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - CERN for particle physics research and educational resources
 - Three.js community for excellent 3D web graphics tools
