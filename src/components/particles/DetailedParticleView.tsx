@@ -1,8 +1,21 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Line } from '@react-three/drei'
+import { Line, Text } from '@react-three/drei'
 import { Group, Vector3 } from 'three'
 import { useParticle } from '../../context/ParticleContext'
+
+interface CarrierInfo {
+  color: string
+  symbol: string
+  name: string
+}
+
+const INTERACTION_MAP: Record<string, CarrierInfo> = {
+  'Electromagnetic': { color: '#ffeb3b', symbol: 'γ',   name: 'Photon'      },
+  'Strong':          { color: '#f44336', symbol: 'g',   name: 'Gluon'       },
+  'Weak':            { color: '#42a5f5', symbol: 'W±/Z', name: 'W / Z Boson' },
+  'Higgs field':     { color: '#ce93d8', symbol: 'H',   name: 'Higgs Boson' },
+}
 
 // Visualizations for when zoomed into a particle
 export const DetailedParticleView = () => {
@@ -57,33 +70,91 @@ export const DetailedParticleView = () => {
     return rings
   }
 
-  // Render interaction indicators (visual only, no text labels)
+  // Render force carriers as a vertical stack on the left-hand side,
+  // each with a name label above and a connecting line to the main particle.
   const renderInteractions = () => {
-    if (!selectedParticle.interactions) return null 
-    
-    const interactionColors: Record<string, string> = {
-      'Strong': '#f44336',
-      'Weak': '#2196f3',
-      'Electromagnetic': '#ffeb3b',
-      'Higgs field': '#9c27b0',
-    }
+    if (!selectedParticle.interactions?.length) return null
+
+    const count = selectedParticle.interactions.length
+    const spacing = 1.15
+    const startY = ((count - 1) * spacing) / 2
+    const stackX = -2.4
 
     return selectedParticle.interactions.map((interaction, index) => {
-      const angle = (index / selectedParticle.interactions!.length) * Math.PI * 2
-      const radius = 2.2
-      const x = Math.cos(angle) * radius
-      const y = Math.sin(angle) * radius * 0.5
-      
+      const info = INTERACTION_MAP[interaction]
+      if (!info) return null
+
+      const y = startY - index * spacing
+
+      // Line drawn in the carrier's local space: [0,0,0] → main particle offset
+      const linePoints: Vector3[] = [
+        new Vector3(0, 0, 0),
+        new Vector3(-stackX, -y, 0),
+      ]
+
       return (
-        <group key={interaction} position={[x, y, 0]}>
+        <group key={interaction} position={[stackX, y, 0]}>
+          {/* Carrier name label above the sphere */}
+          <Text
+            position={[0, 0.55, 0]}
+            fontSize={0.16}
+            color={info.color}
+            anchorX="center"
+            anchorY="bottom"
+            outlineWidth={0.008}
+            outlineColor="#000000"
+          >
+            {info.name}
+          </Text>
+
+          {/* Carrier sphere */}
           <mesh>
-            <sphereGeometry args={[0.12, 16, 16]} />
+            <sphereGeometry args={[0.28, 32, 32]} />
             <meshStandardMaterial
-              color={interactionColors[interaction] || '#ffffff'}
-              emissive={interactionColors[interaction] || '#ffffff'}
-              emissiveIntensity={0.5}
+              color={info.color}
+              emissive={info.color}
+              emissiveIntensity={0.55}
+              transparent
+              opacity={0.92}
             />
           </mesh>
+
+          {/* Symbol rendered just in front of the sphere */}
+          <Text
+            position={[0, 0, 0.3]}
+            fontSize={0.21}
+            color="#ffffff"
+            anchorX="center"
+            anchorY="middle"
+            outlineWidth={0.01}
+            outlineColor="#000000"
+          >
+            {info.symbol}
+          </Text>
+
+          {/* Glow ring */}
+          <mesh rotation={[Math.PI / 2, 0, 0]}>
+            <torusGeometry args={[0.34, 0.025, 8, 48]} />
+            <meshStandardMaterial
+              color={info.color}
+              emissive={info.color}
+              emissiveIntensity={1.0}
+              transparent
+              opacity={0.55}
+            />
+          </mesh>
+
+          {/* Dashed connector line to the central particle */}
+          <Line
+            points={linePoints}
+            color={info.color}
+            lineWidth={1}
+            transparent
+            opacity={0.35}
+            dashed
+            dashSize={0.1}
+            gapSize={0.07}
+          />
         </group>
       )
     })
