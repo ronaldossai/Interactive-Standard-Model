@@ -136,7 +136,7 @@ export const LEPTON_DATA: ParticleData[] = [
   {
     id: 'electron-neutrino',
     name: 'Electron Neutrino',
-    symbol: 'νₑ',
+    symbol: 'νe',
     type: 'lepton',
     mass: '<1.0 eV/c²',
     charge: '0',

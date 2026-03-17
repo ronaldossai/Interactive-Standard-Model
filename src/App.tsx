@@ -27,7 +27,7 @@ function App() {
 
         {/* Overlay header */}
         <header className="app-header">
-          <h1>Interactive Standard Model</h1>
+          <h1>INTERACTIVE STANDARD MODEL</h1>
           <p>Explore the fundamental particles and forces of the universe</p>
         </header>
         
