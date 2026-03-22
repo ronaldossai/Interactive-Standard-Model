@@ -64,7 +64,7 @@ const ForceCarrier = ({
       <group ref={floatRef}>
         {/* Outer glow */}
         <mesh ref={glowRef}>
-          <sphereGeometry args={[0.24, 32, 32]} />
+          <sphereGeometry args={[0.15, 32, 32]} />
           <meshStandardMaterial
             color={info.color}
             emissive={info.color}
@@ -77,7 +77,7 @@ const ForceCarrier = ({
 
         {/* Core sphere */}
         <mesh>
-          <sphereGeometry args={[0.13, 32, 32]} />
+          <sphereGeometry args={[0.08, 32, 32]} />
           <meshStandardMaterial
             color={info.color}
             emissive={info.color}
@@ -89,7 +89,7 @@ const ForceCarrier = ({
 
         {/* Hot inner core */}
         <mesh>
-          <sphereGeometry args={[0.055, 16, 16]} />
+          <sphereGeometry args={[0.035, 16, 16]} />
           <meshStandardMaterial
             color="#ffffff"
             emissive="#ffffff"
@@ -102,7 +102,7 @@ const ForceCarrier = ({
         {/* Dual animated halo rings */}
         <group ref={haloRef}>
           <mesh>
-            <torusGeometry args={[0.19, 0.007, 8, 48]} />
+            <torusGeometry args={[0.12, 0.005, 8, 48]} />
             <meshStandardMaterial
               color={info.color}
               emissive={info.color}
@@ -112,7 +112,7 @@ const ForceCarrier = ({
             />
           </mesh>
           <mesh rotation={[0, Math.PI / 3, Math.PI / 5]}>
-            <torusGeometry args={[0.23, 0.005, 8, 48]} />
+            <torusGeometry args={[0.15, 0.004, 8, 48]} />
             <meshStandardMaterial
               color={info.color}
               emissive={info.color}
@@ -125,12 +125,12 @@ const ForceCarrier = ({
 
         {/* Symbol */}
         <Text
-          position={[0, 0, 0.15]}
-          fontSize={0.1}
+          position={[0, 0, 0.1]}
+          fontSize={0.065}
           color="#ffffff"
           anchorX="center"
           anchorY="middle"
-          outlineWidth={0.005}
+          outlineWidth={0.003}
           outlineColor="#000000"
         >
           {info.symbol}
@@ -138,19 +138,19 @@ const ForceCarrier = ({
 
         {/* Name label below */}
         <Text
-          position={[0, -0.32, 0]}
-          fontSize={0.075}
+          position={[0, -0.2, 0]}
+          fontSize={0.05}
           color={info.color}
           anchorX="center"
           anchorY="top"
-          outlineWidth={0.004}
+          outlineWidth={0.003}
           outlineColor="#000000"
         >
           {info.name}
         </Text>
 
         {/* Point light for real glow */}
-        <pointLight color={info.color} intensity={0.4} distance={1.5} decay={2} />
+        <pointLight color={info.color} intensity={0.3} distance={1.0} decay={2} />
       </group>
 
       {/* Connector line (outside float group so it stays anchored) */}
@@ -187,49 +187,15 @@ export const DetailedParticleView = () => {
 
   const particlePos = selectedParticle.position
 
-  // Generate orbital rings based on particle type
-  const renderOrbitalRings = () => {
-    const rings = []
-    const ringCount = selectedParticle.type === 'boson' ? 2 : 3
-    
-    for (let i = 0; i < ringCount; i++) {
-      const radius = 1.2 + i * 0.4
-      const points: Vector3[] = []
-      const segments = 64
-      
-      for (let j = 0; j <= segments; j++) {
-        const theta = (j / segments) * Math.PI * 2
-        points.push(new Vector3(
-          Math.cos(theta) * radius,
-          Math.sin(theta) * radius * 0.3, // Flatten the orbit
-          Math.sin(theta) * radius * 0.8
-        ))
-      }
-      
-      rings.push(
-        <Line
-          key={`ring-${i}`}
-          points={points}
-          color={selectedParticle.color}
-          // bold= false // Make the innermost ring bolder
-          lineWidth={1}
-          transparent
-          opacity={0.3 - i * 0.08}
-        />
-      )
-    }
-    return rings
-  }
-
   // Render force carriers as animated bubbles stacked on the left,
   // each connected to the central particle by a dashed line.
   const renderInteractions = () => {
     if (!selectedParticle.interactions?.length) return null
 
     const count   = selectedParticle.interactions.length
-    const spacing = 1.15
+    const spacing = 0.7
     const startY  = ((count - 1) * spacing) / 2
-    const stackX  = -2.4
+    const stackX  = -2.0
 
     return selectedParticle.interactions.map((interaction, index) => {
       const info = INTERACTION_MAP[interaction]
@@ -331,9 +297,6 @@ export const DetailedParticleView = () => {
 
   return (
     <group ref={groupRef} position={[particlePos.x, particlePos.y, particlePos.z]}>
-      {/* Orbital rings */}
-      {renderOrbitalRings()}
-      
       {/* Particle-specific effects */}
       {renderParticleSpecificEffects()}
       
