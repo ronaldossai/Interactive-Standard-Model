@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Line, Text } from '@react-three/drei'
-import { Group, Vector3 } from 'three'
+import { Group, Mesh, Vector3 } from 'three'
 import { useParticle } from '../../context/ParticleContext'
 
 interface CarrierInfo {
@@ -15,6 +15,157 @@ const INTERACTION_MAP: Record<string, CarrierInfo> = {
   'Strong':          { color: '#f44336', symbol: 'g',   name: 'Gluon'       },
   'Weak':            { color: '#42a5f5', symbol: 'W±/Z', name: 'W / Z Boson' },
   'Higgs field':     { color: '#ce93d8', symbol: 'H',   name: 'Higgs Boson' },
+}
+
+// Animated force-carrier bubble shown beside the main particle
+const ForceCarrier = ({
+  info,
+  stackPosition,
+  targetOffset,
+}: {
+  info: CarrierInfo
+  stackPosition: [number, number, number]
+  targetOffset: [number, number, number]
+}) => {
+  const floatRef  = useRef<Group>(null!)
+  const haloRef   = useRef<Group>(null!)
+  const glowRef   = useRef<Mesh>(null!)
+
+  useFrame((state) => {
+    const t = state.clock.elapsedTime
+
+    // Gentle float
+    if (floatRef.current) {
+      floatRef.current.position.y =
+        Math.sin(t * 1.2 + stackPosition[1] * 2) * 0.04
+    }
+
+    // Pulse the outer glow
+    if (glowRef.current) {
+      const s = 1 + Math.sin(t * 2.5) * 0.12
+      glowRef.current.scale.set(s, s, s)
+    }
+
+    // Spin halos
+    if (haloRef.current) {
+      haloRef.current.rotation.z = t * 0.6
+      haloRef.current.rotation.x =
+        Math.PI / 2 + Math.sin(t * 0.4) * 0.2
+    }
+  })
+
+  const linePoints: Vector3[] = [
+    new Vector3(0, 0, 0),
+    new Vector3(targetOffset[0], targetOffset[1], targetOffset[2]),
+  ]
+
+  return (
+    <group position={stackPosition}>
+      <group ref={floatRef}>
+        {/* Outer glow */}
+        <mesh ref={glowRef}>
+          <sphereGeometry args={[0.24, 32, 32]} />
+          <meshStandardMaterial
+            color={info.color}
+            emissive={info.color}
+            emissiveIntensity={0.4}
+            transparent
+            opacity={0.12}
+            depthWrite={false}
+          />
+        </mesh>
+
+        {/* Core sphere */}
+        <mesh>
+          <sphereGeometry args={[0.13, 32, 32]} />
+          <meshStandardMaterial
+            color={info.color}
+            emissive={info.color}
+            emissiveIntensity={0.7}
+            transparent
+            opacity={0.92}
+          />
+        </mesh>
+
+        {/* Hot inner core */}
+        <mesh>
+          <sphereGeometry args={[0.055, 16, 16]} />
+          <meshStandardMaterial
+            color="#ffffff"
+            emissive="#ffffff"
+            emissiveIntensity={1.0}
+            transparent
+            opacity={0.6}
+          />
+        </mesh>
+
+        {/* Dual animated halo rings */}
+        <group ref={haloRef}>
+          <mesh>
+            <torusGeometry args={[0.19, 0.007, 8, 48]} />
+            <meshStandardMaterial
+              color={info.color}
+              emissive={info.color}
+              emissiveIntensity={1.5}
+              transparent
+              opacity={0.55}
+            />
+          </mesh>
+          <mesh rotation={[0, Math.PI / 3, Math.PI / 5]}>
+            <torusGeometry args={[0.23, 0.005, 8, 48]} />
+            <meshStandardMaterial
+              color={info.color}
+              emissive={info.color}
+              emissiveIntensity={1.0}
+              transparent
+              opacity={0.3}
+            />
+          </mesh>
+        </group>
+
+        {/* Symbol */}
+        <Text
+          position={[0, 0, 0.15]}
+          fontSize={0.1}
+          color="#ffffff"
+          anchorX="center"
+          anchorY="middle"
+          outlineWidth={0.005}
+          outlineColor="#000000"
+        >
+          {info.symbol}
+        </Text>
+
+        {/* Name label below */}
+        <Text
+          position={[0, -0.32, 0]}
+          fontSize={0.075}
+          color={info.color}
+          anchorX="center"
+          anchorY="top"
+          outlineWidth={0.004}
+          outlineColor="#000000"
+        >
+          {info.name}
+        </Text>
+
+        {/* Point light for real glow */}
+        <pointLight color={info.color} intensity={0.4} distance={1.5} decay={2} />
+      </group>
+
+      {/* Connector line (outside float group so it stays anchored) */}
+      <Line
+        points={linePoints}
+        color={info.color}
+        lineWidth={1}
+        transparent
+        opacity={0.25}
+        dashed
+        dashSize={0.08}
+        gapSize={0.05}
+      />
+    </group>
+  )
 }
 
 // Visualizations for when zoomed into a particle
@@ -70,15 +221,15 @@ export const DetailedParticleView = () => {
     return rings
   }
 
-  // Render force carriers as a vertical stack on the left-hand side,
-  // each with a name label above and a connecting line to the main particle.
+  // Render force carriers as animated bubbles stacked on the left,
+  // each connected to the central particle by a dashed line.
   const renderInteractions = () => {
     if (!selectedParticle.interactions?.length) return null
 
-    const count = selectedParticle.interactions.length
+    const count   = selectedParticle.interactions.length
     const spacing = 1.15
-    const startY = ((count - 1) * spacing) / 2
-    const stackX = -2.4
+    const startY  = ((count - 1) * spacing) / 2
+    const stackX  = -2.4
 
     return selectedParticle.interactions.map((interaction, index) => {
       const info = INTERACTION_MAP[interaction]
@@ -86,76 +237,13 @@ export const DetailedParticleView = () => {
 
       const y = startY - index * spacing
 
-      // Line drawn in the carrier's local space: [0,0,0] → main particle offset
-      const linePoints: Vector3[] = [
-        new Vector3(0, 0, 0),
-        new Vector3(-stackX, -y, 0),
-      ]
-
       return (
-        <group key={interaction} position={[stackX, y, 0]}>
-          {/* Carrier name label above the sphere */}
-          <Text
-            position={[0, 0.55, 0]}
-            fontSize={0.16}
-            color={info.color}
-            anchorX="center"
-            anchorY="bottom"
-            outlineWidth={0.008}
-            outlineColor="#000000"
-          >
-            {info.name}
-          </Text>
-
-          {/* Carrier sphere */}
-          <mesh>
-            <sphereGeometry args={[0.28, 32, 32]} />
-            <meshStandardMaterial
-              color={info.color}
-              emissive={info.color}
-              emissiveIntensity={0.55}
-              transparent
-              opacity={0.92}
-            />
-          </mesh>
-
-          {/* Symbol rendered just in front of the sphere */}
-          <Text
-            position={[0, 0, 0.3]}
-            fontSize={0.21}
-            color="#ffffff"
-            anchorX="center"
-            anchorY="middle"
-            outlineWidth={0.01}
-            outlineColor="#000000"
-          >
-            {info.symbol}
-          </Text>
-
-          {/* Glow ring */}
-          <mesh rotation={[Math.PI / 2, 0, 0]}>
-            <torusGeometry args={[0.34, 0.025, 8, 48]} />
-            <meshStandardMaterial
-              color={info.color}
-              emissive={info.color}
-              emissiveIntensity={1.0}
-              transparent
-              opacity={0.55}
-            />
-          </mesh>
-
-          {/* Dashed connector line to the central particle */}
-          <Line
-            points={linePoints}
-            color={info.color}
-            lineWidth={1}
-            transparent
-            opacity={0.35}
-            dashed
-            dashSize={0.1}
-            gapSize={0.07}
-          />
-        </group>
+        <ForceCarrier
+          key={interaction}
+          info={info}
+          stackPosition={[stackX, y, 0]}
+          targetOffset={[-stackX, -y, 0]}
+        />
       )
     })
   }
