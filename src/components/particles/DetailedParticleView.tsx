@@ -64,7 +64,7 @@ const ForceCarrier = ({
       <group ref={floatRef}>
         {/* Outer glow */}
         <mesh ref={glowRef}>
-          <sphereGeometry args={[0.15, 32, 32]} />
+          <sphereGeometry args={[0.10, 32, 32]} />
           <meshStandardMaterial
             color={info.color}
             emissive={info.color}
@@ -77,7 +77,7 @@ const ForceCarrier = ({
 
         {/* Core sphere */}
         <mesh>
-          <sphereGeometry args={[0.08, 32, 32]} />
+          <sphereGeometry args={[0.05, 32, 32]} />
           <meshStandardMaterial
             color={info.color}
             emissive={info.color}
@@ -89,7 +89,7 @@ const ForceCarrier = ({
 
         {/* Hot inner core */}
         <mesh>
-          <sphereGeometry args={[0.035, 16, 16]} />
+          <sphereGeometry args={[0.02, 16, 16]} />
           <meshStandardMaterial
             color="#ffffff"
             emissive="#ffffff"
@@ -102,7 +102,7 @@ const ForceCarrier = ({
         {/* Dual animated halo rings */}
         <group ref={haloRef}>
           <mesh>
-            <torusGeometry args={[0.12, 0.005, 8, 48]} />
+            <torusGeometry args={[0.08, 0.004, 8, 48]} />
             <meshStandardMaterial
               color={info.color}
               emissive={info.color}
@@ -112,7 +112,7 @@ const ForceCarrier = ({
             />
           </mesh>
           <mesh rotation={[0, Math.PI / 3, Math.PI / 5]}>
-            <torusGeometry args={[0.15, 0.004, 8, 48]} />
+            <torusGeometry args={[0.10, 0.003, 8, 48]} />
             <meshStandardMaterial
               color={info.color}
               emissive={info.color}
@@ -125,8 +125,8 @@ const ForceCarrier = ({
 
         {/* Symbol */}
         <Text
-          position={[0, 0, 0.1]}
-          fontSize={0.065}
+          position={[0, 0, 0.08]}
+          fontSize={0.045}
           color="#ffffff"
           anchorX="center"
           anchorY="middle"
@@ -138,8 +138,8 @@ const ForceCarrier = ({
 
         {/* Name label below */}
         <Text
-          position={[0, -0.2, 0]}
-          fontSize={0.05}
+          position={[0, -0.14, 0]}
+          fontSize={0.035}
           color={info.color}
           anchorX="center"
           anchorY="top"
@@ -233,7 +233,7 @@ export const DetailedParticleView = () => {
                     0
                   ]}
                 >
-                  <sphereGeometry args={[0.08, 16, 16]} />
+                  <sphereGeometry args={[0.05, 16, 16]} />
                   <meshStandardMaterial
                     color={color}
                     emissive={color}
