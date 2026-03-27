@@ -22,6 +22,7 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
   const [selectedParticle, setSelectedParticle] = useState<ParticleData | null>(null)
   const [hoveredParticle, setHoveredParticle] = useState<ParticleData | null>(null)
   const [isZoomedIn, setIsZoomedIn] = useState(false)
+  const [showAntimatter, setShowAntimatter] = useState(false)
 
   const selectParticle = useCallback((particle: ParticleData | null) => {
     setSelectedParticle(particle)
@@ -33,15 +34,21 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
     setIsZoomedIn(false)
   }, [])
 
+  const toggleAntimatter = useCallback(() => {
+    setShowAntimatter(prev => !prev)
+  }, [])
+
   return (
     <ParticleContext.Provider
       value={{
         selectedParticle,
         hoveredParticle,
         isZoomedIn,
+        showAntimatter,
         selectParticle,
         setHoveredParticle,
         zoomOut,
+        toggleAntimatter,
       }}
     >
       {children}

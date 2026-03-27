@@ -4,6 +4,7 @@ import type { ThreeEvent } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
 import { Mesh, Color, Vector3, MeshStandardMaterial } from 'three'
 import { useParticle } from '../../context/ParticleContext'
+import { toAntimatter } from '../../data/particleData'
 import type { ParticleData } from '../../types/particle'
 
 interface ParticleProps {
@@ -15,7 +16,10 @@ interface ParticleProps {
 export const Particle = ({ data, geometry = 'sphere', scale = 1 }: ParticleProps) => {
   const meshRef = useRef<Mesh>(null!)
   const glowRef = useRef<Mesh>(null!)
-  const { selectParticle, setHoveredParticle, hoveredParticle, selectedParticle, isZoomedIn } = useParticle()
+  const { selectParticle, setHoveredParticle, hoveredParticle, selectedParticle, isZoomedIn, showAntimatter } = useParticle()
+  
+  // Apply antimatter transformation for display
+  const displayData = showAntimatter ? toAntimatter(data) : data
   
   const isThisSelected = selectedParticle?.id === data.id
   const isThisHovered = hoveredParticle?.id === data.id
@@ -142,7 +146,7 @@ export const Particle = ({ data, geometry = 'sphere', scale = 1 }: ParticleProps
             outlineColor="black"
             fontWeight="bold"
           >
-            {data.symbol}
+            {displayData.symbol}
           </Text>
           <Text
             position={[0, -1.0, 0]}
@@ -151,7 +155,7 @@ export const Particle = ({ data, geometry = 'sphere', scale = 1 }: ParticleProps
             anchorX="center"
             anchorY="middle"
           >
-            {data.name}
+            {displayData.name}
           </Text>
         </>
       )}
@@ -167,7 +171,7 @@ export const Particle = ({ data, geometry = 'sphere', scale = 1 }: ParticleProps
           outlineWidth={0.02}
           outlineColor="black"
         >
-          {data.mass}
+          {displayData.mass}
         </Text>
       )}
     </group>

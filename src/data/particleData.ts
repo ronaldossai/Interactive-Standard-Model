@@ -296,3 +296,61 @@ export const BOSON_DATA: ParticleData[] = [
 ]
 
 export const ALL_PARTICLES = [...QUARK_DATA, ...LEPTON_DATA, ...BOSON_DATA]
+
+// Antimatter transformation utilities
+const ANTIMATTER_NAMES: Record<string, string> = {
+  // Quarks
+  'Up Quark': 'Anti-Up Quark',
+  'Down Quark': 'Anti-Down Quark',
+  'Charm Quark': 'Anti-Charm Quark',
+  'Strange Quark': 'Anti-Strange Quark',
+  'Top Quark': 'Anti-Top Quark',
+  'Bottom Quark': 'Anti-Bottom Quark',
+  // Leptons
+  'Electron': 'Positron',
+  'Muon': 'Antimuon',
+  'Tau': 'Antitau',
+  'Electron Neutrino': 'Electron Antineutrino',
+  'Muon Neutrino': 'Muon Antineutrino',
+  'Tau Neutrino': 'Tau Antineutrino',
+}
+
+const ANTIMATTER_SYMBOLS: Record<string, string> = {
+  // Quarks (with overbar)
+  'u': 'ū',
+  'd': 'd̄',
+  'c': 'c̄',
+  's': 's̄',
+  't': 't̄',
+  'b': 'b̄',
+  // Leptons (using standard notation)
+  'e': 'e+',
+  'μ': 'μ+',
+  'τ': 'τ+',
+  'νe': 'v̄e',
+  'νμ': 'v̄μ',
+  'ντ': 'v̄τ',
+}
+
+// Flip the sign of a charge string
+const flipCharge = (charge: string): string => {
+  if (charge === '0' || charge === '±1') return charge
+  if (charge.startsWith('+')) return charge.replace('+', '-')
+  if (charge.startsWith('-')) return charge.replace('-', '+')
+  return charge
+}
+
+// Transform a particle to its antiparticle equivalent
+export const toAntimatter = (particle: ParticleData): ParticleData => {
+  // Bosons are their own antiparticles (except W which is already shown as ±)
+  if (particle.type === 'boson') {
+    return particle
+  }
+
+  return {
+    ...particle,
+    name: ANTIMATTER_NAMES[particle.name] || `Anti-${particle.name}`,
+    symbol: ANTIMATTER_SYMBOLS[particle.symbol] || particle.symbol,
+    charge: flipCharge(particle.charge),
+  }
+}

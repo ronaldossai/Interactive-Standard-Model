@@ -29,6 +29,8 @@
   backdrop-filter: blur(10px);
   z-index: 10;
   pointer-events: none;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 .app-header h1 {
@@ -240,4 +242,72 @@
   .app-header h1 {
     font-size: 1.3rem;
   }
+}
+
+/* Antimatter Toggle Switch */
+.antimatter-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.toggle-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #b0c4de;
+  transition: color 0.3s ease;
+}
+
+.antimatter-toggle:has(.toggle-switch.active) .toggle-label:last-of-type {
+  color: #ce93d8;
+}
+
+.antimatter-toggle:has(.toggle-switch:not(.active)) .toggle-label:first-of-type {
+  color: #4ecdc4;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.toggle-switch.active {
+  background: linear-gradient(135deg, #9c27b0 0%, #ce93d8 100%);
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-switch.active .toggle-slider {
+  transform: translateX(24px);
+}
+
+.toggle-switch:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(78, 205, 196, 0.4);
+}
+
+.toggle-switch.active:hover {
+  box-shadow: 0 0 15px rgba(156, 39, 176, 0.4);
 }

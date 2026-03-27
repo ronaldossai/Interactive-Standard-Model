@@ -1,10 +1,16 @@
 import { useParticle } from '../context/ParticleContext'
+import { toAntimatter } from '../data/particleData'
 
 const ParticleInfo = () => {
-  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut } = useParticle()
+  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter } = useParticle()
 
   // Priority: selected > hovered > default
-  const displayParticle = selectedParticle || hoveredParticle
+  const rawParticle = selectedParticle || hoveredParticle
+  
+  // Apply antimatter transformation if enabled
+  const displayParticle = rawParticle && showAntimatter 
+    ? toAntimatter(rawParticle) 
+    : rawParticle
 
   const defaultInfo = {
     name: "Standard Model",
@@ -19,6 +25,19 @@ const ParticleInfo = () => {
 
   return (
     <div className="particle-info">
+      {/* Antimatter Toggle */}
+      <div className="antimatter-toggle">
+        <span className="toggle-label">Matter</span>
+        <button 
+          className={`toggle-switch ${showAntimatter ? 'active' : ''}`}
+          onClick={toggleAntimatter}
+          aria-label="Toggle antimatter view"
+        >
+          <span className="toggle-slider" />
+        </button>
+        <span className="toggle-label">Antimatter</span>
+      </div>
+
       {isZoomedIn && (
         <button className="back-button" onClick={zoomOut}>
           ← Back to Overview
