@@ -13,7 +13,7 @@ const ParticleInfo = () => {
     : rawParticle
 
   const defaultInfo = {
-    name: "Standard Model",
+    name: "STANDARD MODEL",
     type: "overview" as const,
     mass: "—",
     charge: "—", 

@@ -17,7 +17,7 @@ export const QUARK_DATA: ParticleData[] = [
   // Generation I
   {
     id: 'up',
-    name: 'Up Quark',
+    name: 'UP QUARK',
     symbol: 'u',
     type: 'quark',
     mass: '2.2 MeV/c²',
@@ -33,7 +33,7 @@ export const QUARK_DATA: ParticleData[] = [
   },
   {
     id: 'down',
-    name: 'Down Quark',
+    name: 'DOWN QUARK',
     symbol: 'd',
     type: 'quark',
     mass: '4.7 MeV/c²',
@@ -50,7 +50,7 @@ export const QUARK_DATA: ParticleData[] = [
   // Generation II
   {
     id: 'charm',
-    name: 'Charm Quark',
+    name: 'CHARM QUARK',
     symbol: 'c',
     type: 'quark',
     mass: '1.27 GeV/c²',
@@ -66,7 +66,7 @@ export const QUARK_DATA: ParticleData[] = [
   },
   {
     id: 'strange',
-    name: 'Strange Quark',
+    name: 'STRANGE QUARK',
     symbol: 's',
     type: 'quark',
     mass: '95 MeV/c²',
@@ -83,7 +83,7 @@ export const QUARK_DATA: ParticleData[] = [
   // Generation III
   {
     id: 'top',
-    name: 'Top Quark',
+    name: 'TOP QUARK',
     symbol: 't',
     type: 'quark',
     mass: '173 GeV/c²',
@@ -99,7 +99,7 @@ export const QUARK_DATA: ParticleData[] = [
   },
   {
     id: 'bottom',
-    name: 'Bottom Quark',
+    name: 'BOTTOM QUARK',
     symbol: 'b',
     type: 'quark',
     mass: '4.18 GeV/c²',
@@ -119,7 +119,7 @@ export const LEPTON_DATA: ParticleData[] = [
   // Generation I
   {
     id: 'electron',
-    name: 'Electron',
+    name: 'ELECTRON',
     symbol: 'e',
     type: 'lepton',
     mass: '0.511 MeV/c²',
@@ -135,7 +135,7 @@ export const LEPTON_DATA: ParticleData[] = [
   },
   {
     id: 'electron-neutrino',
-    name: 'Electron Neutrino',
+    name: 'ELECTRON NEUTRINO',
     symbol: 'νe',
     type: 'lepton',
     mass: '<1.0 eV/c²',
@@ -152,7 +152,7 @@ export const LEPTON_DATA: ParticleData[] = [
   // Generation II
   {
     id: 'muon',
-    name: 'Muon',
+    name: 'MUON',
     symbol: 'μ',
     type: 'lepton',
     mass: '105.7 MeV/c²',
@@ -168,7 +168,7 @@ export const LEPTON_DATA: ParticleData[] = [
   },
   {
     id: 'muon-neutrino',
-    name: 'Muon Neutrino',
+    name: 'MUON NEUTRINO',
     symbol: 'νμ',
     type: 'lepton',
     mass: '<0.17 MeV/c²',
@@ -185,7 +185,7 @@ export const LEPTON_DATA: ParticleData[] = [
   // Generation III
   {
     id: 'tau',
-    name: 'Tau',
+    name: 'TAU',
     symbol: 'τ',
     type: 'lepton',
     mass: '1.777 GeV/c²',
@@ -201,7 +201,7 @@ export const LEPTON_DATA: ParticleData[] = [
   },
   {
     id: 'tau-neutrino',
-    name: 'Tau Neutrino',
+    name: 'TAU NEUTRINO',
     symbol: 'ντ',
     type: 'lepton',
     mass: '<18.2 MeV/c²',
@@ -220,7 +220,7 @@ export const LEPTON_DATA: ParticleData[] = [
 export const BOSON_DATA: ParticleData[] = [
   {
     id: 'photon',
-    name: 'Photon',
+    name: 'PHOTON',
     symbol: 'γ',
     type: 'boson',
     mass: '0',
@@ -228,14 +228,14 @@ export const BOSON_DATA: ParticleData[] = [
     spin: '1',
     color: '#ffeb3b',
     position: new Vector3(GRID_START_X + COL_SPACING * 3.5, GRID_START_Y, 0),
-    description: 'The photon is the force carrier of electromagnetism. It is massless and travels at the speed of light.',
+    description: 'The photon is the force carrier of electromagnetism. It is massless and travels at the speed of light. (Fun fact: photons are their own antiparticles along with the other bosons!)',
     interactions: ['Electromagnetic'],
     discovered: '1905 (Einstein)',
     lifetime: 'Stable',
   },
   {
     id: 'gluon',
-    name: 'Gluon',
+    name: 'GLUON',
     symbol: 'g',
     type: 'boson',
     mass: '0',
@@ -250,7 +250,7 @@ export const BOSON_DATA: ParticleData[] = [
   },
   {
     id: 'w-boson',
-    name: 'W Boson',
+    name: 'W BOSON',
     symbol: 'W±',
     type: 'boson',
     mass: '80.4 GeV/c²',
@@ -265,7 +265,7 @@ export const BOSON_DATA: ParticleData[] = [
   },
   {
     id: 'z-boson',
-    name: 'Z Boson',
+    name: 'Z BOSON',
     symbol: 'Z',
     type: 'boson',
     mass: '91.2 GeV/c²',
@@ -280,7 +280,7 @@ export const BOSON_DATA: ParticleData[] = [
   },
   {
     id: 'higgs',
-    name: 'Higgs Boson',
+    name: 'HIGGS BOSON',
     symbol: 'H',
     type: 'boson',
     mass: '125 GeV/c²',
@@ -354,3 +354,4 @@ export const toAntimatter = (particle: ParticleData): ParticleData => {
     charge: flipCharge(particle.charge),
   }
 }
+
