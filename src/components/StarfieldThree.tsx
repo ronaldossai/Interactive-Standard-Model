@@ -16,8 +16,8 @@ export const StarfieldThree = ({
   count = 800,
   spread = 50,
   depth = 20,
-  twinkleSpeed = 1.5,
-  size = 1.5,
+  twinkleSpeed = 2,
+  size = 1.0,
   showStats = false,
 }: StarfieldProps) => {
   const pointsRef = useRef<THREE.Points>(null!)
@@ -43,12 +43,10 @@ export const StarfieldThree = ({
       sizes[i] = (Math.random() * 0.8 + 0.2) * size
       phases[i] = Math.random() * Math.PI * 2
 
-      // Subtle blue-white color variation
-      const hue = 200 + Math.random() * 60
-      const color = new THREE.Color().setHSL(hue / 360, 0.5, 0.65)
-      colors[i * 3] = color.r
-      colors[i * 3 + 1] = color.g
-      colors[i * 3 + 2] = color.b
+      // Pure white stars
+      colors[i * 3] = 1.0
+      colors[i * 3 + 1] = 1.0
+      colors[i * 3 + 2] = 1.0
     }
 
     return { positions, sizes, phases, colors }
@@ -130,6 +128,11 @@ export const StarfieldThree = ({
   return (
     <group renderOrder={-100}>
       {showStats && <Stats />}
+      {/* Black space background */}
+      <mesh position={[0, 0, -25]} renderOrder={-200}>
+        <planeGeometry args={[100, 100]} />
+        <meshBasicMaterial color="#000000" />
+      </mesh>
       <points ref={pointsRef} geometry={geometry} material={material} />
     </group>
   )
