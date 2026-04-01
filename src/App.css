@@ -36,7 +36,10 @@
 .app-header h1 {
   margin: 0;
   font-size: 1.6rem;
-  font-weight: 300;
+  font-weight: 900;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4);
   -webkit-background-clip: text;
   background-clip: text;
@@ -70,6 +73,9 @@
 .particle-info h2 {
   margin-top: 0;
   font-size: 1.8rem;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   color: #ffd700;
 }
 
@@ -86,6 +92,7 @@
 }
 
 .property label {
+  font-family: 'Orbitron', sans-serif;
   font-weight: 600;
   color: #b0c4de;
 }
@@ -94,6 +101,7 @@
   padding: 0.2rem 0.6rem;
   border-radius: 12px;
   font-size: 0.85rem;
+  font-family: 'Orbitron', sans-serif;
   font-weight: 600;
   text-transform: uppercase;
 }
