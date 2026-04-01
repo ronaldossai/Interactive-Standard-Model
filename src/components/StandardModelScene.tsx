@@ -4,6 +4,7 @@ import QuarkGroup from './particles/QuarkGroup'
 import LeptonGroup from './particles/LeptonGroup'
 import BosonGroup from './particles/BosonGroup'
 import { DetailedParticleView } from './particles/DetailedParticleView'
+import { StarfieldThree } from './StarfieldThree'
 import { useParticle } from '../context/ParticleContext'
 import { COL_SPACING, ROW_SPACING, GRID_START_X, GRID_START_Y, SECTION_GAP } from '../data/particleData'
 
@@ -29,6 +30,9 @@ const StandardModelScene = () => {
 
   return (
     <group>
+      {/* Starfield background - renders behind everything */}
+      <StarfieldThree showStats={false} />
+
       {/* Labels & grid structure - only show when not zoomed */}
       {!isZoomedIn && (
         <group>
