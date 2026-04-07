@@ -173,6 +173,7 @@ export const DetailedParticleView = () => {
   const { selectedParticle, isZoomedIn } = useParticle()
   const groupRef = useRef<Group>(null!)
   const orbitRef = useRef<Group>(null!)
+  const colorChargeRef = useRef<Group>(null!)
   
   useFrame((state) => {
     if (!groupRef.current || !isZoomedIn) return
@@ -180,6 +181,11 @@ export const DetailedParticleView = () => {
     // Animate orbital elements
     if (orbitRef.current) {
       orbitRef.current.rotation.z = state.clock.elapsedTime * 0.3
+    }
+    
+    // Rotate color charges for quarks
+    if (colorChargeRef.current) {
+      colorChargeRef.current.rotation.y = state.clock.elapsedTime * 0.5
     }
   })
 
@@ -220,7 +226,7 @@ export const DetailedParticleView = () => {
       case 'quark':
         // Color charge visualization for quarks
         return (
-          <group>
+          <group ref={colorChargeRef}>
             {/* Three color charges orbiting */}
             {['#ff0000', '#00ff00', '#0000ff'].map((color, i) => {
               const angle = (i / 3) * Math.PI * 2
@@ -242,6 +248,11 @@ export const DetailedParticleView = () => {
                 </mesh>
               )
             })}
+            {/* Subtle orbit ring */}
+            <mesh rotation={[Math.PI / 2, 0, 0]}>
+              <torusGeometry args={[0.8, 0.005, 16, 64]} />
+              <meshBasicMaterial color="#ffffff" opacity={0.15} transparent />
+            </mesh>
           </group>
         )
       
