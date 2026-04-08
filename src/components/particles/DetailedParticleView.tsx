@@ -248,11 +248,6 @@ export const DetailedParticleView = () => {
                 </mesh>
               )
             })}
-            {/* Subtle orbit ring */}
-            <mesh rotation={[Math.PI / 2, 0, 0]}>
-              <torusGeometry args={[0.8, 0.005, 16, 64]} />
-              <meshBasicMaterial color="#ffffff" opacity={0.15} transparent />
-            </mesh>
           </group>
         )
       
