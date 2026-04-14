@@ -25,6 +25,11 @@ export const Particle = ({ data, geometry = 'sphere', scale = 1 }: ParticleProps
   const isThisHovered = hoveredParticle?.id === data.id
   const baseColor = new Color(data.color)
   
+  // Shift color for antimatter mode (invert for visual distinction)
+  const displayColor = showAntimatter 
+    ? new Color(1 - baseColor.r, 1 - baseColor.g, 1 - baseColor.b)
+    : baseColor
+  
   useFrame((state) => {
     if (!meshRef.current) return
     
@@ -109,7 +114,7 @@ export const Particle = ({ data, geometry = 'sphere', scale = 1 }: ParticleProps
       <mesh ref={glowRef}>
         {renderGlowGeometry()}
         <meshBasicMaterial
-          color={data.color}
+          color={displayColor}
           transparent
           opacity={0.1}
           depthWrite={false}
@@ -125,8 +130,8 @@ export const Particle = ({ data, geometry = 'sphere', scale = 1 }: ParticleProps
       >
         {renderGeometry()}
         <meshStandardMaterial
-          color={isThisHovered ? baseColor.clone().multiplyScalar(1.3) : baseColor}
-          emissive={data.color}
+          color={isThisHovered ? displayColor.clone().multiplyScalar(1.3) : displayColor}
+          emissive={displayColor}
           emissiveIntensity={isThisHovered ? 0.4 : 0.2}
           metalness={0.3}
           roughness={0.4}
