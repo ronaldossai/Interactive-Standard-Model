@@ -26,7 +26,8 @@ export const Particle = ({ data, geometry = 'sphere', scale = 1 }: ParticleProps
   const baseColor = new Color(data.color)
   
   // Shift color for antimatter mode (invert for visual distinction)
-  const displayColor = showAntimatter 
+  // Exception: Bosons keep the same color (they are often their own antiparticles)
+  const displayColor = showAntimatter && data.type !== 'boson'
     ? new Color(1 - baseColor.r, 1 - baseColor.g, 1 - baseColor.b)
     : baseColor
   

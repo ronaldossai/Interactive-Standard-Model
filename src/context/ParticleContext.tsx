@@ -23,6 +23,7 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
   const [hoveredParticle, setHoveredParticle] = useState<ParticleData | null>(null)
   const [isZoomedIn, setIsZoomedIn] = useState(false)
   const [showAntimatter, setShowAntimatter] = useState(false)
+  const [comparisonParticles, setComparisonParticles] = useState<[ParticleData | null, ParticleData | null]>([null, null])
 
   const selectParticle = useCallback((particle: ParticleData | null) => {
     setSelectedParticle(particle)
@@ -38,6 +39,21 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
     setShowAntimatter(prev => !prev)
   }, [])
 
+  const addToComparison = useCallback((particle: ParticleData) => {
+    setComparisonParticles(prev => {
+      // If both slots empty, add to first
+      if (!prev[0]) return [particle, null]
+      // If first filled, add to second
+      if (!prev[1]) return [prev[0], particle]
+      // If both filled, replace second with new particle
+      return [prev[0], particle]
+    })
+  }, [])
+
+  const clearComparison = useCallback(() => {
+    setComparisonParticles([null, null])
+  }, [])
+
   return (
     <ParticleContext.Provider
       value={{
@@ -45,10 +61,13 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
         hoveredParticle,
         isZoomedIn,
         showAntimatter,
+        comparisonParticles,
         selectParticle,
         setHoveredParticle,
         zoomOut,
         toggleAntimatter,
+        addToComparison,
+        clearComparison,
       }}
     >
       {children}

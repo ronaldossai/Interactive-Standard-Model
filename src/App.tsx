@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import './App.css'
 import StandardModelScene from './components/StandardModelScene'
 import ParticleInfo from './components/ParticleInfo'
+import MassComparison from './components/MassComparison'
 import { ParticleProvider } from './context/ParticleContext'
 import { CameraController } from './components/CameraController'
 
@@ -35,6 +36,9 @@ function App() {
         <aside className="info-panel">
           <ParticleInfo />
         </aside>
+
+        {/* Mass Comparison Overlay */}
+        <MassComparison />
       </div>
     </ParticleProvider>
   )

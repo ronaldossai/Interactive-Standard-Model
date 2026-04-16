@@ -2,7 +2,7 @@ import { useParticle } from '../context/ParticleContext'
 import { toAntimatter } from '../data/particleData'
 
 const ParticleInfo = () => {
-  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter } = useParticle()
+  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison } = useParticle()
 
   // Priority: selected > hovered > default
   const rawParticle = selectedParticle || hoveredParticle
@@ -23,6 +23,16 @@ const ParticleInfo = () => {
 
   const currentInfo = displayParticle || defaultInfo
 
+  const handleAddToComparison = () => {
+    if (rawParticle) {
+      addToComparison(rawParticle)
+    }
+  }
+
+  // Check if current particle is already in comparison
+  const isInComparison = rawParticle && comparisonParticles.some(p => p?.name === rawParticle.name) || false
+  const comparisonCount = comparisonParticles.filter(p => p !== null).length
+
   return (
     <div className="particle-info">
       {/* Antimatter Toggle */}
@@ -41,6 +51,30 @@ const ParticleInfo = () => {
       {isZoomedIn && (
         <button className="back-button" onClick={zoomOut}>
           ← Back to Overview
+        </button>
+      )}
+
+      {displayParticle && (
+        <button 
+          className="compare-button" 
+          onClick={handleAddToComparison}
+          disabled={isInComparison}
+        >
+          {isInComparison 
+            ? '✓ Added to Comparison' 
+            : comparisonCount === 0 
+              ? 'Add to Comparison' 
+              : `Compare with ${comparisonParticles[0]?.name}`
+          }
+        </button>
+      )}
+
+      {comparisonCount > 0 && (
+        <button 
+          className="clear-comparison-button" 
+          onClick={clearComparison}
+        >
+          🗑️ Clear Comparison ({comparisonCount})
         </button>
       )}
       

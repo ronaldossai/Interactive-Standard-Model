@@ -23,8 +23,11 @@ export interface ParticleContextType {
   hoveredParticle: ParticleData | null
   isZoomedIn: boolean
   showAntimatter: boolean
+  comparisonParticles: [ParticleData | null, ParticleData | null]
   selectParticle: (particle: ParticleData | null) => void
   setHoveredParticle: (particle: ParticleData | null) => void
   zoomOut: () => void
   toggleAntimatter: () => void
+  addToComparison: (particle: ParticleData) => void
+  clearComparison: () => void
 }
