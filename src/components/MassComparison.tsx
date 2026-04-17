@@ -31,18 +31,47 @@ const MassComparison = () => {
   const mass1 = parseMass(particle1.mass)
   const mass2 = parseMass(particle2.mass)
 
+  const bothMassless = mass1 === 0 && mass2 === 0
+  const oneMassless = (mass1 === 0) !== (mass2 === 0)
+
   // Calculate ratio (heavier / lighter)
   const ratio = mass1 > mass2 ? mass1 / mass2 : mass2 / mass1
-  const heavierParticle = mass1 > mass2 ? particle1 : particle2
-  const lighterParticle = mass1 > mass2 ? particle2 : particle1
+  const heavierParticle = mass1 >= mass2 ? particle1 : particle2
+  const lighterParticle = mass1 >= mass2 ? particle2 : particle1
+  const masslessParticle = mass1 === 0 ? particle1 : particle2
 
-  // Format ratio
+  // Format ratio with order-of-magnitude context
   const formatRatio = (r: number): string => {
-    if (r > 1000) return `${(r / 1000).toFixed(1)}k`
-    if (r > 100) return r.toFixed(0)
-    if (r > 10) return r.toFixed(1)
-    return r.toFixed(2)
+    if (r >= 1e9) return `${(r / 1e9).toFixed(1)}B×`
+    if (r >= 1e6) return `${(r / 1e6).toFixed(1)}M×`
+    if (r >= 1e3) return `${(r / 1e3).toFixed(1)}k×`
+    if (r >= 100) return `${r.toFixed(0)}×`
+    if (r >= 10) return `${r.toFixed(1)}×`
+    return `${r.toFixed(2)}×`
   }
+
+  const getRatioLabel = (): string => {
+    if (bothMassless) return 'Both massless'
+    if (oneMassless) return 'Massless'
+    return formatRatio(ratio)
+  }
+
+  const getRatioSubtext = (): { line1: string; line2: string } => {
+    if (bothMassless) return {
+      line1: 'Both particles are massless.',
+      line2: 'They travel at the speed of light.'
+    }
+    if (oneMassless) return {
+      line1: `${masslessParticle.name} carries no rest mass —`,
+      line2: 'no numerical ratio exists.'
+    }
+    return {
+      line1: `${heavierParticle.name} is`,
+      line2: `heavier than ${lighterParticle.name}`
+    }
+  }
+
+  const { line1, line2 } = getRatioSubtext()
 
   // Convert mass to different units
   const convertMass = (massInMeV: number) => {
@@ -100,13 +129,9 @@ const MassComparison = () => {
           {/* Ratio Display */}
           <div className="comparison-ratio">
             <div className="ratio-symbol">⚖️</div>
-            <div className="ratio-text">
-              <strong>{heavierParticle.name}</strong> is
-            </div>
-            <div className="ratio-number">{formatRatio(ratio)}×</div>
-            <div className="ratio-text">
-              heavier than <strong>{lighterParticle.name}</strong>
-            </div>
+            <div className="ratio-number">{getRatioLabel()}</div>
+            <div className="ratio-text">{line1}</div>
+            <div className="ratio-text"><strong>{line2}</strong></div>
           </div>
 
           {/* Particle 2 */}

@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { Stats } from '@react-three/drei'
+// import { Stats } from '@react-three/drei'
 import { Suspense } from 'react'
 import './App.css'
 import StandardModelScene from './components/StandardModelScene'
@@ -21,7 +21,7 @@ function App() {
               <pointLight position={[-10, -10, -5]} intensity={0.3} />
               <StandardModelScene />
               <CameraController />
-              <Stats />
+              {/* <Stats /> */}
             </Suspense>
           </Canvas>
         </div>
