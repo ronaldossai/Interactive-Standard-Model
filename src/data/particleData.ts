@@ -300,19 +300,19 @@ export const ALL_PARTICLES = [...QUARK_DATA, ...LEPTON_DATA, ...BOSON_DATA]
 // Antimatter transformation utilities
 const ANTIMATTER_NAMES: Record<string, string> = {
   // Quarks
-  'Up Quark': 'Anti-Up Quark',
-  'Down Quark': 'Anti-Down Quark',
-  'Charm Quark': 'Anti-Charm Quark',
-  'Strange Quark': 'Anti-Strange Quark',
-  'Top Quark': 'Anti-Top Quark',
-  'Bottom Quark': 'Anti-Bottom Quark',
+  'UP QUARK': 'ANTI-UP QUARK',
+  'DOWN QUARK': 'ANTI-DOWN QUARK',
+  'CHARM QUARK': 'ANTI-CHARM QUARK',
+  'STRANGE QUARK': 'ANTI-STRANGE QUARK',
+  'TOP QUARK': 'ANTI-TOP QUARK',
+  'BOTTOM QUARK': 'ANTI-BOTTOM QUARK',
   // Leptons
-  'Electron': 'Positron',
-  'Muon': 'Antimuon',
-  'Tau': 'Antitau',
-  'Electron Neutrino': 'Electron Antineutrino',
-  'Muon Neutrino': 'Muon Antineutrino',
-  'Tau Neutrino': 'Tau Antineutrino',
+  'ELECTRON': 'POSITRON',
+  'MUON': 'ANTIMUON',
+  'TAU': 'ANTITAU',
+  'ELECTRON NEUTRINO': 'ELECTRON ANTINEUTRINO',
+  'MUON NEUTRINO': 'MUON ANTINEUTRINO',
+  'TAU NEUTRINO': 'TAU ANTINEUTRINO',
 }
 
 const ANTIMATTER_SYMBOLS: Record<string, string> = {
@@ -327,9 +327,9 @@ const ANTIMATTER_SYMBOLS: Record<string, string> = {
   'e': 'e+',
   'μ': 'μ+',
   'τ': 'τ+',
-  'νe': 'v̄e',
-  'νμ': 'v̄μ',
-  'ντ': 'v̄τ',
+  'νe': 'ν̄e',
+  'νμ': 'ν̄μ',
+  'ντ': 'ν̄τ',
 }
 
 // Flip the sign of a charge string
