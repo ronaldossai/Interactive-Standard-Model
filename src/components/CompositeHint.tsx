@@ -91,15 +91,17 @@ function QuarkNode({
 
 /** SVG diagram for a baryon (3-quark triangle) */
 function BaryonDiagram({ composite }: { composite: CompositeData }) {
-  const W = 140
-  const H = 120
+  const W = 116
+  const H = 98
   // Equilateral triangle vertices (apex top-centre)
   const nodes = [
-    { x: W / 2, y: 14 },        // top
-    { x: 14,    y: H - 14 },    // bottom-left
-    { x: W - 14, y: H - 14 },   // bottom-right
+   // { x: W / 2, y: 12 },  
+    { x: W / 2, y: 16 },      // top
+  // { x: 12,    y: H - 12 },    // bottom-left
+    { x: 16,    y: H - 16 },    // bottom-left
+    { x: W - 16, y: H - 16 },   // bottom-right
   ]
-  const R = 15
+  const R = 12
   const pairs = [
     [0, 1],
     [1, 2],
