@@ -24,13 +24,13 @@ const ParticleInfo = () => {
   const currentInfo = displayParticle || defaultInfo
 
   const handleAddToComparison = () => {
-    if (rawParticle) {
-      addToComparison(rawParticle)
+    if (displayParticle) {
+      addToComparison(displayParticle)
     }
   }
 
-  // Check if current particle is already in comparison
-  const isInComparison = rawParticle && comparisonParticles.some(p => p?.name === rawParticle.name) || false
+  // Check if current particle is already in comparison (match by id regardless of matter/antimatter)
+  const isInComparison = rawParticle && comparisonParticles.some(p => p?.id === rawParticle.id) || false
   const comparisonCount = comparisonParticles.filter(p => p !== null).length
 
   return (

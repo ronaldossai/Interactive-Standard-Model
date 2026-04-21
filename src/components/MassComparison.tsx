@@ -1,14 +1,9 @@
 import { useParticle } from '../context/ParticleContext'
-import { toAntimatter } from '../data/particleData'
 
 const MassComparison = () => {
-  const { comparisonParticles, clearComparison, showAntimatter } = useParticle()
+  const { comparisonParticles, clearComparison } = useParticle()
   
-  const [particle1Raw, particle2Raw] = comparisonParticles
-  
-  // Apply antimatter transformation if enabled
-  const particle1 = particle1Raw && showAntimatter ? toAntimatter(particle1Raw) : particle1Raw
-  const particle2 = particle2Raw && showAntimatter ? toAntimatter(particle2Raw) : particle2Raw
+  const [particle1, particle2] = comparisonParticles
 
   // Don't render if we don't have both particles
   if (!particle1 || !particle2) return null

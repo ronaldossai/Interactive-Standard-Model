@@ -143,20 +143,20 @@ export const Particle = ({ data, geometry = 'sphere', scale = 1 }: ParticleProps
       {!isZoomedIn && (
         <>
           <Text
-            position={[0, -0.65, 0]}
-            fontSize={0.35}
+            position={[0, -0.7, 0]}
+            fontSize={0.42}
             color="white"
             anchorX="center"
             anchorY="middle"
-            outlineWidth={0.02}
+            outlineWidth={0.025}
             outlineColor="black"
             fontWeight="bold"
           >
             {displayData.symbol}
           </Text>
           <Text
-            position={[0, -1.0, 0]}
-            fontSize={0.14}
+            position={[0, -1.08, 0]}
+            fontSize={0.18}
             color="#aaaaaa"
             anchorX="center"
             anchorY="middle"
