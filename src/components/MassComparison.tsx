@@ -1,4 +1,6 @@
 import { useParticle } from '../context/ParticleContext'
+import FeynmanDiagram from './FeynmanDiagram'
+import { resolveInteraction } from '../data/feynmanRules'
 
 const MassComparison = () => {
   const { comparisonParticles, clearComparison } = useParticle()
@@ -68,6 +70,9 @@ const MassComparison = () => {
 
   const { line1, line2 } = getRatioSubtext()
 
+  // Feynman interaction
+  const interaction = resolveInteraction(particle1, particle2)
+
   // Convert mass to different units
   const convertMass = (massInMeV: number) => {
     const kg = massInMeV * 1.783e-30 // MeV to kg conversion
@@ -85,9 +90,9 @@ const MassComparison = () => {
   const mass2Units = convertMass(mass2)
 
   return (
-    <div className="mass-comparison-overlay">
-      <div className="mass-comparison-container">
-        <div className="comparison-header">
+    <div className="mass-comparison-overlay" onClick={clearComparison}>
+      <div className="mass-comparison-container" onClick={e => e.stopPropagation()}>
+        <div className="comparison-header comparison-header--sticky">
           <h2>Mass Comparison</h2>
           <button className="close-comparison" onClick={clearComparison}>
             ✕
@@ -156,12 +161,53 @@ const MassComparison = () => {
           </div>
         </div>
 
+        {/* Feynman interaction section */}
+        <div className="feynman-section">
+          <div className="feynman-section-header">
+            <span className="feynman-section-title">TREE-LEVEL INTERACTION</span>
+            <span className="feynman-section-badge">
+              {interaction.mediator ? interaction.mediator.force : 'None'}
+            </span>
+          </div>
+          <div className="feynman-section-body">
+            {interaction.interacts && interaction.mediator ? (
+              <>
+                <div className="feynman-diagram-wrap">
+                  <FeynmanDiagram
+                    particle1={particle1}
+                    particle2={particle2}
+                    mediator={interaction.mediator}
+                  />
+                </div>
+                <div className="feynman-caption">
+                  <p className="feynman-caption-main">{interaction.caption}</p>
+                  <p className="feynman-caption-sub">{interaction.subCaption}</p>
+                  <p className="feynman-eft-note">
+                    Showing lowest-order (tree-level) diagram only.
+                    Higher-order loop corrections are suppressed at everyday energy scales —
+                    the same principle behind effective field theory.
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div className="feynman-no-interaction">
+                <span className="feynman-no-icon">∅</span>
+                <p className="feynman-caption-main">{interaction.caption}</p>
+                <p className="feynman-caption-sub">{interaction.subCaption}</p>
+              </div>
+            )}
+          </div>
+        </div>
+
         <div className="comparison-footer">
           <p className="comparison-note">
             <strong>E=mc²:</strong> The energy equivalent of a particle's mass. 
             Particle masses are often expressed in MeV/c² or GeV/c² (energy units) 
             because E=mc² makes energy and mass interchangeable.
           </p>
+          <button className="close-comparison-footer" onClick={clearComparison}>
+            ✕ Close
+          </button>
         </div>
       </div>
     </div>
