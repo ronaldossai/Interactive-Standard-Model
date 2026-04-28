@@ -1028,7 +1028,6 @@
 }
 
 /* ── Composite Particle Hint ──────────────────────────────────────────────── */
-
 .composite-hint {
   position: absolute;
   bottom: 24px;
@@ -1165,4 +1164,201 @@
   line-height: 1.6;
   border-left: 2px solid var(--accent-cyan);
   padding-left: 0.625rem;
+}
+
+/* ── Decay Animation ─────────────────────────────────────────────────────── */
+
+/* Section header in ParticleInfo */
+.particle-decay {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-primary);
+}
+
+.decay-section-title {
+  font-size: 0.75rem;
+  margin: 0 0 0.75rem 0;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Wrapper for the whole animation widget */
+.decay-animation-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+/* Mode tab row (branching ratio selectors) */
+.decay-mode-tabs {
+  display: flex;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+
+.decay-mode-tab {
+  padding: 0.2rem 0.6rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-tertiary);
+  font-family: inherit;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-transform: uppercase;
+}
+
+.decay-mode-tab:hover {
+  border-color: var(--border-accent);
+  color: var(--text-secondary);
+}
+
+.decay-mode-tab.active {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: rgba(0, 212, 232, 0.07);
+}
+
+/* SVG + caption laid out as a row */
+.decay-diagram-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.decay-svg-wrap {
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-primary);
+}
+
+/* Caption column */
+.decay-caption {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.decay-products-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.decay-product-chip {
+  display: inline-block;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-radius: 2px;
+  background: transparent;
+}
+
+.decay-caption-text {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.decay-br {
+  margin: 0;
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+}
+
+.decay-br strong {
+  color: var(--text-primary);
+}
+
+.decay-why {
+  margin: 0;
+  font-size: 0.725rem;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  border-left: 2px solid var(--border-accent);
+  padding-left: 0.625rem;
+  font-style: italic;
+}
+
+/* ── SVG keyframe animations ─────────────────────────────────────────────── */
+
+/*
+ * TIMING OVERVIEW (all use animation-duration: 3.5s, fill-mode: both)
+ *  0%   → 11%   parent pulse / glow
+ * 11%   → 40%   tracks draw in (via stroke-dashoffset: trackLen → 0)
+ * 40%   → 70%   product nodes + glows fade in
+ * 70%   → 90%   hold
+ * 90%   → 100%  fade out everything, ready to loop
+ */
+
+@keyframes decay-parent-pulse {
+  0%   { transform: scale(1);    opacity: 1; }
+  5%   { transform: scale(1.18); opacity: 1; }
+  11%  { transform: scale(1);    opacity: 1; }
+  88%  { opacity: 1; }
+  100% { opacity: 0.15; }
+}
+
+@keyframes decay-parent-glow {
+  0%   { opacity: 0.12; r: 26; }
+  5%   { opacity: 0.35; r: 34; }
+  11%  { opacity: 0.12; r: 26; }
+  88%  { opacity: 0.12; }
+  100% { opacity: 0; }
+}
+
+/* stroke-dashoffset animates from full length → 0 (track draws in) */
+@keyframes decay-track-draw {
+  0%   { stroke-dashoffset: var(--track-len, 80); opacity: 0; }
+  8%   { opacity: 1; }
+  40%  { stroke-dashoffset: 0; opacity: 1; }
+  88%  { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes decay-product-appear {
+  0%   { opacity: 0; }
+  40%  { opacity: 0; }
+  55%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes decay-product-glow-appear {
+  0%   { opacity: 0; }
+  40%  { opacity: 0; }
+  55%  { opacity: 0.18; }
+  88%  { opacity: 0.18; }
+  100% { opacity: 0; }
+}
+
+.decay-parent-pulse {
+  animation: decay-parent-pulse linear infinite both;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.decay-parent-glow {
+  animation: decay-parent-glow linear infinite both;
+  transform-box: fill-box;
+}
+
+.decay-track {
+  animation: decay-track-draw linear infinite both;
+}
+
+.decay-product-node {
+  animation: decay-product-appear linear infinite both;
+}
+
+.decay-product-glow {
+  animation: decay-product-glow-appear linear infinite both;
 }

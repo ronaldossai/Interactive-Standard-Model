@@ -1,5 +1,7 @@
 import { useParticle } from '../context/ParticleContext'
 import { toAntimatter } from '../data/particleData'
+import DecayAnimation from './DecayAnimation'
+import { getDecayInfo } from '../data/decayData'
 
 const ParticleInfo = () => {
   const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison } = useParticle()
@@ -32,6 +34,9 @@ const ParticleInfo = () => {
   // Check if current particle is already in comparison (match by id regardless of matter/antimatter)
   const isInComparison = rawParticle && comparisonParticles.some(p => p?.id === rawParticle.id) || false
   const comparisonCount = comparisonParticles.filter(p => p !== null).length
+
+  // Decay data — keyed on the matter particle ID regardless of antimatter toggle
+  const decayInfo = rawParticle ? getDecayInfo(rawParticle.id) : null
 
   return (
     <div className="particle-info">
@@ -141,6 +146,18 @@ const ParticleInfo = () => {
               </span>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* Decay animation — only shown for unstable particles */}
+      {decayInfo && rawParticle && (
+        <div className="particle-decay">
+          <h3 className="decay-section-title">DECAY MODES</h3>
+          <DecayAnimation
+            decayInfo={decayInfo}
+            parentSymbol={displayParticle?.symbol ?? rawParticle.symbol}
+            parentColor={rawParticle.color ?? '#aaaaaa'}
+          />
         </div>
       )}
       
