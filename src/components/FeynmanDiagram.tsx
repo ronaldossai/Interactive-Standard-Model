@@ -21,7 +21,7 @@
 import type { ParticleData } from '../types/particle'
 import type { Mediator, LineStyle } from '../data/feynmanRules'
 
-// ── SVG path generators ───────────────────────────────────────────────────────
+// SVG path generators 
 
 /** Sinusoidal wave — photon propagator */
 function sinePath(
@@ -111,7 +111,7 @@ function dashedLine(
   }
 }
 
-// ── Propagator component ──────────────────────────────────────────────────────
+// Propagator component 
 
 function Propagator({
   x1, y1, x2, y2,
@@ -148,7 +148,7 @@ function Propagator({
   )
 }
 
-// ── Arrow marker ──────────────────────────────────────────────────────────────
+// Arrow marker
 
 function ArrowMarker({ id, color }: { id: string; color: string }) {
   return (
@@ -167,7 +167,7 @@ function ArrowMarker({ id, color }: { id: string; color: string }) {
   )
 }
 
-// ── Particle label ────────────────────────────────────────────────────────────
+// Particle label
 
 function ParticleLabel({
   x, y, symbol, color, anchor = 'middle',
@@ -189,7 +189,7 @@ function ParticleLabel({
   )
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
+// Main component
 
 interface FeynmanDiagramProps {
   particle1: ParticleData
@@ -250,7 +250,7 @@ export default function FeynmanDiagram({
         markerEnd={`url(#${markerId1})`}
       />
 
-      {/* ── Bottom fermion line (particle 2) ── */}
+      {/* Bottom fermion line (particle 2) */}
       {/* Incoming */}
       <line
         x1={leftX} y1={botY} x2={vtxX} y2={botY}
@@ -264,7 +264,7 @@ export default function FeynmanDiagram({
         markerEnd={`url(#${markerId2})`}
       />
 
-      {/* ── Boson propagator (vertical, between vertices) ── */}
+      {/* Boson propagator (vertical, between vertices) */}
       <Propagator
         x1={propX} y1={midTopY}
         x2={propX} y2={midBotY}
@@ -272,13 +272,13 @@ export default function FeynmanDiagram({
         color={bColor}
       />
 
-      {/* ── Vertex dots ── */}
+      {/* Vertex dots */}
       <circle cx={vtxX}  cy={topY} r={3} fill="#ffffff" opacity={0.7} />
       <circle cx={vtxX}  cy={botY} r={3} fill="#ffffff" opacity={0.7} />
       <circle cx={vtxRX} cy={topY} r={3} fill="#ffffff" opacity={0.7} />
       <circle cx={vtxRX} cy={botY} r={3} fill="#ffffff" opacity={0.7} />
 
-      {/* ── Labels ── */}
+      {/*  Labels */}
       {/* Incoming particle labels (left) */}
       <ParticleLabel x={leftX - 4} y={topY} symbol={particle1.symbol} color={p1Color} anchor="end" />
       <ParticleLabel x={leftX - 4} y={botY} symbol={particle2.symbol} color={p2Color} anchor="end" />

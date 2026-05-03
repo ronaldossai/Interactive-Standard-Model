@@ -12,6 +12,16 @@ interface StarfieldProps {
   showStats?: boolean
 }
 
+// Virtual particle force colours — matching the app's boson palette
+const FORCE_COLORS: [number, number, number][] = [
+  [0.4,  1.0,  0.4],   // Photon  γ  — green
+  [0.0,  0.85, 0.85],  // Gluon   g  — cyan / teal
+  [1.0,  0.25, 0.85],  // W boson    — pink / magenta
+  [0.9,  0.9,  0.2],   // Z⁰ boson   — yellow
+]
+const EXCHANGE_COUNT = 20  // simultaneous virtual-particle exchanges
+const TRAIL_LENGTH   = 6   // point trail behind each VP head
+
 export const StarfieldThree = ({
   count = 800,
   spread = 50,
@@ -20,8 +30,10 @@ export const StarfieldThree = ({
   size = 1.0,
   showStats = false,
 }: StarfieldProps) => {
-  const pointsRef = useRef<THREE.Points>(null!)
-  const materialRef = useRef<THREE.ShaderMaterial>(null!)
+  const starGroupRef = useRef<THREE.Group>(null!)
+  const pointsRef    = useRef<THREE.Points>(null!)
+  const materialRef  = useRef<THREE.ShaderMaterial>(null!)
+  const vpPointsRef  = useRef<THREE.Points>(null!)
 
   // Generate star positions, sizes, phase offsets, and colors
   const { positions, sizes, phases, colors } = useMemo(() => {
@@ -112,17 +124,151 @@ export const StarfieldThree = ({
     })
   }, [twinkleSpeed])
 
+  // ── Virtual particle exchange system ────────────────────────────────────
+
+  // Mutable exchange state — no re-render needed
+  const exchangesRef = useRef(
+    Array.from({ length: EXCHANGE_COUNT }, () => ({
+      startIdx: Math.floor(Math.random() * count),
+      endIdx:   Math.floor(Math.random() * count),
+      progress: Math.random(),                            // stagger spawns
+      speed:    0.25 + Math.random() * 0.4,
+      color:    FORCE_COLORS[Math.floor(Math.random() * FORCE_COLORS.length)],
+    }))
+  )
+
+  // Dynamic GPU buffers (updated every frame)
+  const vpBuffers = useMemo(() => {
+    const total = EXCHANGE_COUNT * TRAIL_LENGTH
+    return {
+      posArr:  new Float32Array(total * 3),
+      colArr:  new Float32Array(total * 3),
+      sizeArr: new Float32Array(total),
+    }
+  }, [])
+
+  const vpGeometry = useMemo(() => {
+    const geom     = new THREE.BufferGeometry()
+    const posAttr  = new THREE.BufferAttribute(vpBuffers.posArr,  3)
+    const colAttr  = new THREE.BufferAttribute(vpBuffers.colArr,  3)
+    const sizeAttr = new THREE.BufferAttribute(vpBuffers.sizeArr, 1)
+    posAttr .setUsage(THREE.DynamicDrawUsage)
+    colAttr .setUsage(THREE.DynamicDrawUsage)
+    sizeAttr.setUsage(THREE.DynamicDrawUsage)
+    geom.setAttribute('position', posAttr)
+    geom.setAttribute('color',    colAttr)
+    geom.setAttribute('size',     sizeAttr)
+    return geom
+  }, [vpBuffers])
+
+  // Simple glowing-dot shader — additive, vertex-coloured, size from attribute
+  const vpMaterial = useMemo(() => new THREE.ShaderMaterial({
+    transparent: true,
+    depthWrite:  false,
+    blending:    THREE.AdditiveBlending,
+    vertexColors: true,
+    uniforms: {
+      uPixelRatio: { value: Math.min(window.devicePixelRatio || 1, 2) },
+    },
+    vertexShader: `
+      attribute float size;
+      uniform float uPixelRatio;
+      varying vec3 vColor;
+      void main() {
+        vColor = color;
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        gl_PointSize = size * (300.0 / -mvPosition.z) * uPixelRatio;
+        gl_Position  = projectionMatrix * mvPosition;
+      }
+    `,
+    fragmentShader: `
+      varying vec3 vColor;
+      void main() {
+        vec2  center = gl_PointCoord - vec2(0.5);
+        float dist   = length(center);
+        float alpha  = smoothstep(0.5, 0.05, dist);
+        gl_FragColor = vec4(vColor, alpha);
+      }
+    `,
+  }), [])
+
   // Animate time uniform
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (materialRef.current) {
       materialRef.current.uniforms.uTime.value = state.clock.elapsedTime
     }
-    
-    // Subtle parallax based on mouse movement
-    if (pointsRef.current) {
-      pointsRef.current.position.x = state.mouse.x * 1.5
-      pointsRef.current.position.y = state.mouse.y * 1.5
+
+    // Parallax — move the whole group so VP particles track with stars
+    if (starGroupRef.current) {
+      starGroupRef.current.position.x = state.mouse.x * 1.5
+      starGroupRef.current.position.y = state.mouse.y * 1.5
     }
+
+    // ── Update virtual particle exchanges ──────────────────────────────
+    const posAttr  = vpGeometry.getAttribute('position') as THREE.BufferAttribute
+    const colAttr  = vpGeometry.getAttribute('color')    as THREE.BufferAttribute
+    const sizeAttr = vpGeometry.getAttribute('size')     as THREE.BufferAttribute
+
+    for (let i = 0; i < EXCHANGE_COUNT; i++) {
+      const ex = exchangesRef.current[i]
+      ex.progress += delta * ex.speed
+
+      // Respawn with a new random pair when the exchange completes
+      if (ex.progress >= 1.0) {
+        ex.progress = 0
+        const si = Math.floor(Math.random() * count)
+        let   ei = Math.floor(Math.random() * count)
+        if (si === ei) ei = (ei + 1) % count
+        ex.startIdx = si
+        ex.endIdx   = ei
+        ex.speed    = 0.25 + Math.random() * 0.4
+        ex.color    = FORCE_COLORS[Math.floor(Math.random() * FORCE_COLORS.length)]
+      }
+
+      const startX = positions[ex.startIdx * 3]
+      const startY = positions[ex.startIdx * 3 + 1]
+      const startZ = positions[ex.startIdx * 3 + 2]
+      const endX   = positions[ex.endIdx * 3]
+      const endY   = positions[ex.endIdx * 3 + 1]
+      const endZ   = positions[ex.endIdx * 3 + 2]
+
+      const dX    = endX - startX
+      const dY    = endY - startY
+      const len2D = Math.sqrt(dX * dX + dY * dY) || 1
+      // Perpendicular normal for the arc bulge
+      const nx = -dY / len2D
+      const ny =  dX / len2D
+
+      // Smooth fade-in at birth, fade-out at death
+      const envFade = Math.sin(ex.progress * Math.PI)
+
+      for (let t = 0; t < TRAIL_LENGTH; t++) {
+        const tp = ex.progress - (t / TRAIL_LENGTH) * 0.15
+        const cp = Math.max(0, Math.min(1, tp))
+
+        // Slight arc perpendicular to the travel direction (virtual-tunnelling feel)
+        const arc = Math.sin(cp * Math.PI) * len2D * 0.07
+        const px  = startX + dX * cp + nx * arc
+        const py  = startY + dY * cp + ny * arc
+        const pz  = startZ + (endZ - startZ) * cp
+
+        const bi = (i * TRAIL_LENGTH + t) * 3
+        posAttr.array[bi]     = px
+        posAttr.array[bi + 1] = py
+        posAttr.array[bi + 2] = pz
+
+        const trailFade = Math.pow(1.0 - t / TRAIL_LENGTH, 1.5) * envFade
+        colAttr.array[bi]     = ex.color[0] * trailFade
+        colAttr.array[bi + 1] = ex.color[1] * trailFade
+        colAttr.array[bi + 2] = ex.color[2] * trailFade
+
+        sizeAttr.array[i * TRAIL_LENGTH + t] = Math.max(0, trailFade * 1.4)
+      }
+    }
+
+    posAttr .needsUpdate = true
+    colAttr .needsUpdate = true
+    sizeAttr.needsUpdate = true
   })
 
   return (
@@ -133,7 +279,10 @@ export const StarfieldThree = ({
         <planeGeometry args={[100, 100]} />
         <meshBasicMaterial color="#000000" />
       </mesh>
-      <points ref={pointsRef} geometry={geometry} material={material} />
+      <group ref={starGroupRef}>
+        <points ref={pointsRef} geometry={geometry} material={material} />
+        <points ref={vpPointsRef} geometry={vpGeometry} material={vpMaterial} />
+      </group>
     </group>
   )
 }

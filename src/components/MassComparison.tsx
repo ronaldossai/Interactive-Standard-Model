@@ -184,7 +184,7 @@ const MassComparison = () => {
                   <p className="feynman-caption-sub">{interaction.subCaption}</p>
                   <p className="feynman-eft-note">
                     Showing lowest-order (tree-level) diagram only.
-                    Higher-order loop corrections are suppressed at everyday energy scales —
+                    Higher-order loop corrections are suppressed at everyday energy scales, following
                     the same principle behind effective field theory.
                   </p>
                 </div>
