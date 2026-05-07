@@ -2,6 +2,21 @@ import { useParticle } from '../context/ParticleContext'
 import { toAntimatter } from '../data/particleData'
 import DecayAnimation from './DecayAnimation'
 import { getDecayInfo } from '../data/decayData'
+import weakForceIcon from '../assets/weak-force.png'
+
+// Map interaction types to their icon assets
+const getForceIcon = (interaction: string): string | null => {
+  switch (interaction) {
+    case 'Weak':
+      return weakForceIcon
+    case 'Electromagnetic':
+      return null // TODO: Add electromagnetic-force.png
+    case 'Strong':
+      return null // TODO: Add strong-force.png
+    default:
+      return null
+  }
+}
 
 const ParticleInfo = () => {
   const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison } = useParticle()
@@ -140,11 +155,15 @@ const ParticleInfo = () => {
         <div className="particle-interactions">
           <h3>Interactions</h3>
           <div className="interaction-tags">
-            {displayParticle.interactions.map((interaction) => (
-              <span key={interaction} className={`interaction-tag ${interaction.toLowerCase().replace(' ', '-')}`}>
-                {interaction}
-              </span>
-            ))}
+            {displayParticle.interactions.map((interaction) => {
+              const icon = getForceIcon(interaction)
+              return (
+                <span key={interaction} className={`interaction-tag ${interaction.toLowerCase().replace(' ', '-')}`}>
+                  {icon && <img src={icon} alt={`${interaction} force`} className="force-icon" />}
+                  {interaction}
+                </span>
+              )
+            })}
           </div>
         </div>
       )}

@@ -1,6 +1,21 @@
 import { useParticle } from '../context/ParticleContext'
 import FeynmanDiagram from './FeynmanDiagram'
 import { resolveInteraction } from '../data/feynmanRules'
+import weakForceIcon from '../assets/weak-force.png'
+
+// Map force names to their icon assets
+const getForceIcon = (forceName: string): string | null => {
+  switch (forceName) {
+    case 'Weak':
+      return weakForceIcon
+    case 'Electromagnetic':
+      return null // TODO: Add electromagnetic-force.png
+    case 'Strong':
+      return null // TODO: Add strong-force.png
+    default:
+      return null
+  }
+}
 
 const MassComparison = () => {
   const { comparisonParticles, clearComparison } = useParticle()
@@ -166,6 +181,13 @@ const MassComparison = () => {
           <div className="feynman-section-header">
             <span className="feynman-section-title">TREE-LEVEL INTERACTION</span>
             <span className="feynman-section-badge">
+              {interaction.mediator && getForceIcon(interaction.mediator.force) && (
+                <img 
+                  src={getForceIcon(interaction.mediator.force)!} 
+                  alt={`${interaction.mediator.force} force`} 
+                  className="force-icon"
+                />
+              )}
               {interaction.mediator ? interaction.mediator.force : 'None'}
             </span>
           </div>
