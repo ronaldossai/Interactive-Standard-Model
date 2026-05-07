@@ -3,6 +3,8 @@ import { toAntimatter } from '../data/particleData'
 import DecayAnimation from './DecayAnimation'
 import { getDecayInfo } from '../data/decayData'
 import weakForceIcon from '../assets/weak-force.png'
+import electromagneticForceIcon from '../assets/electromagentism.png'
+import strongForceIcon from '../assets/strong-force.png'
 
 // Map interaction types to their icon assets
 const getForceIcon = (interaction: string): string | null => {
@@ -10,9 +12,9 @@ const getForceIcon = (interaction: string): string | null => {
     case 'Weak':
       return weakForceIcon
     case 'Electromagnetic':
-      return null // TODO: Add electromagnetic-force.png
+      return electromagneticForceIcon
     case 'Strong':
-      return null // TODO: Add strong-force.png
+      return strongForceIcon
     default:
       return null
   }
