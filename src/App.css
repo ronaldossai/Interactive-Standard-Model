@@ -338,6 +338,284 @@
   border-color: rgba(239, 68, 68, 0.5);
 }
 
+/* ==================== QUANTUM PROPERTY INDICATORS ==================== */
+
+.quantum-indicators {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(59, 130, 246, 0.03);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  border-radius: 4px;
+}
+
+.quantum-indicators h3 {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  color: var(--accent-blue);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.quantum-indicators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.875rem;
+}
+
+.quantum-property-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-accent);
+  border-radius: 3px;
+  padding: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.quantum-property-card:hover {
+  border-color: rgba(77, 159, 255, 0.4);
+  background: rgba(77, 159, 255, 0.04);
+  box-shadow: 0 0 12px rgba(77, 159, 255, 0.15);
+}
+
+.quantum-property-label {
+  font-size: 0.625rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.quantum-property-value {
+  font-size: 0.8125rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.quantum-property-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+  margin-bottom: 0.5rem;
+}
+
+.quantum-property-description {
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Spin visualizations */
+.spin-half-arrows {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+  color: var(--accent-blue);
+}
+
+.spin-arrow {
+  font-weight: bold;
+  filter: drop-shadow(0 0 8px var(--glow-blue));
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.spin-arrow.spin-up {
+  color: #60a5fa;
+}
+
+.spin-arrow.spin-down {
+  color: #3b82f6;
+}
+
+.spin-arrow-divider {
+  color: var(--text-tertiary);
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.spin-one-circle {
+  color: var(--accent-amber);
+  filter: drop-shadow(0 0 8px var(--glow-amber));
+}
+
+.spin-one-circle svg {
+  animation: rotate-spin 4s linear infinite;
+}
+
+.spin-zero-scalar {
+  color: var(--accent-cyan);
+  filter: drop-shadow(0 0 8px var(--glow-cyan));
+}
+
+@keyframes rotate-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Helicity indicators */
+.helicity-indicator {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.helicity-left svg {
+  color: var(--text-primary);
+  filter: drop-shadow(0 0 8px rgba(66, 165, 245, 0.6));
+}
+
+.helicity-right svg {
+  color: var(--text-primary);
+  filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.6));
+}
+
+/* Charge indicators */
+.charge-indicator {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  border: 2px solid;
+  position: relative;
+  overflow: hidden;
+}
+
+.charge-indicator::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(45deg, transparent 30%, currentColor 50%, transparent 70%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.4;
+  animation: rotate-charge 3s linear infinite;
+}
+
+.charge-indicator.positive {
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.08);
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+}
+
+.charge-indicator.negative {
+  color: #42a5f5;
+  border-color: #42a5f5;
+  background: rgba(66, 165, 245, 0.08);
+  box-shadow: 0 0 20px rgba(66, 165, 245, 0.3);
+}
+
+.charge-indicator.neutral {
+  color: var(--text-tertiary);
+  border-color: var(--text-tertiary);
+  background: rgba(136, 136, 136, 0.05);
+  box-shadow: none;
+}
+
+.charge-symbol {
+  z-index: 1;
+}
+
+@keyframes rotate-charge {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Color charge visualization */
+.color-charges {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.color-charge-orb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: relative;
+  border: 2px solid;
+  animation: float-orb 3s ease-in-out infinite;
+}
+
+.color-charge-orb.color-red {
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #ef4444);
+  border-color: #dc2626;
+  box-shadow: 0 0 16px rgba(255, 107, 107, 0.7), inset 0 0 8px rgba(255, 255, 255, 0.3);
+  animation-delay: 0s;
+}
+
+.color-charge-orb.color-green {
+  background: radial-gradient(circle at 30% 30%, #4ade80, #22c55e);
+  border-color: #16a34a;
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.7), inset 0 0 8px rgba(255, 255, 255, 0.3);
+  animation-delay: 0.3s;
+}
+
+.color-charge-orb.color-blue {
+  background: radial-gradient(circle at 30% 30%, #60a5fa, #3b82f6);
+  border-color: #2563eb;
+  box-shadow: 0 0 16px rgba(96, 165, 250, 0.7), inset 0 0 8px rgba(255, 255, 255, 0.3);
+  animation-delay: 0.6s;
+}
+
+.color-charge-inner {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 30%;
+  height: 30%;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+@keyframes float-orb {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Quantum numbers (lepton number, baryon number) */
+.lepton-number,
+.baryon-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.quantum-number-symbol {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: italic;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px var(--glow-cyan);
+}
+
+.quantum-number-value {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ==================== END QUANTUM PROPERTY INDICATORS ==================== */
+
 .particle-interactions {
   margin-top: 1rem;
   padding-top: 1rem;

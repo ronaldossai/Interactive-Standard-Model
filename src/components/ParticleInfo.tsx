@@ -2,6 +2,7 @@ import { useParticle } from '../context/ParticleContext'
 import { toAntimatter } from '../data/particleData'
 import DecayAnimation from './DecayAnimation'
 import { getDecayInfo } from '../data/decayData'
+import QuantumPropertyIndicators from './QuantumPropertyIndicators'
 import weakForceIcon from '../assets/weak-force.png'
 import electromagneticForceIcon from '../assets/electromagentism.png'
 import strongForceIcon from '../assets/strong-force.png'
@@ -148,6 +149,14 @@ const ParticleInfo = () => {
           </>
         )}
       </div>
+      
+      {/* Quantum Property Indicators - Visual representation of quantum properties */}
+      {displayParticle && (
+        <QuantumPropertyIndicators 
+          particle={displayParticle} 
+          showAntimatter={showAntimatter}
+        />
+      )}
       
       <div className="particle-description">
         <p>{currentInfo.description}</p>
