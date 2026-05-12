@@ -51,27 +51,6 @@ function polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
   }
 }
 
-/**
- * Cubic Bezier path from (x1,y1) to (x2,y2) with a slight curve outward.
- * The control points are offset perpendicular to the radial direction to
- * give the bubble-chamber "track curve" look.
- */
-function curvedTrack(
-  x1: number, y1: number,
-  x2: number, y2: number,
-  curvature = 18,
-): string {
-  const mx = (x1 + x2) / 2
-  const my = (y1 + y2) / 2
-  // Perpendicular offset for the control point
-  const dx = x2 - x1
-  const dy = y2 - y1
-  const len = Math.hypot(dx, dy)
-  const cpx = mx + (-dy / len) * curvature
-  const cpy = my + ( dx / len) * curvature
-  return `M ${x1.toFixed(2)} ${y1.toFixed(2)} Q ${cpx.toFixed(2)} ${cpy.toFixed(2)} ${x2.toFixed(2)} ${y2.toFixed(2)}`
-}
-
 /** Approximate arc-length of a quadratic bezier (used for dasharray) */
 function bezierLength(
   x1: number, y1: number,
