@@ -174,7 +174,7 @@ export const DECAY_DATA: DecayInfo[] = [
   // BOSONS 
   {
     particleId: 'w-boson',
-    whyItDecays: 'The W boson is massive — it must decay almost instantly into lighter fermions.',
+    whyItDecays: 'The W boson is massive and thus it must decay almost instantly into lighter fermions.',
     modes: [
       {
         id: 'w-leptonic',
