@@ -34,7 +34,7 @@ export interface DecayInfo {
   whyItDecays: string
 }
 
-// ── Colour palette (mirrors particleData.ts exactly) ─────────────────────────
+// Colour palette (mirrors particleData.ts exactly) 
 const C = {
   up:              '#ff6b6b',
   down:            '#4ecdc4',
@@ -56,15 +56,15 @@ const C = {
   neutron:         '#bdc3c7',   // composite — grey
 }
 
-// ── Decay table ───────────────────────────────────────────────────────────────
+// Decay table 
 
 export const DECAY_DATA: DecayInfo[] = [
 
-  // ── QUARKS ────────────────────────────────────────────────────────────────
+  // QUARKS 
 
   {
     particleId: 'top',
-    whyItDecays: 'The top quark is so massive it decays before it can form a bound hadron — the only quark to do this.',
+    whyItDecays: 'The top quark is so massive it decays before it can form a bound hadron and is the only quark to do this.',
     modes: [
       {
         id: 'top-wb',
@@ -126,7 +126,7 @@ export const DECAY_DATA: DecayInfo[] = [
     ],
   },
 
-  // ── LEPTONS ───────────────────────────────────────────────────────────────
+  // LEPTONS 
 
   {
     particleId: 'muon',
@@ -147,7 +147,7 @@ export const DECAY_DATA: DecayInfo[] = [
 
   {
     particleId: 'tau',
-    whyItDecays: 'The tau is the heaviest lepton — heavy enough to decay into hadrons as well as lighter leptons.',
+    whyItDecays: 'The tau is the heaviest lepton and is heavy enough to decay into hadrons as well as lighter leptons.',
     modes: [
       {
         id: 'tau-leptonic',
@@ -171,8 +171,7 @@ export const DECAY_DATA: DecayInfo[] = [
     ],
   },
 
-  // ── BOSONS ────────────────────────────────────────────────────────────────
-
+  // BOSONS 
   {
     particleId: 'w-boson',
     whyItDecays: 'The W boson is massive — it must decay almost instantly into lighter fermions.',
@@ -209,7 +208,7 @@ export const DECAY_DATA: DecayInfo[] = [
           { symbol: 'e⁻', label: 'e⁻', color: C.electron },
           { symbol: 'e⁺', label: 'e⁺', color: C.electron, isAnti: true },
         ],
-        caption: 'Z boson decays into an electron–positron pair — the cleanest signal in a detector.',
+        caption: 'Z boson decays into an electron–positron pair, this is the cleanest signal in a detector.',
       },
       {
         id: 'z-qq',
@@ -234,7 +233,7 @@ export const DECAY_DATA: DecayInfo[] = [
 
   {
     particleId: 'higgs',
-    whyItDecays: 'The Higgs couples to mass — heavier particles draw more of its decay probability.',
+    whyItDecays: 'The Higgs couples to mass and because of this heavier particles draw more of its decay probability.',
     modes: [
       {
         id: 'higgs-bb',
@@ -252,7 +251,7 @@ export const DECAY_DATA: DecayInfo[] = [
           { symbol: 'W⁺', label: 'W⁺', color: C.wBoson },
           { symbol: 'W⁻', label: 'W⁻', color: C.wBoson },
         ],
-        caption: 'Higgs decays into two W bosons — one of which must be virtual given the mass.',
+        caption: 'Higgs decays into two W bosons, one of which must be virtual given the mass.',
       },
       {
         id: 'higgs-gg',
@@ -261,7 +260,7 @@ export const DECAY_DATA: DecayInfo[] = [
           { symbol: 'g', label: 'g', color: C.photon },
           { symbol: 'g', label: 'g', color: C.photon },
         ],
-        caption: 'Higgs → two gluons via a top quark loop — a rare but important loop-level process.',
+        caption: 'Higgs → two gluons via a top quark loop. This is a rare but important loop-level process.',
       },
       {
         id: 'higgs-yy',
@@ -270,7 +269,7 @@ export const DECAY_DATA: DecayInfo[] = [
           { symbol: 'γ', label: 'γ', color: C.photon },
           { symbol: 'γ', label: 'γ', color: C.photon },
         ],
-        caption: 'H → γγ is rare but was the discovery channel at the LHC — clean two-photon signal.',
+        caption: 'H → γγ is rare but was the discovery channel at the LHC. A clean two-photon signal.',
       },
     ],
   },

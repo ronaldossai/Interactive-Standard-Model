@@ -7,9 +7,9 @@
  * arrangement with gluon-spring connector lines.
  *
  * Design choices:
- *   • Local state only — this is a pure UI concern, no context pollution
- *   • SVG not mini-canvas — lighter, no extra Three.js overhead
- *   • Baryon = equilateral triangle, Meson = horizontal pair — most intuitive
+ *   • Local state only as this is a pure UI concern, no context pollution
+ *   • SVG not mini-canvas: lighter, no extra Three.js overhead
+ *   • Baryon = equilateral triangle, Meson = horizontal pair as this is the most intuitive option
  *   • Quark colours from compositeData which mirrors particleData values,
  *     so the diagram stays visually consistent with the 3-D scene
  *   • max-width 300px so it never crowds the centre viewport
@@ -19,7 +19,7 @@ import { useState } from 'react'
 import { useParticle } from '../context/ParticleContext'
 import { COMPOSITE_DATA, type CompositeData } from '../data/compositeData'
 
-// ── SVG helpers ──────────────────────────────────────────────────────────────
+// SVG helpers 
 
 /** Draws a "spring" path between two points to evoke a gluon propagator */
 function springPath(
@@ -159,7 +159,7 @@ function MesonDiagram({ composite }: { composite: CompositeData }) {
   )
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
+// Main component 
 
 export default function CompositeHint() {
   const { selectedParticle } = useParticle()
