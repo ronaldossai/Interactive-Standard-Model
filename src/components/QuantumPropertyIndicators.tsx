@@ -9,6 +9,7 @@
  */
 
 import type { ParticleData } from '../types/particle'
+import { useParticle } from '../context/ParticleContext'
 
 interface QuantumPropertyIndicatorsProps {
   particle: ParticleData
@@ -16,6 +17,7 @@ interface QuantumPropertyIndicatorsProps {
 }
 
 const QuantumPropertyIndicators = ({ particle, showAntimatter = false }: QuantumPropertyIndicatorsProps) => {
+  const { openSpinExplainer } = useParticle()
   
   // Parse spin value
   const spinValue = particle.spin
@@ -53,8 +55,15 @@ const QuantumPropertyIndicators = ({ particle, showAntimatter = false }: Quantum
       <div className="quantum-indicators-grid">
         
         {/* Spin Indicator */}
-        <div className="quantum-property-card">
-          <div className="quantum-property-label">Spin</div>
+        <div
+          className="quantum-property-card quantum-property-card--clickable"
+          onClick={() => openSpinExplainer(spinValue)}
+          title="Click to explore all spin values"
+        >
+          <div className="quantum-property-label">
+            Spin
+            <span className="quantum-property-click-hint">click for more ↗</span>
+          </div>
           <div className="quantum-property-value">{spinValue}</div>
           <div className="quantum-property-visual">
             {isSpinHalf && (

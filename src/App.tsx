@@ -5,6 +5,7 @@ import './App.css'
 import StandardModelScene from './components/StandardModelScene'
 import ParticleInfo from './components/ParticleInfo'
 import MassComparison from './components/MassComparison'
+import SpinExplainer from './components/SpinExplainer'
 import CompositeHint from './components/CompositeHint'
 import { ParticleProvider } from './context/ParticleContext'
 import { CameraController } from './components/CameraController'
@@ -40,6 +41,9 @@ function App() {
 
         {/* Mass Comparison Overlay */}
         <MassComparison />
+
+        {/* Spin Explainer Overlay */}
+        <SpinExplainer />
 
         {/* Composite particle hint — bottom-left, quark-only */}
         <CompositeHint />

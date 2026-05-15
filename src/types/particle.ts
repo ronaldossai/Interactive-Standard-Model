@@ -30,4 +30,7 @@ export interface ParticleContextType {
   toggleAntimatter: () => void
   addToComparison: (particle: ParticleData) => void
   clearComparison: () => void
+  spinExplainerSpin: string | null
+  openSpinExplainer: (spin: string) => void
+  closeSpinExplainer: () => void
 }

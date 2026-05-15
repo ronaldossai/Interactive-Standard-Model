@@ -24,6 +24,7 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
   const [isZoomedIn, setIsZoomedIn] = useState(false)
   const [showAntimatter, setShowAntimatter] = useState(false)
   const [comparisonParticles, setComparisonParticles] = useState<[ParticleData | null, ParticleData | null]>([null, null])
+  const [spinExplainerSpin, setSpinExplainerSpin] = useState<string | null>(null)
 
   const selectParticle = useCallback((particle: ParticleData | null) => {
     setSelectedParticle(particle)
@@ -54,6 +55,14 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
     setComparisonParticles([null, null])
   }, [])
 
+  const openSpinExplainer = useCallback((spin: string) => {
+    setSpinExplainerSpin(spin)
+  }, [])
+
+  const closeSpinExplainer = useCallback(() => {
+    setSpinExplainerSpin(null)
+  }, [])
+
   return (
     <ParticleContext.Provider
       value={{
@@ -68,6 +77,9 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
         toggleAntimatter,
         addToComparison,
         clearComparison,
+        spinExplainerSpin,
+        openSpinExplainer,
+        closeSpinExplainer,
       }}
     >
       {children}
