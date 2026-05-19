@@ -67,13 +67,25 @@ const Spin1Visual = ({ color }: { color: string }) => (
 
 const Spin32Visual = ({ color }: { color: string }) => (
   <svg viewBox="0 0 80 80" className="spin-svg spin-svg--threehalf">
-    <path d="M 40 18 A 22 22 0 1 1 18 51" fill="none" stroke={color} strokeWidth="1.5" opacity="0.5" />
-    <polygon points="18,51 14,42 23,44" fill={color} opacity="0.6" />
-    {([[-16,-16],[16,-16],[16,16],[-16,16]] as [number,number][]).map(([dx,dy],i) => (
-      <circle key={i} cx={40+dx} cy={40+dy} r="4" fill={color} opacity={0.3 + i*0.15} />
-    ))}
-    <circle cx="40" cy="40" r="3" fill={color} opacity="0.7" />
-    <text x="40" y="74" textAnchor="middle" fontSize="9" fill={color} opacity="0.7">4 spin states</text>
+    <circle cx="40" cy="40" r="22" fill="none" stroke={color} strokeWidth="1.5" opacity="0.4" />
+    
+    {/* Static 4 quantum state markers (m = -3/2, -1/2, +1/2, +3/2) */}
+    <circle cx="24" cy="24" r="4" fill={color} opacity="0.4" />
+    <circle cx="56" cy="24" r="4" fill={color} opacity="0.5" />
+    <circle cx="56" cy="56" r="4" fill={color} opacity="0.6" />
+    <circle cx="24" cy="56" r="4" fill={color} opacity="0.7" />
+    
+    {/* Static center pivot */}
+    <circle cx="40" cy="40" r="2.2" fill={color} opacity="0.9" />
+    
+    {/* Rotating arrow (240° per cycle) */}
+    <g className="spin32-rotor">
+      <line x1="40" y1="40" x2="40" y2="18" stroke={color} strokeWidth="1.9" strokeLinecap="round" />
+      <polygon points="40,14 36,21 44,21" fill={color} />
+    </g>
+    
+    {/* Static label */}
+    <text x="40" y="74" textAnchor="middle" fontSize="9" fill={color} opacity="0.78">240° per cycle • 4 states</text>
   </svg>
 )
 

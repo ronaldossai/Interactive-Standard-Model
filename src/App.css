@@ -1896,13 +1896,14 @@
   to   { transform: rotate(360deg); }
 }
 
-/* Spin-3/2 animation: pulse */
-.spin-svg--threehalf {
-  animation: spin-threehalf-pulse 2s ease-in-out infinite;
+/* Spin-3/2 animation: 240° rotation per cycle (3 cycles = 720° restoration) */
+.spin-svg--threehalf .spin32-rotor {
+  animation: spin-threehalf-rotate 4.5s linear infinite;
+  transform-origin: 40px 40px;
 }
-@keyframes spin-threehalf-pulse {
-  0%, 100% { opacity: 0.8; }
-  50%       { opacity: 1; }
+@keyframes spin-threehalf-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(240deg); }
 }
 
 /* Spin-2 animation: slow double rotation */
