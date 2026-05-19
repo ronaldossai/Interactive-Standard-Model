@@ -76,7 +76,7 @@ const MassComparison = () => {
       line2: 'They travel at the speed of light.'
     }
     if (oneMassless) return {
-      line1: `${masslessParticle.name} carries no rest mass —`,
+      line1: `${masslessParticle.name} carries no rest mass :`,
       line2: 'no numerical ratio exists.'
     }
     return {

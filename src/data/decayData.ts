@@ -112,7 +112,7 @@ export const DECAY_DATA: DecayInfo[] = [
 
   {
     particleId: 'strange',
-    whyItDecays: 'The strange quark is the lightest quark that can decay — it converts into an up quark via the weak force.',
+    whyItDecays: 'The strange quark is the lightest quark that can decay as it converts into an up quark via the weak force.',
     modes: [
       {
         id: 'strange-uw',

@@ -1887,10 +1887,9 @@
 }
 
 /* Spin-1 animation: slow rotation */
-.spin-svg--one {
-  animation: spin-one-rotate 4s linear infinite;
-  transform-origin: center;
-  transform-box: fill-box;
+.spin-svg--one .spin1-rotor {
+  animation: spin-one-rotate 3.4s linear infinite;
+  transform-origin: 40px 40px;
 }
 @keyframes spin-one-rotate {
   from { transform: rotate(0deg); }
@@ -1907,10 +1906,9 @@
 }
 
 /* Spin-2 animation: slow double rotation */
-.spin-svg--two {
+.spin-svg--two .spin2-rotor {
   animation: spin-two-rotate 8s linear infinite;
-  transform-origin: center;
-  transform-box: fill-box;
+  transform-origin: 40px 40px;
 }
 @keyframes spin-two-rotate {
   from { transform: rotate(0deg); }

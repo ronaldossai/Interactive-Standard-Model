@@ -46,12 +46,22 @@ const Spin12Visual = ({ color }: { color: string }) => (
 const Spin1Visual = ({ color }: { color: string }) => (
   <svg viewBox="0 0 80 80" className="spin-svg spin-svg--one">
     <circle cx="40" cy="40" r="22" fill="none" stroke={color} strokeWidth="1.5" opacity="0.5" />
-    <polygon points="40,16 35,24 45,24" fill={color} />
-    <polygon points="40,16 35,24 45,24" fill={color} opacity="0.5" transform="rotate(120 40 40)" />
-    <polygon points="40,16 35,24 45,24" fill={color} opacity="0.5" transform="rotate(240 40 40)" />
-    <line x1="16" y1="40" x2="64" y2="40" stroke={color} strokeWidth="1.5" opacity="0.4" />
-    <polygon points="64,40 56,36 56,44" fill={color} opacity="0.4" />
-    <text x="40" y="74" textAnchor="middle" fontSize="9" fill={color} opacity="0.7">360° to restore</text>
+    {/* Static Z4 markers (four equivalent positions) */}
+    <polygon points="40,14 36,21 44,21" fill={color} opacity="0.85" />
+    <polygon points="66,40 59,36 59,44" fill={color} opacity="0.6" />
+    <polygon points="40,66 36,59 44,59" fill={color} opacity="0.45" />
+    <polygon points="14,40 21,36 21,44" fill={color} opacity="0.6" />
+
+    {/* Static center pivot */}
+    <circle cx="40" cy="40" r="2.2" fill={color} opacity="0.9" />
+
+    {/* Rotating arrow (360°) */}
+    <g className="spin1-rotor">
+      <line x1="40" y1="40" x2="40" y2="18" stroke={color} strokeWidth="1.9" strokeLinecap="round" />
+      <polygon points="40,14 36,21 44,21" fill={color} />
+    </g>
+
+    <text x="40" y="74" textAnchor="middle" fontSize="9" fill={color} opacity="0.78">360° to restore</text>
   </svg>
 )
 
@@ -69,12 +79,16 @@ const Spin32Visual = ({ color }: { color: string }) => (
 
 const Spin2Visual = ({ color }: { color: string }) => (
   <svg viewBox="0 0 80 80" className="spin-svg spin-svg--two">
-    <line x1="26" y1="54" x2="54" y2="26" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
-    <polygon points="54,26 46,26 54,34" fill={color} />
-    <line x1="54" y1="54" x2="26" y2="26" stroke={color} strokeWidth="2.5" strokeLinecap="round" opacity="0.5" />
-    <polygon points="26,26 34,26 26,34" fill={color} opacity="0.5" />
-    <line x1="40" y1="18" x2="40" y2="62" stroke={color} strokeWidth="1" opacity="0.25" />
-    <line x1="18" y1="40" x2="62" y2="40" stroke={color} strokeWidth="1" opacity="0.25" />
+    {/* Rotating elements */}
+    <g className="spin2-rotor">
+      <line x1="26" y1="54" x2="54" y2="26" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+      <polygon points="54,26 46,26 54,34" fill={color} />
+      <line x1="54" y1="54" x2="26" y2="26" stroke={color} strokeWidth="2.5" strokeLinecap="round" opacity="0.5" />
+      <polygon points="26,26 34,26 26,34" fill={color} opacity="0.5" />
+      <line x1="40" y1="18" x2="40" y2="62" stroke={color} strokeWidth="1" opacity="0.25" />
+      <line x1="18" y1="40" x2="62" y2="40" stroke={color} strokeWidth="1" opacity="0.25" />
+    </g>
+    {/* Static label */}
     <text x="40" y="74" textAnchor="middle" fontSize="9" fill={color} opacity="0.7">180° to restore</text>
   </svg>
 )
@@ -82,7 +96,7 @@ const Spin2Visual = ({ color }: { color: string }) => (
 // Data
 
 const SPIN_DATA: SpinEntry[] = [
-  {
+  {                                                                   
     value: '0',
     label: 'Spin-0',
     category: 'Scalar Boson',
