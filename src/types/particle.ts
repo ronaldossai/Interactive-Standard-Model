@@ -33,4 +33,6 @@ export interface ParticleContextType {
   spinExplainerSpin: string | null
   openSpinExplainer: (spin: string) => void
   closeSpinExplainer: () => void
+  showCurrentParticlePopup: boolean
+  triggerCurrentParticlePopup: () => void
 }

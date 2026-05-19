@@ -25,6 +25,7 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
   const [showAntimatter, setShowAntimatter] = useState(false)
   const [comparisonParticles, setComparisonParticles] = useState<[ParticleData | null, ParticleData | null]>([null, null])
   const [spinExplainerSpin, setSpinExplainerSpin] = useState<string | null>(null)
+  const [showCurrentParticlePopup, setShowCurrentParticlePopup] = useState(false)
 
   const selectParticle = useCallback((particle: ParticleData | null) => {
     setSelectedParticle(particle)
@@ -63,6 +64,11 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
     setSpinExplainerSpin(null)
   }, [])
 
+  const triggerCurrentParticlePopup = useCallback(() => {
+    setShowCurrentParticlePopup(true)
+    setTimeout(() => setShowCurrentParticlePopup(false), 2000)
+  }, [])
+
   return (
     <ParticleContext.Provider
       value={{
@@ -80,6 +86,8 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
         spinExplainerSpin,
         openSpinExplainer,
         closeSpinExplainer,
+        showCurrentParticlePopup,
+        triggerCurrentParticlePopup,
       }}
     >
       {children}

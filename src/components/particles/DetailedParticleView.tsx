@@ -208,7 +208,7 @@ const ForceCarrier = ({
 
 // Visualizations for when zoomed into a particle
 export const DetailedParticleView = () => {
-  const { selectedParticle, isZoomedIn, selectParticle } = useParticle()
+  const { selectedParticle, isZoomedIn, selectParticle, triggerCurrentParticlePopup } = useParticle()
   const groupRef = useRef<Group>(null!)
   const orbitRef = useRef<Group>(null!)
   const colorChargeRef = useRef<Group>(null!)
@@ -253,6 +253,13 @@ export const DetailedParticleView = () => {
     const stackX  = -2.0
 
     const handleCarrierClick = (particleId: string) => {
+      // Check if clicking on the current particle
+      if (particleId === selectedParticle.id) {
+        console.log('Clicked on current particle:', particleId)
+        triggerCurrentParticlePopup()
+        return
+      }
+      
       const target = ALL_PARTICLES.find((p: { id: string }) => p.id === particleId)
       if (target) selectParticle(target)
     }
@@ -360,5 +367,34 @@ export const DetailedParticleView = () => {
       {/* Interaction indicators */}
       {renderInteractions()}
     </group>
+  )
+}
+
+// HTML Popup Overlay Component (rendered outside Canvas)
+export const CurrentParticlePopup = ({ show }: { show: boolean }) => {
+  if (!show) return null
+  
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        top: '20px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        border: '2px solid #ffeb3b',
+        borderRadius: '8px',
+        padding: '12px 24px',
+        color: '#ffffff',
+        fontSize: '16px',
+        fontWeight: '500',
+        zIndex: 1000,
+        pointerEvents: 'none',
+        animation: 'fadeInOut 2s ease-in-out',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
+      }}
+    >
+      Already viewing this particle
+    </div>
   )
 }
