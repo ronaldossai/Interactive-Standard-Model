@@ -12,7 +12,7 @@ import { ParticleProvider, useParticle } from './context/ParticleContext'
 import { CameraController } from './components/CameraController'
 
 function AppContent() {
-  const { showCurrentParticlePopup } = useParticle()
+  const { showCurrentParticlePopup, selectedParticle } = useParticle()
   
   return (
     <div className="app">
@@ -51,7 +51,7 @@ function AppContent() {
       <CompositeHint />
       
       {/* Current Particle Popup */}
-      <CurrentParticlePopup show={showCurrentParticlePopup} />
+      <CurrentParticlePopup show={showCurrentParticlePopup} color={selectedParticle?.color} />
     </div>
   )
 }

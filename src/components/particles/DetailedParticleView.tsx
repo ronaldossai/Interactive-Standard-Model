@@ -371,7 +371,7 @@ export const DetailedParticleView = () => {
 }
 
 // HTML Popup Overlay Component (rendered outside Canvas)
-export const CurrentParticlePopup = ({ show }: { show: boolean }) => {
+export const CurrentParticlePopup = ({ show, color }: { show: boolean; color?: string }) => {
   if (!show) return null
   
   return (
@@ -382,7 +382,7 @@ export const CurrentParticlePopup = ({ show }: { show: boolean }) => {
         left: '50%',
         transform: 'translateX(-50%)',
         backgroundColor: 'rgba(0, 0, 0, 0.9)',
-        border: '2px solid #ffeb3b',
+        border: `2px solid ${color || '#ffeb3b'}`,
         borderRadius: '8px',
         padding: '12px 24px',
         color: '#ffffff',

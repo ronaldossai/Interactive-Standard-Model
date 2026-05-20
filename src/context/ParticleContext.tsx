@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
+import { createContext, useContext, useState, useCallback, useEffect, useRef, type ReactNode } from 'react'
 import type { ParticleData, ParticleContextType } from '../types/particle'
 
 // Re-export types for convenience
@@ -26,6 +26,16 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
   const [comparisonParticles, setComparisonParticles] = useState<[ParticleData | null, ParticleData | null]>([null, null])
   const [spinExplainerSpin, setSpinExplainerSpin] = useState<string | null>(null)
   const [showCurrentParticlePopup, setShowCurrentParticlePopup] = useState(false)
+  const popupTimeoutRef = useRef<number | null>(null)
+
+  // Clear popup immediately when particle changes or zoom out
+  useEffect(() => {
+    setShowCurrentParticlePopup(false)
+    if (popupTimeoutRef.current) {
+      clearTimeout(popupTimeoutRef.current)
+      popupTimeoutRef.current = null
+    }
+  }, [selectedParticle, isZoomedIn])
 
   const selectParticle = useCallback((particle: ParticleData | null) => {
     setSelectedParticle(particle)
@@ -65,8 +75,16 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
   }, [])
 
   const triggerCurrentParticlePopup = useCallback(() => {
+    // Clear any existing timeout
+    if (popupTimeoutRef.current) {
+      clearTimeout(popupTimeoutRef.current)
+    }
+    
     setShowCurrentParticlePopup(true)
-    setTimeout(() => setShowCurrentParticlePopup(false), 2000)
+    popupTimeoutRef.current = window.setTimeout(() => {
+      setShowCurrentParticlePopup(false)
+      popupTimeoutRef.current = null
+    }, 2000)
   }, [])
 
   return (
