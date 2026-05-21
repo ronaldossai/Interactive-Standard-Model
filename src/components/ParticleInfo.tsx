@@ -92,6 +92,17 @@ const ParticleInfo = () => {
         </button>
       )}
 
+      {/* Hypothetical particle warning banner */}
+      {rawParticle?.hypothetical && (
+        <div className="hypothetical-warning">
+          <span className="hypothetical-warning-icon">⚠</span>
+          <div>
+            <strong>Hypothetical Particle</strong>
+            <p>Not yet observed. Predicted by theory but outside the confirmed Standard Model.</p>
+          </div>
+        </div>
+      )}
+
       {comparisonCount > 0 && (
         <button 
           className="clear-comparison-button" 

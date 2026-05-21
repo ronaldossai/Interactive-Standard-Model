@@ -3,6 +3,7 @@ import { Vector3 } from 'three'
 import QuarkGroup from './particles/QuarkGroup'
 import LeptonGroup from './particles/LeptonGroup'
 import BosonGroup from './particles/BosonGroup'
+import HypotheticalGroup from './particles/HypotheticalGroup'
 import { DetailedParticleView } from './particles/DetailedParticleView'
 import { StarfieldThree } from './StarfieldThree'
 import { useParticle } from '../context/ParticleContext'
@@ -116,6 +117,7 @@ const StandardModelScene = () => {
       <QuarkGroup />
       <LeptonGroup />
       <BosonGroup />
+      <HypotheticalGroup />
 
       {/* Detailed view when zoomed into a particle */}
       <DetailedParticleView />

@@ -22,6 +22,7 @@
 
 .app {
   width: 100vw;
+  min-width: 900px;
   height: 100vh;
   overflow: hidden;
   position: relative;
@@ -2077,6 +2078,40 @@
 
 .decay-product-glow {
   animation: decay-product-glow-appear linear infinite both;
+}
+
+/* Hypothetical particle warning banner */
+.hypothetical-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 10px 0;
+  color: #d1fae5;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.hypothetical-warning-icon {
+  font-size: 1.1rem;
+  color: #34d399;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.hypothetical-warning strong {
+  display: block;
+  color: #34d399;
+  font-size: 0.88rem;
+  margin-bottom: 2px;
+}
+
+.hypothetical-warning p {
+  margin: 0;
+  opacity: 0.8;
 }
 
 /* Current Particle Popup Animation */

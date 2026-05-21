@@ -16,6 +16,7 @@ export interface ParticleData {
   interactions?: string[]
   discovered?: string
   lifetime?: string
+  hypothetical?: boolean
 }
 
 export interface ParticleContextType {

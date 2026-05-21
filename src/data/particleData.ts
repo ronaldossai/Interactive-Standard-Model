@@ -295,7 +295,26 @@ export const BOSON_DATA: ParticleData[] = [
   },
 ]
 
-export const ALL_PARTICLES = [...QUARK_DATA, ...LEPTON_DATA, ...BOSON_DATA]
+export const HYPOTHETICAL_DATA: ParticleData[] = [
+  {
+    id: 'graviton',
+    name: 'GRAVITON',
+    symbol: 'G',
+    type: 'boson',
+    mass: '0 (theoretical)',
+    charge: '0',
+    spin: '2',
+    color: '#34d399',
+    hypothetical: true,
+    position: new Vector3(GRID_START_X + COL_SPACING * 4.8, GRID_START_Y - ROW_SPACING * 3 - SECTION_GAP, 0),
+    description: 'The graviton is the hypothetical quantum carrier of the gravitational force, predicted by quantum gravity theories. It has never been detected and remains beyond the Standard Model.',
+    interactions: ['Gravity'],
+    discovered: 'Not yet observed',
+    lifetime: 'Stable (theoretical)',
+  },
+]
+
+export const ALL_PARTICLES = [...QUARK_DATA, ...LEPTON_DATA, ...BOSON_DATA, ...HYPOTHETICAL_DATA]
 
 // Antimatter transformation utilities
 const ANTIMATTER_NAMES: Record<string, string> = {
