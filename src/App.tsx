@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 // import { Stats } from '@react-three/drei'
-import { Suspense } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import './App.css'
 import StandardModelScene from './components/StandardModelScene'
 import ParticleInfo from './components/ParticleInfo'
@@ -10,6 +10,32 @@ import CompositeHint from './components/CompositeHint'
 import { CurrentParticlePopup } from './components/particles/DetailedParticleView'
 import { ParticleProvider, useParticle } from './context/ParticleContext'
 import { CameraController } from './components/CameraController'
+
+const MIN_WIDTH = 1200
+
+function ScreenSizeWarning() {
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    const check = () => setShow(window.innerWidth < MIN_WIDTH)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
+  if (!show) return null
+
+  return (
+    <div className="screen-size-warning">
+      <span className="screen-size-warning__icon">⚠️</span>
+      <span className="screen-size-warning__text">
+        <strong>Best viewed at 900px+</strong>
+        This experience is designed for wider screens.
+      </span>
+      <button className="screen-size-warning__close" onClick={() => setShow(false)} aria-label="Dismiss">✕</button>
+    </div>
+  )
+}
 
 function AppContent() {
   const { showCurrentParticlePopup, selectedParticle } = useParticle()
@@ -52,6 +78,9 @@ function AppContent() {
       
       {/* Current Particle Popup */}
       <CurrentParticlePopup show={showCurrentParticlePopup} color={selectedParticle?.color} />
+
+      {/* Screen size warning for narrow viewports */}
+      <ScreenSizeWarning />
     </div>
   )
 }
