@@ -186,7 +186,7 @@ const QuantumPropertyIndicators = ({ particle, showAntimatter = false }: Quantum
           <div className="quantum-property-value">{particle.charge}</div>
           <div className="quantum-property-visual">
             <div className={`charge-indicator ${isCharged ? (charge! > 0 ? 'positive' : 'negative') : 'neutral'}`}>
-              {charge === 0 && <span className="charge-symbol neutral-symbol">0</span>}
+              {charge === 0 && <span className="charge-symbol neutral-symbol">○</span>}
               {charge !== null && charge > 0 && (
                 <span className="charge-symbol positive-symbol">+</span>
               )}
@@ -197,8 +197,8 @@ const QuantumPropertyIndicators = ({ particle, showAntimatter = false }: Quantum
           </div>
           <div className="quantum-property-description">
             {charge === 0 && 'No electric charge - no EM interaction'}
-            {charge && charge > 0 && `Positive charge - repels other positive charges`}
-            {charge && charge < 0 && `Negative charge - attracts positive charges`}
+            {charge !== null && charge > 0 && `Positive charge - repels other positive charges`}
+            {charge !== null && charge < 0 && `Negative charge - attracts positive charges`}
           </div>
         </div>
         
