@@ -23,6 +23,7 @@ const QuantumPropertyIndicators = ({ particle, showAntimatter = false }: Quantum
   const spinValue = particle.spin
   const isSpinHalf = spinValue === '1/2'
   const isSpinOne = spinValue === '1'
+  const isSpinTwo = spinValue === '2'
   const isSpinZero = spinValue === '0'
   
   // Determine helicity (neutrinos are always left-handed, antineutrinos right-handed)
@@ -124,10 +125,36 @@ const QuantumPropertyIndicators = ({ particle, showAntimatter = false }: Quantum
                 </svg>
               </div>
             )}
+            {isSpinTwo && (
+              <div className="spin-two-tensor" title="Spin-2 tensor boson">
+                <svg width="50" height="50" viewBox="0 0 50 50">
+                  {/* Outer loop — full closed circle */}
+                  <circle
+                    cx="25" cy="25" r="17"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  {/* Arrowhead at top of outer loop (0°) */}
+                  <path d="M 21 9.5 L 25 7 L 29 9.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+                  {/* Inner loop — full closed circle (second full revolution) */}
+                  <circle
+                    cx="25" cy="25" r="9"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    opacity="0.6"
+                  />
+                  {/* Arrowhead at bottom of inner loop (180°) */}
+                  <path d="M 21 40 L 25 43 L 29 40" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" opacity="0.6" />
+                </svg>
+              </div>
+            )}
           </div>
           <div className="quantum-property-description">
             {isSpinHalf && 'Fermion - half-integer spin'}
             {isSpinOne && 'Gauge boson - vector field'}
+            {isSpinTwo && 'Tensor boson - spin-2 gravitational field'}
             {isSpinZero && 'Scalar boson - no intrinsic angular momentum'}
           </div>
         </div>
