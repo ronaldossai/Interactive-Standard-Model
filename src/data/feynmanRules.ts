@@ -20,7 +20,7 @@
 
 import type { ParticleData } from '../types/particle'
 
-// ── Mediator descriptor ───────────────────────────────────────────────────────
+// Mediator descriptor 
 
 export type LineStyle = 'sine' | 'spring' | 'straight' | 'dashed' | 'zigzag'
 
@@ -82,7 +82,7 @@ export const MEDIATORS: Record<string, Mediator> = {
   },
 }
 
-// ── Interaction result ────────────────────────────────────────────────────────
+// Interaction result
 
 export interface InteractionResult {
   /** Does an interaction exist at tree level? */
@@ -94,7 +94,7 @@ export interface InteractionResult {
   subCaption: string
 }
 
-// ── Helper: parse charge string → sign integer ────────────────────────────────
+// Helper: parse charge string → sign integer 
 
 function chargeSign(charge: string): number {
   if (charge.startsWith('+')) return 1
@@ -102,7 +102,7 @@ function chargeSign(charge: string): number {
   return 0
 }
 
-// ── Main rule engine ──────────────────────────────────────────────────────────
+// Main rule engine 
 
 export function resolveInteraction(
   a: ParticleData,
@@ -171,7 +171,7 @@ export function resolveInteraction(
       interacts: true,
       mediator: MEDIATORS.higgs,
       caption: `${a.symbol} acquires mass through the Higgs field.`,
-      subCaption: 'The Higgs doesn\'t push or pull — it gives particles inertia.',
+      subCaption: 'The Higgs doesn\'t push or pull but is directly responsible for giving particles inertia.',
     }
   }
 
