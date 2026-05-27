@@ -748,21 +748,10 @@
 
 .instructions li {
   padding: 0.3rem 0;
-  padding-left: 1.5rem;
+  padding-left: 0;
   position: relative;
   color: #a0aec0;
   font-size: 0.88rem;
-}
-
-.instructions li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  background: linear-gradient(135deg, #60a5fa 0%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 5px rgba(96, 165, 250, 0.5));
 }
 
 /* Responsive design */
