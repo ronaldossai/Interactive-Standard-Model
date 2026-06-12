@@ -30,7 +30,7 @@ function ScreenSizeWarning() {
       <span className="screen-size-warning__icon">⚠️</span>
       <span className="screen-size-warning__text">
         <strong>Best viewed at 900px+</strong>
-        This experience is designed for wider screens.
+        This experience is designed for wider screens. UI based bugs may occur on narrow viewports.  
       </span>
       <button className="screen-size-warning__close" onClick={() => setShow(false)} aria-label="Dismiss">✕</button>
     </div>
