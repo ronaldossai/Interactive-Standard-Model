@@ -2187,3 +2187,531 @@
     transform: translateX(-50%) translateY(-10px);
   }
 }
+
+/* ============================================
+   QUANTUM PHENOMENA SECTION (ParticleInfo)
+   ============================================ */
+
+.quantum-phenomena-section {
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.quantum-phenomena-section h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.quantum-phenomena-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: rgba(77, 159, 255, 0.06);
+  border: 1px solid rgba(77, 159, 255, 0.25);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.quantum-phenomena-button:hover {
+  background: rgba(77, 159, 255, 0.12);
+  border-color: rgba(77, 159, 255, 0.4);
+  box-shadow: 0 0 12px rgba(77, 159, 255, 0.15);
+}
+
+.quantum-phenomena-button .button-icon {
+  font-size: 1.5rem;
+  color: var(--accent-blue);
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
+.quantum-phenomena-button .button-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: left;
+}
+
+.quantum-phenomena-button .button-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.quantum-phenomena-button .button-description {
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   NEUTRINO OSCILLATION OVERLAY
+   ============================================ */
+
+.neutrino-oscillation-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.neutrino-oscillation-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.neutrino-oscillation-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.neutrino-oscillation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.neutrino-oscillation-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.neutrino-oscillation-header .close-button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neutrino-oscillation-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+/* Content Grid */
+.neutrino-oscillation-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+/* Left Panel: Controls */
+.neutrino-oscillation-controls {
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-accent);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.control-section h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* Flavor Selector */
+.flavor-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.flavor-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.flavor-button:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.flavor-button.active {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.flavor-button .flavor-symbol {
+  font-size: 1.25rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.flavor-button .flavor-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Slider Control */
+.slider-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  background: var(--border-primary);
+  border-radius: 3px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(77, 159, 255, 0.4);
+  transition: all 0.15s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(77, 159, 255, 0.6);
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--accent-blue);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(77, 159, 255, 0.4);
+  transition: all 0.15s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(77, 159, 255, 0.6);
+}
+
+.slider-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  text-align: center;
+  padding: 0.25rem;
+}
+
+.slider-hint {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+/* Preset Buttons */
+.preset-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.preset-button {
+  padding: 0.625rem 0.75rem;
+  background: rgba(0, 212, 232, 0.06);
+  border: 1px solid rgba(0, 212, 232, 0.25);
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.preset-button:hover {
+  background: rgba(0, 212, 232, 0.12);
+  border-color: rgba(0, 212, 232, 0.4);
+}
+
+/* PMNS Parameters */
+.pmns-section {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-primary);
+  padding: 1rem;
+}
+
+.pmns-params {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.pmns-param {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-primary);
+}
+
+.pmns-param .param-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.pmns-param .param-value {
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  font-family: 'Courier New', monospace;
+}
+
+/* Right Panel: Visualization */
+.neutrino-oscillation-viz {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.viz-section h3 {
+  margin: 0 0 1rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Probability Bars */
+.probability-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.probability-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.probability-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.probability-label .flavor-symbol {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.probability-percent {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+}
+
+.probability-bar-track {
+  height: 32px;
+  background: var(--border-primary);
+  border: 1px solid var(--border-accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.probability-bar-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.probability-bar-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 100%
+  );
+}
+
+/* Oscillation Graph */
+.oscillation-graph {
+  position: relative;
+}
+
+.oscillation-graph svg {
+  width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-primary);
+}
+
+.graph-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-color {
+  width: 24px;
+  height: 3px;
+  border-radius: 1.5px;
+}
+
+.legend-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Educational Content */
+.educational-content {
+  background: rgba(77, 159, 255, 0.05);
+  border: 1px solid rgba(77, 159, 255, 0.2);
+  padding: 1.25rem;
+}
+
+.educational-content p {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.educational-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.educational-content strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.educational-highlight {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 212, 232, 0.08);
+  border-left: 3px solid var(--accent-cyan);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.educational-highlight strong {
+  color: var(--accent-cyan);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .neutrino-oscillation-content {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .neutrino-oscillation-content {
+    grid-template-columns: 1fr;
+  }
+
+  .neutrino-oscillation-controls {
+    border-right: none;
+    border-bottom: 1px solid var(--border-accent);
+    max-height: 40vh;
+  }
+
+  .preset-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .pmns-params {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scrollbar Styling */
+.neutrino-oscillation-controls::-webkit-scrollbar,
+.neutrino-oscillation-viz::-webkit-scrollbar {
+  width: 4px;
+}
+
+.neutrino-oscillation-controls::-webkit-scrollbar-track,
+.neutrino-oscillation-viz::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.neutrino-oscillation-controls::-webkit-scrollbar-thumb,
+.neutrino-oscillation-viz::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+}
+
+.neutrino-oscillation-controls::-webkit-scrollbar-thumb:hover,
+.neutrino-oscillation-viz::-webkit-scrollbar-thumb:hover {
+  background: #3a4654;
+}

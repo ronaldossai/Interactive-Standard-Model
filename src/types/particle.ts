@@ -36,4 +36,7 @@ export interface ParticleContextType {
   closeSpinExplainer: () => void
   showCurrentParticlePopup: boolean
   triggerCurrentParticlePopup: () => void
+  neutrinoOscillationOpen: boolean
+  openNeutrinoOscillation: () => void
+  closeNeutrinoOscillation: () => void
 }

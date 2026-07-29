@@ -23,7 +23,7 @@
 import { useState } from 'react'
 import type { DecayInfo, DecayMode } from '../data/decayData'
 
-// ── Geometry helpers ──────────────────────────────────────────────────────────
+// Geometry helpers
 
 const CX = 90   // canvas centre x
 const CY = 90   // canvas centre y
@@ -70,7 +70,7 @@ function bezierLength(
   return len
 }
 
-// ── Sub-components ────────────────────────────────────────────────────────────
+// Sub-components
 
 function ParentNode({ color, symbol, animKey }: { color: string; symbol: string; animKey: number }) {
   return (
@@ -205,7 +205,7 @@ function TrackAndNode({
   )
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
+// Main component 
 
 interface DecayAnimationProps {
   decayInfo: DecayInfo

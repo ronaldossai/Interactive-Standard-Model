@@ -124,7 +124,7 @@ export const StarfieldThree = ({
     })
   }, [twinkleSpeed])
 
-  // ── Virtual particle exchange system ────────────────────────────────────
+  // Virtual particle exchange system
 
   // Mutable exchange state — no re-render needed
   const exchangesRef = useRef(
@@ -204,7 +204,7 @@ export const StarfieldThree = ({
       starGroupRef.current.position.y = state.mouse.y * 1.5
     }
 
-    // ── Update virtual particle exchanges ──────────────────────────────
+    // Update virtual particle exchanges 
     const posAttr  = vpGeometry.getAttribute('position') as THREE.BufferAttribute
     const colAttr  = vpGeometry.getAttribute('color')    as THREE.BufferAttribute
     const sizeAttr = vpGeometry.getAttribute('size')     as THREE.BufferAttribute

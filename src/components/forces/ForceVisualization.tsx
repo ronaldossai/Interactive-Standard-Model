@@ -10,6 +10,7 @@ const ForceVisualization = () => {
     // Animate force field lines
     if (lineRef.current) {
       lineRef.current.rotation.z = state.clock.elapsedTime * 0.2
+      // lineref.current.rotationz.y = state.clock.elapsedTime * 0.1
     }
   })
 

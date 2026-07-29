@@ -7,6 +7,7 @@ import ParticleInfo from './components/ParticleInfo'
 import MassComparison from './components/MassComparison'
 import SpinExplainer from './components/SpinExplainer'
 import CompositeHint from './components/CompositeHint'
+import NeutrinoOscillation from './components/NeutrinoOscillation'
 import { CurrentParticlePopup } from './components/particles/DetailedParticleView'
 import { ParticleProvider, useParticle } from './context/ParticleContext'
 import { CameraController } from './components/CameraController'
@@ -72,6 +73,9 @@ function AppContent() {
 
       {/* Spin Explainer Overlay */}
       <SpinExplainer />
+
+      {/* Neutrino Oscillation Simulator */}
+      <NeutrinoOscillation />
 
       {/* Composite particle hint — bottom-left, quark-only */}
       <CompositeHint />

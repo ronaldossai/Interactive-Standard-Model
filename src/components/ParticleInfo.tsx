@@ -22,7 +22,7 @@ const getForceIcon = (interaction: string): string | null => {
 }
 
 const ParticleInfo = () => {
-  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison } = useParticle()
+  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation } = useParticle()
 
   // Priority: selected > hovered > default
   const rawParticle = selectedParticle || hoveredParticle
@@ -187,6 +187,20 @@ const ParticleInfo = () => {
               )
             })}
           </div>
+        </div>
+      )}
+
+      {/* Quantum Phenomena — interactive simulators */}
+      {displayParticle && displayParticle.type === 'lepton' && displayParticle.name.includes('NEUTRINO') && (
+        <div className="quantum-phenomena-section">
+          <h3>Quantum Phenomena</h3>
+          <button className="quantum-phenomena-button" onClick={openNeutrinoOscillation}>
+            <span className="button-icon">〜</span>
+            <div className="button-content">
+              <span className="button-title">Neutrino Oscillation</span>
+              <span className="button-description">Explore flavor mixing</span>
+            </div>
+          </button>
         </div>
       )}
 

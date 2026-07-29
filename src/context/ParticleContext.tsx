@@ -26,6 +26,7 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
   const [comparisonParticles, setComparisonParticles] = useState<[ParticleData | null, ParticleData | null]>([null, null])
   const [spinExplainerSpin, setSpinExplainerSpin] = useState<string | null>(null)
   const [showCurrentParticlePopup, setShowCurrentParticlePopup] = useState(false)
+  const [neutrinoOscillationOpen, setNeutrinoOscillationOpen] = useState(false)
   const popupTimeoutRef = useRef<number | null>(null)
 
   // Clear popup immediately when particle changes or zoom out
@@ -87,6 +88,14 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
     }, 2000)
   }, [])
 
+  const openNeutrinoOscillation = useCallback(() => {
+    setNeutrinoOscillationOpen(true)
+  }, [])
+
+  const closeNeutrinoOscillation = useCallback(() => {
+    setNeutrinoOscillationOpen(false)
+  }, [])
+
   return (
     <ParticleContext.Provider
       value={{
@@ -106,6 +115,9 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
         closeSpinExplainer,
         showCurrentParticlePopup,
         triggerCurrentParticlePopup,
+        neutrinoOscillationOpen,
+        openNeutrinoOscillation,
+        closeNeutrinoOscillation,
       }}
     >
       {children}
