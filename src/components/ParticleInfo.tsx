@@ -6,6 +6,7 @@ import QuantumPropertyIndicators from './QuantumPropertyIndicators'
 import weakForceIcon from '../assets/weak-force.png'
 import electromagneticForceIcon from '../assets/electromagentism.png'
 import strongForceIcon from '../assets/strong-force.png'
+import hadronLabIcon from '../assets/hadron-lab-icon.png'
 
 // Map interaction types to their icon assets
 const getForceIcon = (interaction: string): string | null => {
@@ -22,7 +23,7 @@ const getForceIcon = (interaction: string): string | null => {
 }
 
 const ParticleInfo = () => {
-  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation } = useParticle()
+  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab } = useParticle()
 
   // Priority: selected > hovered > default
   const rawParticle = selectedParticle || hoveredParticle
@@ -191,16 +192,27 @@ const ParticleInfo = () => {
       )}
 
       {/* Quantum Phenomena — interactive simulators */}
-      {displayParticle && displayParticle.type === 'lepton' && displayParticle.name.includes('NEUTRINO') && (
+      {displayParticle && (
         <div className="quantum-phenomena-section">
-          <h3>Quantum Phenomena</h3>
-          <button className="quantum-phenomena-button" onClick={openNeutrinoOscillation}>
-            <span className="button-icon">〜</span>
-            <div className="button-content">
-              <span className="button-title">Neutrino Oscillation</span>
-              <span className="button-description">Explore flavor mixing</span>
-            </div>
-          </button>
+          <h3>Interactive Labs</h3>
+          {displayParticle.type === 'lepton' && displayParticle.name.includes('NEUTRINO') && (
+            <button className="quantum-phenomena-button" onClick={openNeutrinoOscillation}>
+              <span className="button-icon">〜</span>
+              <div className="button-content">
+                <span className="button-title">Neutrino Oscillation</span>
+                <span className="button-description">Explore flavor mixing</span>
+              </div>
+            </button>
+          )}
+          {displayParticle.type === 'quark' && (
+            <button className="quantum-phenomena-button hadron-lab-button" onClick={openHadronLab}>
+              <img src={hadronLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
+              <div className="button-content">
+                <span className="button-title">Hadron Lab</span>
+                <span className="button-description">Build baryons & mesons</span>
+              </div>
+            </button>
+          )}
         </div>
       )}
 

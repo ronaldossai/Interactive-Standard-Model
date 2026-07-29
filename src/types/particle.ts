@@ -39,4 +39,7 @@ export interface ParticleContextType {
   neutrinoOscillationOpen: boolean
   openNeutrinoOscillation: () => void
   closeNeutrinoOscillation: () => void
+  hadronLabOpen: boolean
+  openHadronLab: () => void
+  closeHadronLab: () => void
 }

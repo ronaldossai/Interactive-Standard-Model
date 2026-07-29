@@ -27,6 +27,7 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
   const [spinExplainerSpin, setSpinExplainerSpin] = useState<string | null>(null)
   const [showCurrentParticlePopup, setShowCurrentParticlePopup] = useState(false)
   const [neutrinoOscillationOpen, setNeutrinoOscillationOpen] = useState(false)
+  const [hadronLabOpen, setHadronLabOpen] = useState(false)
   const popupTimeoutRef = useRef<number | null>(null)
 
   // Clear popup immediately when particle changes or zoom out
@@ -96,6 +97,14 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
     setNeutrinoOscillationOpen(false)
   }, [])
 
+  const openHadronLab = useCallback(() => {
+    setHadronLabOpen(true)
+  }, [])
+
+  const closeHadronLab = useCallback(() => {
+    setHadronLabOpen(false)
+  }, [])
+
   return (
     <ParticleContext.Provider
       value={{
@@ -118,6 +127,9 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
         neutrinoOscillationOpen,
         openNeutrinoOscillation,
         closeNeutrinoOscillation,
+        hadronLabOpen,
+        openHadronLab,
+        closeHadronLab,
       }}
     >
       {children}

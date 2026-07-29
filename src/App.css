@@ -2715,3 +2715,702 @@
 .neutrino-oscillation-viz::-webkit-scrollbar-thumb:hover {
   background: #3a4654;
 }
+/* ========================================
+   HADRON LAB
+   ======================================== */
+
+/* Overlay and backdrop */
+.hadron-lab-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.hadron-lab-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.hadron-lab-container {
+  position: relative;
+  width: 95%;
+  max-width: 1600px;
+  max-height: 90vh;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-accent);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.hadron-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: rgba(77, 159, 255, 0.05);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.hadron-lab-header h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+/* Main content layout */
+.hadron-lab-content {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Left panel: Builder */
+.hadron-lab-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.builder-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.builder-section h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Quark slots */
+.quark-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.quark-slot {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.quark-slot.empty {
+  border: 2px dashed var(--border-primary);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.quark-slot.filled {
+  border: 2px solid var(--accent-blue);
+  background: rgba(77, 159, 255, 0.1);
+  box-shadow: 0 0 15px rgba(77, 159, 255, 0.2);
+}
+
+.quark-display {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.quark-symbol {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.quark-color-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.remove-quark {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-accent);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.remove-quark:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: white;
+  transform: scale(1.1);
+}
+
+.empty-slot-text {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+/* Selection info */
+.selection-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border: 1px solid var(--border-primary);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.clear-button {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 4px;
+  color: #ef4444;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-button:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+}
+
+/* Flavor selection */
+.flavor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.flavor-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px solid var(--border-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.flavor-option:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.flavor-option.selected {
+  border-color: var(--accent-blue);
+  background: rgba(77, 159, 255, 0.1);
+  box-shadow: 0 0 12px rgba(77, 159, 255, 0.3);
+}
+
+.flavor-option:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.flavor-symbol {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.flavor-name {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.antiquark-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.antiquark-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--accent-blue);
+}
+
+.antiquark-toggle span {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Color charge selection */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.color-option {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 3px solid transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.color-option:not(.disabled):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.color-option.selected {
+  border-color: white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.color-option.disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+  transform: none !important;
+}
+
+.color-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Add quark button */
+.add-quark-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(77, 159, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.add-quark-button:not(:disabled) {
+  animation: buttonPulse 2s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(77, 159, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(77, 159, 255, 0.6);
+  }
+}
+
+.add-quark-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(77, 159, 255, 0.5);
+  animation: none;
+}
+
+.add-quark-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Recipes */
+.recipes-section {
+  margin-top: 1rem;
+}
+
+.recipe-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.recipe-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: rgba(0, 212, 232, 0.05);
+  border: 1px solid rgba(0, 212, 232, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.recipe-button:hover {
+  background: rgba(0, 212, 232, 0.1);
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.recipe-symbol {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.recipe-name {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Right panel: Results */
+.hadron-lab-results {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+.results-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.results-section h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Validation feedback */
+.validation-errors,
+.validation-warnings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.error-message {
+  padding: 0.75rem;
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 3px solid #ef4444;
+  border-radius: 4px;
+  color: #fca5a5;
+  font-size: 0.9rem;
+}
+
+.warning-message {
+  padding: 0.75rem;
+  background: rgba(251, 191, 36, 0.1);
+  border-left: 3px solid #fbbf24;
+  border-radius: 4px;
+  color: #fde68a;
+  font-size: 0.9rem;
+}
+
+.validation-success {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 8px;
+}
+
+.success-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.success-message {
+  font-size: 1rem;
+  color: #86efac;
+  font-weight: 600;
+}
+
+.validation-hint {
+  padding: 1rem;
+  background: rgba(77, 159, 255, 0.05);
+  border: 1px solid rgba(77, 159, 255, 0.2);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Hadron preview */
+.hadron-preview h3 {
+  color: var(--accent-cyan);
+  margin-bottom: 1.5rem;
+}
+
+.hadron-card {
+  background: linear-gradient(135deg, rgba(77, 159, 255, 0.05), rgba(0, 212, 232, 0.05));
+  border: 1px solid var(--border-accent);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.hadron-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.hadron-symbol {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.hadron-category {
+  padding: 0.5rem 1rem;
+  background: rgba(0, 212, 232, 0.2);
+  border: 1px solid var(--accent-cyan);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.hadron-properties {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.hadron-prop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prop-label {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.prop-value {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+.hadron-description {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Educational content */
+.educational-section h3 {
+  color: var(--accent-cyan);
+}
+
+.qcd-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.qcd-section h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.qcd-section p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Color confinement rules */
+.confinement-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rule-item {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.rule-visual {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mini-quark {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.rule-arrow {
+  font-size: 1.25rem;
+  color: var(--text-tertiary);
+  margin: 0 0.25rem;
+}
+
+.rule-result {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.rule-desc {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 1400px) {
+  .hadron-lab-content {
+    grid-template-columns: 380px 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hadron-lab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hadron-lab-builder {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hadron-lab-container {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .hadron-lab-header {
+    padding: 1rem 1.5rem;
+  }
+
+  .hadron-lab-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .hadron-lab-content {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .flavor-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .recipe-buttons {
+    grid-template-columns: 1fr;
+  }
+}
