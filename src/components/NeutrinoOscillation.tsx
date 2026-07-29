@@ -336,9 +336,9 @@ const NeutrinoOscillation = () => {
             <section className="viz-section educational-content">
               <h3>About Neutrino Oscillation</h3>
               <p>
-                Neutrinos are "flavor eigenstates" (νₑ, νμ, ντ) when produced, but they propagate
-                as "mass eigenstates" (ν₁, ν₂, ν₃). The mismatch between these bases—described
-                by the <strong>PMNS matrix</strong>—causes neutrinos to oscillate between flavors
+                Neutrinos are what we describe as "flavor eigenstates" (νₑ, νμ, ντ) when produced, but they propagate
+                as "mass eigenstates" (ν₁, ν₂, ν₃). The mismatch between these bases , which is described
+                by the <strong>PMNS matrix</strong> , causes neutrinos to oscillate between flavors
                 as they travel.
               </p>
               <p>
@@ -349,7 +349,7 @@ const NeutrinoOscillation = () => {
               </p>
               <div className="educational-highlight">
                 <strong>Try this:</strong> Select "Solar Neutrinos" preset to see why only ~1/3 of
-                expected electron neutrinos from the Sun reach Earth—they've oscillated into other
+                expected electron neutrinos from the Sun reach Earth, they've oscillated into other
                 flavors during their journey!
               </div>
             </section>
