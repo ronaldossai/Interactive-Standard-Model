@@ -30,6 +30,8 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
   const [hadronLabOpen, setHadronLabOpen] = useState(false)
   const [photonLabOpen, setPhotonLabOpen] = useState(false)
   const [electronLabOpen, setElectronLabOpen] = useState(false)
+  const [higgsLabOpen, setHiggsLabOpen] = useState(false)
+  const [gluonLabOpen, setGluonLabOpen] = useState(false)
   const popupTimeoutRef = useRef<number | null>(null)
 
   // Clear popup immediately when particle changes or zoom out
@@ -123,6 +125,22 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
     setElectronLabOpen(false)
   }, [])
 
+  const openHiggsLab = useCallback(() => {
+    setHiggsLabOpen(true)
+  }, [])
+
+  const closeHiggsLab = useCallback(() => {
+    setHiggsLabOpen(false)
+  }, [])
+
+  const openGluonLab = useCallback(() => {
+    setGluonLabOpen(true)
+  }, [])
+
+  const closeGluonLab = useCallback(() => {
+    setGluonLabOpen(false)
+  }, [])
+
   return (
     <ParticleContext.Provider
       value={{
@@ -154,6 +172,12 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
         electronLabOpen,
         openElectronLab,
         closeElectronLab,
+        higgsLabOpen,
+        openHiggsLab,
+        closeHiggsLab,
+        gluonLabOpen,
+        openGluonLab,
+        closeGluonLab,
       }}
     >
       {children}

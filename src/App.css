@@ -3934,3 +3934,476 @@
 .electron-lab-viz::-webkit-scrollbar-thumb:hover {
   background: var(--border-primary);
 }
+
+/* ==========================================================================
+   Higgs Mechanism Lab
+   ========================================================================== */
+
+.higgs-lab-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.higgs-lab-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.higgs-lab-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.higgs-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.higgs-lab-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.higgs-lab-header .close-button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.higgs-lab-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.higgs-lab-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.higgs-lab-controls {
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-accent);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.higgs-lab-viz {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.higgs-status-badge {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.higgs-status-badge.broken {
+  background: rgba(255, 235, 59, 0.1);
+  border: 1px solid rgba(255, 235, 59, 0.35);
+  color: #ffeb3b;
+}
+
+.higgs-status-badge.unbroken {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-primary);
+  color: var(--text-secondary);
+}
+
+/* Field Space disc */
+.higgs-field-space {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.higgs-field-space-svg {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-primary);
+}
+
+.higgs-vacuum-ring {
+  transition: r 0.25s ease;
+}
+
+.higgs-field-point {
+  transition: cx 0.15s ease, cy 0.15s ease, fill 0.25s ease;
+}
+
+.higgs-field-space-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* W/Z reference box */
+.higgs-wz-reference {
+  padding: 1rem 1.25rem;
+  background: rgba(155, 89, 182, 0.08);
+  border: 1px dashed rgba(155, 89, 182, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.higgs-wz-reference-note {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9b59b6;
+  font-weight: 600;
+}
+
+.higgs-wz-reference-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+}
+
+/* Potential Graph */
+.higgs-potential-graph svg {
+  width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-primary);
+}
+
+@media (max-width: 1400px) {
+  .higgs-lab-content {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .higgs-lab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .higgs-lab-controls {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .higgs-lab-container {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .higgs-lab-content {
+    padding: 0;
+  }
+}
+
+.higgs-lab-controls::-webkit-scrollbar,
+.higgs-lab-viz::-webkit-scrollbar {
+  width: 8px;
+}
+
+.higgs-lab-controls::-webkit-scrollbar-track,
+.higgs-lab-viz::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.higgs-lab-controls::-webkit-scrollbar-thumb,
+.higgs-lab-viz::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+}
+
+.higgs-lab-controls::-webkit-scrollbar-thumb:hover,
+.higgs-lab-viz::-webkit-scrollbar-thumb:hover {
+  background: var(--border-primary);
+}
+
+/* ==========================================================================
+   Gluon Confinement Lab
+   ========================================================================== */
+
+.gluon-lab-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.gluon-lab-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.gluon-lab-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.gluon-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.gluon-lab-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.gluon-lab-header .close-button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gluon-lab-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.gluon-lab-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+  padding: 0 1.5rem;
+}
+
+.gluon-lab-tab {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.gluon-lab-tab:hover {
+  color: var(--text-primary);
+}
+
+.gluon-lab-tab.active {
+  color: #f44336;
+  border-bottom-color: #f44336;
+}
+
+.gluon-lab-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.gluon-lab-controls {
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-accent);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.gluon-lab-viz {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Flux tube visual */
+.flux-tube-visual {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0.5rem;
+  overflow-x: auto;
+}
+
+.flux-tube-pair {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.flux-tube-pair.small-gap {
+  gap: 10px;
+}
+
+.flux-tube-broken {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.quark-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.quark-dot.quark {
+  background: #ff6b6b;
+  box-shadow: 0 0 8px rgba(255, 107, 107, 0.5);
+}
+
+.quark-dot.antiquark {
+  background: #4ecdc4;
+  box-shadow: 0 0 8px rgba(78, 205, 196, 0.5);
+}
+
+.flux-tube-line {
+  flex: 1;
+  min-width: 20px;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, #f44336 0, #f44336 6px, transparent 6px, transparent 10px);
+  transition: width 0.2s ease;
+}
+
+.flux-tube-line.short {
+  width: 20px;
+  flex: none;
+}
+
+/* Graphs */
+.gluon-potential-graph svg,
+.gluon-running-graph svg {
+  width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-primary);
+}
+
+@media (max-width: 1400px) {
+  .gluon-lab-content {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .gluon-lab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .gluon-lab-controls {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .gluon-lab-container {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .gluon-lab-content {
+    padding: 0;
+  }
+}
+
+.gluon-lab-controls::-webkit-scrollbar,
+.gluon-lab-viz::-webkit-scrollbar {
+  width: 8px;
+}
+
+.gluon-lab-controls::-webkit-scrollbar-track,
+.gluon-lab-viz::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gluon-lab-controls::-webkit-scrollbar-thumb,
+.gluon-lab-viz::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+}
+
+.gluon-lab-controls::-webkit-scrollbar-thumb:hover,
+.gluon-lab-viz::-webkit-scrollbar-thumb:hover {
+  background: var(--border-primary);
+}

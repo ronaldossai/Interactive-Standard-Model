@@ -23,7 +23,7 @@ const getForceIcon = (interaction: string): string | null => {
 }
 
 const ParticleInfo = () => {
-  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab, openPhotonLab, openElectronLab } = useParticle()
+  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab, openPhotonLab, openElectronLab, openHiggsLab, openGluonLab } = useParticle()
 
   // Priority: selected > hovered > default
   const rawParticle = selectedParticle || hoveredParticle
@@ -228,6 +228,33 @@ const ParticleInfo = () => {
               <div className="button-content">
                 <span className="button-title">Relativity Lab</span>
                 <span className="button-description">Magnetism from a moving frame</span>
+              </div>
+            </button>
+          )}
+          {displayParticle.id === 'higgs' && (
+            <button className="quantum-phenomena-button" onClick={openHiggsLab}>
+              <span className="button-icon">◎</span>
+              <div className="button-content">
+                <span className="button-title">Higgs Mechanism Lab</span>
+                <span className="button-description">Explore symmetry breaking</span>
+              </div>
+            </button>
+          )}
+          {(displayParticle.id === 'w-boson' || displayParticle.id === 'z-boson') && (
+            <button className="quantum-phenomena-button" onClick={openHiggsLab}>
+              <span className="button-icon">◎</span>
+              <div className="button-content">
+                <span className="button-title">Higgs Mechanism Lab</span>
+                <span className="button-description">See how this boson gets its mass</span>
+              </div>
+            </button>
+          )}
+          {displayParticle.id === 'gluon' && (
+            <button className="quantum-phenomena-button" onClick={openGluonLab}>
+              <span className="button-icon">⛓</span>
+              <div className="button-content">
+                <span className="button-title">Confinement Lab</span>
+                <span className="button-description">Explore the strong force</span>
               </div>
             </button>
           )}

@@ -48,4 +48,10 @@ export interface ParticleContextType {
   electronLabOpen: boolean
   openElectronLab: () => void
   closeElectronLab: () => void
+  higgsLabOpen: boolean
+  openHiggsLab: () => void
+  closeHiggsLab: () => void
+  gluonLabOpen: boolean
+  openGluonLab: () => void
+  closeGluonLab: () => void
 }

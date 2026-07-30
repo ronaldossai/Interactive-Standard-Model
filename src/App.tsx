@@ -11,6 +11,8 @@ import NeutrinoOscillation from './components/NeutrinoOscillation'
 import HadronLab from './components/HadronLab'
 import PhotonPolarizationLab from './components/PhotonPolarizationLab'
 import ElectronRelativityLab from './components/ElectronRelativityLab'
+import HiggsMechanismLab from './components/HiggsMechanismLab'
+import GluonConfinementLab from './components/GluonConfinementLab'
 import { CurrentParticlePopup } from './components/particles/DetailedParticleView'
 import { ParticleProvider, useParticle } from './context/ParticleContext'
 import { CameraController } from './components/CameraController'
@@ -88,6 +90,12 @@ function AppContent() {
 
       {/* Electron Relativity Lab */}
       <ElectronRelativityLab />
+
+      {/* Higgs Mechanism Lab */}
+      <HiggsMechanismLab />
+
+      {/* Gluon Confinement Lab */}
+      <GluonConfinementLab />
 
       {/* Composite particle hint — bottom-left, quark-only */}
       <CompositeHint />
