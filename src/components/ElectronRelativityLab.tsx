@@ -159,8 +159,8 @@ const ElectronRelativityLab = () => {
               </div>
               <div className="slider-hint">
                 {frame === 'lab'
-                  ? 'The wire is neutral here — the test charge (moving with the electrons) feels a magnetic force.'
-                  : "The test charge is at rest here — it feels a purely electric force from the wire's now-visible net charge."}
+                  ? 'The wire is neutral here as the test charge (moving with the electrons) feels a magnetic force.'
+                  : "The test charge is at rest here as it feels a purely electric force from the wire's now-visible net charge."}
               </div>
             </section>
 
@@ -326,14 +326,14 @@ const ElectronRelativityLab = () => {
               <h3>Why Magnetism Is Relativistic</h3>
               <p>
                 A current-carrying wire has equal numbers of positive ions and drifting electrons,
-                so it's electrically neutral — no electric field, no electric force on a nearby
+                so it's electrically neutral because there's no electric field, no electric force on a nearby
                 charge. But "equal density" is a frame-dependent statement: length contraction
                 affects the ions and the drifting electrons differently, because they're moving at
                 different speeds in any given frame.
               </p>
               <p>
                 <strong>Why it matters:</strong> Boost into the electrons' own rest frame and the
-                ion spacing contracts while the electron spacing relaxes — the wire is no longer
+                ion spacing contracts while the electron spacing relaxes, the wire is no longer
                 neutral. What looked like a magnetic force in the lab frame is, in this frame,
                 simply the electric force from a charged wire. This is a direct descendant of the
                 reasoning Einstein pioneered in his 1905 relativity paper (following the textbook
@@ -342,7 +342,7 @@ const ElectronRelativityLab = () => {
               </p>
               <div className="educational-highlight">
                 <strong>Try this:</strong> Load "Near Light Speed," then flip the Reference Frame
-                toggle — watch the ion row bunch up, the electron row spread out, and the "Net
+                toggle, then watch the ion row bunch up, the electron row spread out, and the "Net
                 linear charge density" readout jump from zero to positive, while the Force
                 Comparison panel stays exactly consistent the whole time.
               </div>
