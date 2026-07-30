@@ -42,4 +42,10 @@ export interface ParticleContextType {
   hadronLabOpen: boolean
   openHadronLab: () => void
   closeHadronLab: () => void
+  photonLabOpen: boolean
+  openPhotonLab: () => void
+  closePhotonLab: () => void
+  electronLabOpen: boolean
+  openElectronLab: () => void
+  closeElectronLab: () => void
 }

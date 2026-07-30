@@ -3414,3 +3414,523 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Photon Polarization Lab
+   ========================================================================== */
+
+.photon-lab-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.photon-lab-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.photon-lab-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.photon-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.photon-lab-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.photon-lab-header .close-button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photon-lab-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.photon-lab-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.photon-lab-controls {
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-accent);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.photon-lab-viz {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.polarizer-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.polarizer-toggle input[type='checkbox'] {
+  cursor: pointer;
+}
+
+/* Light Path */
+.light-path {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 0.5rem;
+  overflow-x: auto;
+}
+
+.light-source,
+.light-detector {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.light-source {
+  background: radial-gradient(circle, #fff6cc 0%, #ffeb3b 70%, transparent 100%);
+  box-shadow: 0 0 12px rgba(255, 235, 59, 0.6);
+}
+
+.light-detector {
+  background: var(--border-primary);
+  border: 1px solid var(--border-accent);
+}
+
+.polarizer-disk {
+  width: 50px;
+  height: 50px;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.polarizer-disk.dimmed {
+  color: var(--text-tertiary);
+  opacity: 0.35;
+}
+
+.beam-segment {
+  flex: 1;
+  min-width: 40px;
+  height: 6px;
+  background: #ffeb3b;
+  border-radius: 3px;
+  position: relative;
+  transition: opacity 0.25s ease;
+}
+
+.beam-percent {
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* Malus Curve Graph */
+.malus-graph {
+  position: relative;
+}
+
+.malus-graph svg {
+  width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-primary);
+}
+
+@media (max-width: 1400px) {
+  .photon-lab-content {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .photon-lab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .photon-lab-controls {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .photon-lab-container {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .photon-lab-content {
+    padding: 0;
+  }
+}
+
+.photon-lab-controls::-webkit-scrollbar,
+.photon-lab-viz::-webkit-scrollbar {
+  width: 8px;
+}
+
+.photon-lab-controls::-webkit-scrollbar-track,
+.photon-lab-viz::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.photon-lab-controls::-webkit-scrollbar-thumb,
+.photon-lab-viz::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+}
+
+.photon-lab-controls::-webkit-scrollbar-thumb:hover,
+.photon-lab-viz::-webkit-scrollbar-thumb:hover {
+  background: var(--border-primary);
+}
+
+/* ==========================================================================
+   Electron Relativity Lab
+   ========================================================================== */
+
+.electron-lab-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.electron-lab-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.electron-lab-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.electron-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.electron-lab-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.electron-lab-header .close-button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.electron-lab-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.electron-lab-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.electron-lab-controls {
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-accent);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.electron-lab-viz {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Wire visualization */
+.wire-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1rem 0;
+}
+
+.wire-row-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.wire-row {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  padding: 0.5rem 0.25rem;
+}
+
+.wire-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: margin 0.25s ease;
+}
+
+.wire-dot.ion-dot {
+  background: #ff6b6b;
+  box-shadow: 0 0 6px rgba(255, 107, 107, 0.5);
+}
+
+.wire-dot.electron-dot {
+  background: #07ff6e;
+  box-shadow: 0 0 6px rgba(7, 255, 110, 0.5);
+}
+
+.wire-row-label {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+.net-charge-readout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-primary);
+  margin-top: 0.5rem;
+}
+
+.net-charge-readout .param-value.charged {
+  color: #ff6b6b;
+  font-weight: 700;
+}
+
+/* Force Comparison */
+.force-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.force-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-primary);
+}
+
+.force-panel-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+}
+
+.force-panel-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+}
+
+.force-panel-detail {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.force-match-badge {
+  margin-top: 0.75rem;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.force-match-badge.match {
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.35);
+  color: #2ecc71;
+}
+
+.force-match-badge.mismatch {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.35);
+  color: #e74c3c;
+}
+
+/* Field Graph */
+.electron-field-graph {
+  position: relative;
+}
+
+.electron-field-graph svg {
+  width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-primary);
+}
+
+.graph-note {
+  margin: 0.75rem 0 0 0;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+@media (max-width: 1400px) {
+  .electron-lab-content {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .electron-lab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .electron-lab-controls {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .force-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .electron-lab-container {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .electron-lab-content {
+    padding: 0;
+  }
+}
+
+.electron-lab-controls::-webkit-scrollbar,
+.electron-lab-viz::-webkit-scrollbar {
+  width: 8px;
+}
+
+.electron-lab-controls::-webkit-scrollbar-track,
+.electron-lab-viz::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.electron-lab-controls::-webkit-scrollbar-thumb,
+.electron-lab-viz::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+}
+
+.electron-lab-controls::-webkit-scrollbar-thumb:hover,
+.electron-lab-viz::-webkit-scrollbar-thumb:hover {
+  background: var(--border-primary);
+}

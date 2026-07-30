@@ -9,6 +9,8 @@ import SpinExplainer from './components/SpinExplainer'
 import CompositeHint from './components/CompositeHint'
 import NeutrinoOscillation from './components/NeutrinoOscillation'
 import HadronLab from './components/HadronLab'
+import PhotonPolarizationLab from './components/PhotonPolarizationLab'
+import ElectronRelativityLab from './components/ElectronRelativityLab'
 import { CurrentParticlePopup } from './components/particles/DetailedParticleView'
 import { ParticleProvider, useParticle } from './context/ParticleContext'
 import { CameraController } from './components/CameraController'
@@ -80,6 +82,12 @@ function AppContent() {
 
       {/* Hadron Lab */}
       <HadronLab />
+
+      {/* Photon Polarization Lab */}
+      <PhotonPolarizationLab />
+
+      {/* Electron Relativity Lab */}
+      <ElectronRelativityLab />
 
       {/* Composite particle hint — bottom-left, quark-only */}
       <CompositeHint />

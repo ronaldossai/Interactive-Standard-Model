@@ -23,7 +23,7 @@ const getForceIcon = (interaction: string): string | null => {
 }
 
 const ParticleInfo = () => {
-  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab } = useParticle()
+  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab, openPhotonLab, openElectronLab } = useParticle()
 
   // Priority: selected > hovered > default
   const rawParticle = selectedParticle || hoveredParticle
@@ -210,6 +210,24 @@ const ParticleInfo = () => {
               <div className="button-content">
                 <span className="button-title">Hadron Lab</span>
                 <span className="button-description">Build baryons & mesons</span>
+              </div>
+            </button>
+          )}
+          {displayParticle.id === 'photon' && (
+            <button className="quantum-phenomena-button" onClick={openPhotonLab}>
+              <span className="button-icon">✳</span>
+              <div className="button-content">
+                <span className="button-title">Polarization Lab</span>
+                <span className="button-description">Explore Malus's Law</span>
+              </div>
+            </button>
+          )}
+          {displayParticle.id === 'electron' && (
+            <button className="quantum-phenomena-button" onClick={openElectronLab}>
+              <span className="button-icon">⚡</span>
+              <div className="button-content">
+                <span className="button-title">Relativity Lab</span>
+                <span className="button-description">Magnetism from a moving frame</span>
               </div>
             </button>
           )}
