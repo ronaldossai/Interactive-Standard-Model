@@ -282,7 +282,7 @@ const GluonConfinementLab = () => {
                   </div>
                   {isBroken && (
                     <div className="higgs-status-badge broken">
-                      The string snapped — a new quark-antiquark pair formed two separate mesons!
+                      The string snapped, hence a new quark-antiquark pair formed two separate mesons!
                     </div>
                   )}
                 </section>
@@ -345,7 +345,7 @@ const GluonConfinementLab = () => {
                       />
                     </svg>
                     <p className="graph-note">
-                      Real lattice QCD shows this as a smooth crossover — this plot shows a
+                      Real lattice QCD shows this as a smooth crossover: this plot shows a
                       simplified sharp transition for clarity.
                     </p>
                   </div>
@@ -354,22 +354,22 @@ const GluonConfinementLab = () => {
                 <section className="viz-section educational-content">
                   <h3>Why Quarks Are Never Alone</h3>
                   <p>
-                    Unlike the photon, the gluon carries color charge itself — gluons attract each
+                    Unlike the photon, the gluon carries color charge itself. Gluons attract each
                     other, collimating the force field between a quark and antiquark into a narrow
                     "flux tube" instead of spreading out like an electric field. That's the linear
                     σr term: pulling the quarks apart costs a constant amount of extra energy per
-                    unit distance, forever — or so it seems.
+                    unit distance, forever (or so it seems).
                   </p>
                   <p>
                     <strong>Why it matters:</strong> Past some separation, it's cheaper for the
                     vacuum to produce a new quark-antiquark pair than to keep stretching the tube.
-                    The string snaps, and you're left with two separate, color-neutral mesons —
-                    never a lone, isolated quark. This is confinement: the reason free quarks have
+                    The string snaps, and you're left with two separate, color-neutral mesons which implies that there can
+                    never be a lone, isolated quark. This is confinement: the reason free quarks have
                     never been observed.
                   </p>
                   <div className="educational-highlight">
                     <strong>Try this:</strong> Load "Light New Quark" and slowly increase the
-                    separation — watch the string snap much sooner than with "Heavy New Quark."
+                    separation. You will notice the string snap much sooner than with "Heavy New Quark."
                   </div>
                 </section>
               </div>
@@ -509,7 +509,7 @@ const GluonConfinementLab = () => {
                     <div className="graph-legend">
                       <div className="legend-item">
                         <span className="legend-color" style={{ backgroundColor: '#f44336' }} />
-                        <span className="legend-label">αs (QCD — gluon self-interaction)</span>
+                        <span className="legend-label">αs (QCD: gluon self-interaction)</span>
                       </div>
                       <div className="legend-item">
                         <span className="legend-color" style={{ backgroundColor: '#ffeb3b' }} />
@@ -517,7 +517,7 @@ const GluonConfinementLab = () => {
                       </div>
                     </div>
                     <p className="graph-note">
-                      Not calibrated to real GeV/ΛQCD values — a clean one-loop illustration of the
+                      Not calibrated to real GeV/ΛQCD values. This is a clean one-loop illustration of the
                       shape and direction of running, in arbitrary units.
                     </p>
                   </div>
@@ -527,8 +527,8 @@ const GluonConfinementLab = () => {
                   <h3>Asymptotic Freedom</h3>
                   <p>
                     Because gluons carry color charge and interact with each other, adding more
-                    gluon "screening" around a color charge actually makes the effective coupling
-                    weaker at short distance — the opposite of how virtual electron-positron pairs
+                    gluon screening around a color charge actually makes the effective coupling
+                    weaker at short distance. This is the opposite of how virtual electron-positron pairs
                     screen an electric charge in QED, where the effective coupling grows at short
                     distance. This is why b0 = 11 − (2/3)nf comes out positive: the gluon
                     self-interaction term (11, from the gauge group itself) wins over the
@@ -536,14 +536,14 @@ const GluonConfinementLab = () => {
                   </p>
                   <p>
                     <strong>Why it matters:</strong> At high energy (small Q here), quarks and
-                    gluons behave almost like free particles — this is what let physicists at
+                    gluons behave almost like free particles and it is this that lets physicists at
                     particle colliders treat them perturbatively at all. At low energy (large
-                    distance), the same coupling grows large — this is the same confinement you
+                    distance), the same coupling grows large. This is actually the same confinement you
                     just explored in the other section, viewed from the opposite end.
                   </p>
                   <div className="educational-highlight">
                     <strong>Try this:</strong> Drag Q down toward the marked breakdown scale and
-                    watch αs shoot up — that scale is this toy model's stand-in for the
+                    watch αs shoot up. What is happening is; that scale is this toy model's stand-in for the
                     confinement scale from the other tab.
                   </div>
                 </section>

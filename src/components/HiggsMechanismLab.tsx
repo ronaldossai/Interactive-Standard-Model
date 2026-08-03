@@ -373,20 +373,20 @@ const HiggsMechanismLab = () => {
             <section className="viz-section educational-content">
               <h3>Spontaneous Symmetry Breaking</h3>
               <p>
-                This is a toy model — a single complex scalar field, a genuine 2D field space — of
+                This is a toy model ( a single complex scalar field, a genuine 2D field space ) of
                 the same mechanism behind the real Higgs field. When μ² is negative, the origin
                 becomes an unstable hilltop and the field settles somewhere on a circular valley of
-                equally-good minima. Which point on that circle it picks is arbitrary — that's the
+                equally-good minima. Which point on that circle it picks is arbitrary, funnily enough that's the
                 "spontaneous" part.
               </p>
               <p>
                 <strong>Why it matters:</strong> Displacing the field radially (up the wall) costs
-                real energy — a real, massive excitation, the Higgs boson. Displacing it angularly
+                real energy which corresponds to a real, massive excitation, the Higgs boson. Displacing it angularly
                 (around the flat valley) costs nothing at all, since the potential doesn't care
                 which point on the circle you're at. In this simple global-symmetry model, that
                 flat direction is a genuine massless particle (a Goldstone boson). Once you gauge
-                the symmetry — coupling this field to the W and Z bosons, as the real electroweak
-                theory does — that flat direction has nowhere left to go as an independent particle:
+                the symmetry (which is coupling this field to the W and Z bosons, as the real electroweak
+                theory does) that flat direction has nowhere left to go as an independent particle:
                 it's absorbed as the longitudinal polarization of the gauge bosons, and that's
                 literally why the W and Z are heavy while the photon, whose symmetry stays
                 unbroken, remains massless.
