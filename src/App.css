@@ -4407,3 +4407,436 @@
 .gluon-lab-viz::-webkit-scrollbar-thumb:hover {
   background: var(--border-primary);
 }
+
+.muon-lab-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.muon-lab-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.muon-lab-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.muon-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.muon-lab-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.muon-lab-header .close-button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.muon-lab-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.muon-lab-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.muon-lab-controls {
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-accent);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.muon-lab-viz {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Atmosphere visual */
+.muon-atmosphere-visual {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 6rem;
+}
+
+.atmosphere-column {
+  position: relative;
+  width: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, rgba(155, 89, 182, 0.15), rgba(155, 89, 182, 0.6));
+}
+
+.atmosphere-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.atmosphere-label-top {
+  top: -1.5rem;
+}
+
+.atmosphere-label-bottom {
+  bottom: -1.5rem;
+}
+
+.altitude-marker {
+  position: absolute;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.altitude-marker.classical-marker {
+  right: 50%;
+  margin-right: 3px;
+  flex-direction: row-reverse;
+  color: #ffeb3b;
+}
+
+.altitude-marker.relativistic-marker {
+  left: 50%;
+  margin-left: 3px;
+  color: #3498db;
+}
+
+.altitude-marker::before {
+  content: '';
+  width: 32px;
+  height: 2px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.altitude-marker-label {
+  font-size: 0.7rem;
+  white-space: nowrap;
+  padding: 0 6px;
+  color: var(--text-secondary);
+}
+
+/* Graph */
+.muon-survival-graph svg {
+  width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-primary);
+}
+
+@media (max-width: 1400px) {
+  .muon-lab-content {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .muon-lab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .muon-lab-controls {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .muon-lab-container {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .muon-lab-content {
+    padding: 0;
+  }
+
+  .muon-atmosphere-visual {
+    padding: 2.5rem 3rem;
+  }
+}
+
+.muon-lab-controls::-webkit-scrollbar,
+.muon-lab-viz::-webkit-scrollbar {
+  width: 8px;
+}
+
+.muon-lab-controls::-webkit-scrollbar-track,
+.muon-lab-viz::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.muon-lab-controls::-webkit-scrollbar-thumb,
+.muon-lab-viz::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+}
+
+.muon-lab-controls::-webkit-scrollbar-thumb:hover,
+.muon-lab-viz::-webkit-scrollbar-thumb:hover {
+  background: var(--border-primary);
+}
+
+.tau-lab-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.tau-lab-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.tau-lab-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tau-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.tau-lab-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.tau-lab-header .close-button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tau-lab-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.tau-lab-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.tau-lab-controls {
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-accent);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tau-lab-viz {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Detector scale visual */
+.detector-scale-visual {
+  padding: 3rem 1.5rem 2rem;
+}
+
+.detector-scale-line {
+  position: relative;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, rgba(95, 45, 39, 0.2), rgba(95, 45, 39, 0.7));
+}
+
+.detector-scale-marker {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.detector-scale-marker::before {
+  content: '';
+  width: 2px;
+  height: 14px;
+  background: currentColor;
+}
+
+.detector-scale-marker-label {
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.detector-scale-marker.vertex-marker {
+  color: #e74c3c;
+  transform: translate(-50%, -18px);
+}
+
+.detector-scale-marker.tau-marker {
+  color: #5f2d27;
+}
+
+.detector-scale-marker.layer-marker {
+  color: #3498db;
+  transform: translate(-50%, -18px);
+}
+
+.detector-scale-axis-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3.5rem;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+/* Graph */
+.tau-decay-graph svg {
+  width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-primary);
+}
+
+@media (max-width: 1400px) {
+  .tau-lab-content {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .tau-lab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .tau-lab-controls {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .tau-lab-container {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .tau-lab-content {
+    padding: 0;
+  }
+}
+
+.tau-lab-controls::-webkit-scrollbar,
+.tau-lab-viz::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tau-lab-controls::-webkit-scrollbar-track,
+.tau-lab-viz::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tau-lab-controls::-webkit-scrollbar-thumb,
+.tau-lab-viz::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+}
+
+.tau-lab-controls::-webkit-scrollbar-thumb:hover,
+.tau-lab-viz::-webkit-scrollbar-thumb:hover {
+  background: var(--border-primary);
+}

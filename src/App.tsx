@@ -13,6 +13,8 @@ import PhotonPolarizationLab from './components/PhotonPolarizationLab'
 import ElectronRelativityLab from './components/ElectronRelativityLab'
 import HiggsMechanismLab from './components/HiggsMechanismLab'
 import GluonConfinementLab from './components/GluonConfinementLab'
+import MuonDecayLab from './components/MuonDecayLab'
+import TauDecayLab from './components/TauDecayLab'
 import { CurrentParticlePopup } from './components/particles/DetailedParticleView'
 import { ParticleProvider, useParticle } from './context/ParticleContext'
 import { CameraController } from './components/CameraController'
@@ -96,6 +98,12 @@ function AppContent() {
 
       {/* Gluon Confinement Lab */}
       <GluonConfinementLab />
+
+      {/* Muon Decay Lab */}
+      <MuonDecayLab />
+
+      {/* Tau Decay Length Lab */}
+      <TauDecayLab />
 
       {/* Composite particle hint — bottom-left, quark-only */}
       <CompositeHint />

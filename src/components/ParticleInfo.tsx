@@ -23,7 +23,7 @@ const getForceIcon = (interaction: string): string | null => {
 }
 
 const ParticleInfo = () => {
-  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab, openPhotonLab, openElectronLab, openHiggsLab, openGluonLab } = useParticle()
+  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab, openPhotonLab, openElectronLab, openHiggsLab, openGluonLab, openMuonLab, openTauLab } = useParticle()
 
   // Priority: selected > hovered > default
   const rawParticle = selectedParticle || hoveredParticle
@@ -255,6 +255,24 @@ const ParticleInfo = () => {
               <div className="button-content">
                 <span className="button-title">Confinement Lab</span>
                 <span className="button-description">Explore the strong force</span>
+              </div>
+            </button>
+          )}
+          {displayParticle.id === 'muon' && (
+            <button className="quantum-phenomena-button" onClick={openMuonLab}>
+              <span className="button-icon">⏳</span>
+              <div className="button-content">
+                <span className="button-title">Muon Decay Lab</span>
+                <span className="button-description">See time dilation in action</span>
+              </div>
+            </button>
+          )}
+          {displayParticle.id === 'tau' && (
+            <button className="quantum-phenomena-button" onClick={openTauLab}>
+              <span className="button-icon">🔬</span>
+              <div className="button-content">
+                <span className="button-title">Decay Length Lab</span>
+                <span className="button-description">Why taus need vertex detectors</span>
               </div>
             </button>
           )}
