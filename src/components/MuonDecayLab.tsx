@@ -327,7 +327,7 @@ const MuonDecayLab = () => {
               </div>
               <div className={`force-match-badge ${state.survivalMatch ? 'match' : 'mismatch'}`}>
                 {state.survivalMatch
-                  ? '✓ Consistent — both frames predict the same survival fraction'
+                  ? '✓ Consistent: both frames predict the same survival fraction'
                   : '✗ Something is off'}
               </div>
             </section>

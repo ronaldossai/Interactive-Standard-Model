@@ -235,7 +235,7 @@ const ElectronRelativityLab = () => {
               </div>
               <div className={`force-match-badge ${wireState.forcesMatch ? 'match' : 'mismatch'}`}>
                 {wireState.forcesMatch
-                  ? '✓ Consistent — F_lab equals F′_rest / γ'
+                  ? '✓ Consistent: F_lab equals F′_rest / γ'
                   : '✗ Something is off'}
               </div>
             </section>
