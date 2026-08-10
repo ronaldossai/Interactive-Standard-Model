@@ -60,4 +60,7 @@ export interface ParticleContextType {
   tauLabOpen: boolean
   openTauLab: () => void
   closeTauLab: () => void
+  gravitonLabOpen: boolean
+  openGravitonLab: () => void
+  closeGravitonLab: () => void
 }

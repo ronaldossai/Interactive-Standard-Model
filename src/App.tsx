@@ -15,6 +15,7 @@ import HiggsMechanismLab from './components/HiggsMechanismLab'
 import GluonConfinementLab from './components/GluonConfinementLab'
 import MuonDecayLab from './components/MuonDecayLab'
 import TauDecayLab from './components/TauDecayLab'
+import GravitonLab from './components/GravitonLab'
 import { CurrentParticlePopup } from './components/particles/DetailedParticleView'
 import { ParticleProvider, useParticle } from './context/ParticleContext'
 import { CameraController } from './components/CameraController'
@@ -104,6 +105,9 @@ function AppContent() {
 
       {/* Tau Decay Length Lab */}
       <TauDecayLab />
+
+      {/* Graviton Lab */}
+      <GravitonLab />
 
       {/* Composite particle hint : bottom-left, quark-only */}
       <CompositeHint />

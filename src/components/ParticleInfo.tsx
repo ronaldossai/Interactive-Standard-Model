@@ -23,7 +23,7 @@ const getForceIcon = (interaction: string): string | null => {
 }
 
 const ParticleInfo = () => {
-  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab, openPhotonLab, openElectronLab, openHiggsLab, openGluonLab, openMuonLab, openTauLab } = useParticle()
+  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab, openPhotonLab, openElectronLab, openHiggsLab, openGluonLab, openMuonLab, openTauLab, openGravitonLab } = useParticle()
 
   // Priority: selected > hovered > default
   const rawParticle = selectedParticle || hoveredParticle
@@ -273,6 +273,15 @@ const ParticleInfo = () => {
               <div className="button-content">
                 <span className="button-title">Decay Length Lab</span>
                 <span className="button-description">Why taus need vertex detectors</span>
+              </div>
+            </button>
+          )}
+          {displayParticle.id === 'graviton' && (
+            <button className="quantum-phenomena-button" onClick={openGravitonLab}>
+              <span className="button-icon">🕳</span>
+              <div className="button-content">
+                <span className="button-title">Undetectability Lab</span>
+                <span className="button-description">Why gravitons can't be caught</span>
               </div>
             </button>
           )}

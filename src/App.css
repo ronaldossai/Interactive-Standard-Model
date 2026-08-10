@@ -2494,23 +2494,25 @@
 
 .pmns-params {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 0.75rem;
 }
 
 .pmns-param {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.3rem;
   padding: 0.5rem;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-primary);
+  min-width: 0;
 }
 
 .pmns-param .param-label {
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--text-secondary);
+  overflow-wrap: break-word;
 }
 
 .pmns-param .param-value {
@@ -2518,6 +2520,7 @@
   color: var(--accent-cyan);
   font-weight: 500;
   font-family: 'Courier New', monospace;
+  overflow-wrap: break-word;
 }
 
 /* Right Panel: Visualization */
@@ -4838,5 +4841,199 @@
 
 .tau-lab-controls::-webkit-scrollbar-thumb:hover,
 .tau-lab-viz::-webkit-scrollbar-thumb:hover {
+  background: var(--border-primary);
+}
+
+.graviton-lab-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.graviton-lab-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.graviton-lab-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.graviton-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.graviton-lab-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.graviton-lab-header .close-button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graviton-lab-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.graviton-lab-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+  padding: 0 1.5rem;
+}
+
+.graviton-lab-tab {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.graviton-lab-tab:hover {
+  color: var(--text-primary);
+}
+
+.graviton-lab-tab.active {
+  color: #34d399;
+  border-bottom-color: #34d399;
+}
+
+.graviton-lab-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.graviton-lab-controls {
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-accent);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.graviton-lab-viz {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Graph */
+.graviton-force-graph svg {
+  width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-primary);
+}
+
+/* Big centered stat readout */
+.graviton-count-readout {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  color: #34d399;
+  padding: 1.5rem 0.5rem;
+}
+
+@media (max-width: 1400px) {
+  .graviton-lab-content {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .graviton-lab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .graviton-lab-controls {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .graviton-lab-container {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .graviton-lab-content {
+    padding: 0;
+  }
+
+  .graviton-count-readout {
+    font-size: 1.4rem;
+  }
+}
+
+.graviton-lab-controls::-webkit-scrollbar,
+.graviton-lab-viz::-webkit-scrollbar {
+  width: 8px;
+}
+
+.graviton-lab-controls::-webkit-scrollbar-track,
+.graviton-lab-viz::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.graviton-lab-controls::-webkit-scrollbar-thumb,
+.graviton-lab-viz::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+}
+
+.graviton-lab-controls::-webkit-scrollbar-thumb:hover,
+.graviton-lab-viz::-webkit-scrollbar-thumb:hover {
   background: var(--border-primary);
 }
