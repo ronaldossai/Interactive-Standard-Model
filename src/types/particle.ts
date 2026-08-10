@@ -63,4 +63,10 @@ export interface ParticleContextType {
   gravitonLabOpen: boolean
   openGravitonLab: () => void
   closeGravitonLab: () => void
+  parityLabOpen: boolean
+  openParityLab: () => void
+  closeParityLab: () => void
+  topQuarkLabOpen: boolean
+  openTopQuarkLab: () => void
+  closeTopQuarkLab: () => void
 }

@@ -35,6 +35,8 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
   const [muonLabOpen, setMuonLabOpen] = useState(false)
   const [tauLabOpen, setTauLabOpen] = useState(false)
   const [gravitonLabOpen, setGravitonLabOpen] = useState(false)
+  const [parityLabOpen, setParityLabOpen] = useState(false)
+  const [topQuarkLabOpen, setTopQuarkLabOpen] = useState(false)
   const popupTimeoutRef = useRef<number | null>(null)
 
   // Clear popup immediately when particle changes or zoom out
@@ -168,6 +170,22 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
     setGravitonLabOpen(false)
   }, [])
 
+  const openParityLab = useCallback(() => {
+    setParityLabOpen(true)
+  }, [])
+
+  const closeParityLab = useCallback(() => {
+    setParityLabOpen(false)
+  }, [])
+
+  const openTopQuarkLab = useCallback(() => {
+    setTopQuarkLabOpen(true)
+  }, [])
+
+  const closeTopQuarkLab = useCallback(() => {
+    setTopQuarkLabOpen(false)
+  }, [])
+
   return (
     <ParticleContext.Provider
       value={{
@@ -214,6 +232,12 @@ export const ParticleProvider = ({ children }: ParticleProviderProps) => {
         gravitonLabOpen,
         openGravitonLab,
         closeGravitonLab,
+        parityLabOpen,
+        openParityLab,
+        closeParityLab,
+        topQuarkLabOpen,
+        openTopQuarkLab,
+        closeTopQuarkLab,
       }}
     >
       {children}

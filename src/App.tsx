@@ -16,6 +16,8 @@ import GluonConfinementLab from './components/GluonConfinementLab'
 import MuonDecayLab from './components/MuonDecayLab'
 import TauDecayLab from './components/TauDecayLab'
 import GravitonLab from './components/GravitonLab'
+import ParityViolationLab from './components/ParityViolationLab'
+import TopQuarkLab from './components/TopQuarkLab'
 import { CurrentParticlePopup } from './components/particles/DetailedParticleView'
 import { ParticleProvider, useParticle } from './context/ParticleContext'
 import { CameraController } from './components/CameraController'
@@ -108,6 +110,12 @@ function AppContent() {
 
       {/* Graviton Lab */}
       <GravitonLab />
+
+      {/* Parity Violation Lab */}
+      <ParityViolationLab />
+
+      {/* Top Quark Lab */}
+      <TopQuarkLab />
 
       {/* Composite particle hint : bottom-left, quark-only */}
       <CompositeHint />

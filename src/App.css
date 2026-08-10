@@ -5037,3 +5037,319 @@
 .graviton-lab-viz::-webkit-scrollbar-thumb:hover {
   background: var(--border-primary);
 }
+
+.parity-lab-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.parity-lab-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.parity-lab-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.parity-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.parity-lab-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.parity-lab-header .close-button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parity-lab-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.parity-lab-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.parity-lab-controls {
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-accent);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.parity-lab-viz {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Polar plot */
+.parity-polar-graph svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-primary);
+}
+
+@media (max-width: 1400px) {
+  .parity-lab-content {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .parity-lab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .parity-lab-controls {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .parity-lab-container {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .parity-lab-content {
+    padding: 0;
+  }
+}
+
+.parity-lab-controls::-webkit-scrollbar,
+.parity-lab-viz::-webkit-scrollbar {
+  width: 8px;
+}
+
+.parity-lab-controls::-webkit-scrollbar-track,
+.parity-lab-viz::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.parity-lab-controls::-webkit-scrollbar-thumb,
+.parity-lab-viz::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+}
+
+.parity-lab-controls::-webkit-scrollbar-thumb:hover,
+.parity-lab-viz::-webkit-scrollbar-thumb:hover {
+  background: var(--border-primary);
+}
+
+.top-quark-lab-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.top-quark-lab-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.top-quark-lab-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.top-quark-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.top-quark-lab-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.top-quark-lab-header .close-button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-quark-lab-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.top-quark-lab-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.top-quark-lab-controls {
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-accent);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.top-quark-lab-viz {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (max-width: 1400px) {
+  .top-quark-lab-content {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .top-quark-lab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .top-quark-lab-controls {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-quark-lab-container {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .top-quark-lab-content {
+    padding: 0;
+  }
+}
+
+.top-quark-lab-controls::-webkit-scrollbar,
+.top-quark-lab-viz::-webkit-scrollbar {
+  width: 8px;
+}
+
+.top-quark-lab-controls::-webkit-scrollbar-track,
+.top-quark-lab-viz::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.top-quark-lab-controls::-webkit-scrollbar-thumb,
+.top-quark-lab-viz::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+}
+
+.top-quark-lab-controls::-webkit-scrollbar-thumb:hover,
+.top-quark-lab-viz::-webkit-scrollbar-thumb:hover {
+  background: var(--border-primary);
+}
+
+/* Top Quark Lab timeline markers (reuses .detector-scale-* base rules) */
+.detector-scale-marker.top-quark-marker {
+  color: #e74c3c;
+  transform: translate(-50%, -18px);
+}
+
+.detector-scale-marker.hadronization-marker {
+  color: #f39c12;
+}
+
+.detector-scale-marker.d-meson-marker {
+  color: #3498db;
+  transform: translate(-50%, -18px);
+}
+
+.detector-scale-marker.b-meson-marker {
+  color: #2ecc71;
+}

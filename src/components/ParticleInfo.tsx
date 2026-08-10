@@ -23,7 +23,7 @@ const getForceIcon = (interaction: string): string | null => {
 }
 
 const ParticleInfo = () => {
-  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab, openPhotonLab, openElectronLab, openHiggsLab, openGluonLab, openMuonLab, openTauLab, openGravitonLab } = useParticle()
+  const { selectedParticle, hoveredParticle, isZoomedIn, zoomOut, showAntimatter, toggleAntimatter, addToComparison, comparisonParticles, clearComparison, openNeutrinoOscillation, openHadronLab, openPhotonLab, openElectronLab, openHiggsLab, openGluonLab, openMuonLab, openTauLab, openGravitonLab, openParityLab, openTopQuarkLab } = useParticle()
 
   // Priority: selected > hovered > default
   const rawParticle = selectedParticle || hoveredParticle
@@ -213,6 +213,15 @@ const ParticleInfo = () => {
               </div>
             </button>
           )}
+          {displayParticle.id === 'top' && (
+            <button className="quantum-phenomena-button" onClick={openTopQuarkLab}>
+              <span className="button-icon">⏱</span>
+              <div className="button-content">
+                <span className="button-title">Non-Hadronization Lab</span>
+                <span className="button-description">The quark too fast to bind</span>
+              </div>
+            </button>
+          )}
           {displayParticle.id === 'photon' && (
             <button className="quantum-phenomena-button" onClick={openPhotonLab}>
               <span className="button-icon">✳</span>
@@ -246,6 +255,15 @@ const ParticleInfo = () => {
               <div className="button-content">
                 <span className="button-title">Higgs Mechanism Lab</span>
                 <span className="button-description">See how this boson gets its mass</span>
+              </div>
+            </button>
+          )}
+          {displayParticle.id === 'w-boson' && (
+            <button className="quantum-phenomena-button" onClick={openParityLab}>
+              <span className="button-icon">🪞</span>
+              <div className="button-content">
+                <span className="button-title">Parity Violation Lab</span>
+                <span className="button-description">Why nature isn't its own mirror image</span>
               </div>
             </button>
           )}
