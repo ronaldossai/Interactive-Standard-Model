@@ -126,7 +126,7 @@ export const StarfieldThree = ({
 
   // Virtual particle exchange system
 
-  // Mutable exchange state — no re-render needed
+  // Mutable exchange state :no re-render needed
   const exchangesRef = useRef(
     Array.from({ length: EXCHANGE_COUNT }, () => ({
       startIdx: Math.floor(Math.random() * count),
@@ -161,7 +161,7 @@ export const StarfieldThree = ({
     return geom
   }, [vpBuffers])
 
-  // Simple glowing-dot shader — additive, vertex-coloured, size from attribute
+  // Simple glowing-dot shader : additive, vertex-coloured, size from attribute
   const vpMaterial = useMemo(() => new THREE.ShaderMaterial({
     transparent: true,
     depthWrite:  false,
@@ -198,7 +198,7 @@ export const StarfieldThree = ({
       materialRef.current.uniforms.uTime.value = state.clock.elapsedTime
     }
 
-    // Parallax — move the whole group so VP particles track with stars
+    // Parallax : move the whole group so VP particles track with stars
     if (starGroupRef.current) {
       starGroupRef.current.position.x = state.mouse.x * 1.5
       starGroupRef.current.position.y = state.mouse.y * 1.5

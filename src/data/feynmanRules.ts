@@ -122,7 +122,7 @@ export function resolveInteraction(
     return {
       interacts: true,
       mediator: MEDIATORS.gluon,
-      caption: `${a.symbol} and ${b.symbol} exchange a gluon — this is the Strong force.`,
+      caption: `${a.symbol} and ${b.symbol} exchange a gluon, this is the Strong force.`,
       subCaption: 'Gluons carry colour charge and bind quarks inside hadrons.',
     }
   }
@@ -135,7 +135,7 @@ export function resolveInteraction(
     return {
       interacts: true,
       mediator: MEDIATORS.photon,
-      caption: `${a.symbol} and ${b.symbol} ${verb} via photon exchange — the Electromagnetic force.`,
+      caption: `${a.symbol} and ${b.symbol} ${verb} via photon exchange, the Electromagnetic force.`,
       subCaption: 'Photons are massless, giving electromagnetism its infinite range.',
     }
   }
@@ -151,8 +151,8 @@ export function resolveInteraction(
       return {
         interacts: true,
         mediator: w,
-        caption: `${a.symbol} and ${b.symbol} interact via ${w.symbol} exchange — charged weak current.`,
-        subCaption: 'W bosons can change a particle\'s flavour — the only force that does this.',
+        caption: `${a.symbol} and ${b.symbol} interact via ${w.symbol} exchange, charged weak current.`,
+        subCaption: 'W bosons can change a particle\'s flavour, the only force that does this.',
       }
     }
 
@@ -160,7 +160,7 @@ export function resolveInteraction(
     return {
       interacts: true,
       mediator: MEDIATORS.z,
-      caption: `${a.symbol} and ${b.symbol} interact via Z⁰ exchange — neutral weak current.`,
+      caption: `${a.symbol} and ${b.symbol} interact via Z⁰ exchange,neutral weak current.`,
       subCaption: 'The Z boson is like a heavy, short-range photon that can also reach neutrinos.',
     }
   }

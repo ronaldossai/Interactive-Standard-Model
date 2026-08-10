@@ -128,7 +128,7 @@ export const POLARIZATION_PRESETS: PolarizationPreset[] = [
   {
     id: 'aligned',
     name: 'Aligned',
-    description: 'Analyzer aligned with the first polarizer — maximum transmission',
+    description: 'Analyzer aligned with the first polarizer : maximum transmission',
     angleB: 45,
     bEnabled: false,
     angleC: 0,
@@ -136,7 +136,7 @@ export const POLARIZATION_PRESETS: PolarizationPreset[] = [
   {
     id: 'crossed',
     name: 'Crossed (Blocked)',
-    description: 'Analyzer at 90° to the first polarizer — light is fully blocked',
+    description: 'Analyzer at 90° to the first polarizer : light is fully blocked',
     angleB: 45,
     bEnabled: false,
     angleC: 90,
@@ -152,7 +152,7 @@ export const POLARIZATION_PRESETS: PolarizationPreset[] = [
   {
     id: 'partial',
     name: 'Partial',
-    description: 'Analyzer at 30° — partial transmission',
+    description: 'Analyzer at 30° : partial transmission',
     angleB: 45,
     bEnabled: false,
     angleC: 30,

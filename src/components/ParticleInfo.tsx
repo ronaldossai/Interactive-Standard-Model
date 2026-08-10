@@ -54,7 +54,7 @@ const ParticleInfo = () => {
   const isInComparison = rawParticle && comparisonParticles.some(p => p?.id === rawParticle.id) || false
   const comparisonCount = comparisonParticles.filter(p => p !== null).length
 
-  // Decay data — keyed on the matter particle ID regardless of antimatter toggle
+  // Decay data: keyed on the matter particle ID regardless of antimatter toggle
   const decayInfo = rawParticle ? getDecayInfo(rawParticle.id) : null
 
   return (
@@ -191,7 +191,7 @@ const ParticleInfo = () => {
         </div>
       )}
 
-      {/* Quantum Phenomena — interactive simulators */}
+      {/* Quantum Phenomena: interactive simulators */}
       {displayParticle && (
         <div className="quantum-phenomena-section">
           <h3>Interactive Labs</h3>
@@ -279,7 +279,7 @@ const ParticleInfo = () => {
         </div>
       )}
 
-      {/* Decay animation — only shown for unstable particles */}
+      {/* Decay animation: only shown for unstable particles */}
       {decayInfo && rawParticle && (
         <div className="particle-decay">
           <h3 className="decay-section-title">DECAY MODES</h3>

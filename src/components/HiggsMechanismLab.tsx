@@ -6,7 +6,7 @@
  * massive "Higgs boson"), moving angularly around the flat valley costs
  * nothing (the massless "Goldstone boson"). The companion "Gauged
  * Symmetry" toggle explains, qualitatively, how the W and Z bosons eat
- * that flat direction and become massive — alongside the real, measured
+ * that flat direction and become massive, alongside the real, measured
  * W/Z masses as a fixed reference (not derived from this toy model).
  */
 
@@ -127,7 +127,7 @@ const HiggsMechanismLab = () => {
                 <div className="slider-hint">Steepness of the potential</div>
               </div>
               <div className={`higgs-status-badge ${higgsState.isBroken ? 'broken' : 'unbroken'}`}>
-                {higgsState.isBroken ? 'Broken — sombrero' : 'Unbroken — symmetric bowl'}
+                {higgsState.isBroken ? 'Broken : sombrero' : 'Unbroken : symmetric bowl'}
               </div>
             </section>
 
@@ -146,7 +146,7 @@ const HiggsMechanismLab = () => {
                   aria-valuetext={rho.toFixed(2)}
                 />
                 <div className="slider-value">ρ = {rho.toFixed(2)}</div>
-                <div className="slider-hint">Radial displacement — the "Higgs" direction</div>
+                <div className="slider-hint">Radial displacement : the "Higgs" direction</div>
               </div>
               <div className="slider-control">
                 <input
@@ -161,7 +161,7 @@ const HiggsMechanismLab = () => {
                   aria-valuetext={`${theta}°`}
                 />
                 <div className="slider-value">θ = {theta.toFixed(0)}°</div>
-                <div className="slider-hint">Angular position — the flat "Goldstone" direction</div>
+                <div className="slider-hint">Angular position : the flat "Goldstone" direction</div>
               </div>
             </section>
 
@@ -180,7 +180,7 @@ const HiggsMechanismLab = () => {
               </div>
               <div className="slider-hint">
                 {gauged
-                  ? 'The flat direction is eaten by the gauge field — it becomes the W/Z boson\'s longitudinal polarization, giving it mass.'
+                  ? 'The flat direction is eaten by the gauge field, it becomes the W/Z boson\'s longitudinal polarization, giving it mass.'
                   : 'In this global-symmetry toy model, the flat direction is a free, massless Goldstone boson.'}
               </div>
             </section>
@@ -287,9 +287,9 @@ const HiggsMechanismLab = () => {
                   />
                 </svg>
                 <div className="higgs-field-space-legend">
-                  <span>Radial (ρ) → {formatMass(higgsState.radialMass)} — massive, Higgs boson</span>
+                  <span>Radial (ρ) → {formatMass(higgsState.radialMass)} : massive, Higgs boson</span>
                   <span>
-                    Angular (θ) → {gauged ? 'eaten by W/Z — becomes longitudinal mass' : '0 — massless, Goldstone boson'}
+                    Angular (θ) → {gauged ? 'eaten by W/Z , becomes longitudinal mass' : '0 : massless, Goldstone boson'}
                   </span>
                 </div>
               </div>
@@ -298,7 +298,7 @@ const HiggsMechanismLab = () => {
             {gauged && (
               <section className="viz-section">
                 <div className="higgs-wz-reference">
-                  <div className="higgs-wz-reference-note">Measured value — not derived from the sliders above</div>
+                  <div className="higgs-wz-reference-note">Measured value : not derived from the sliders above</div>
                   <div className="higgs-wz-reference-row">
                     <span>m_W</span>
                     <span>{WZ_REFERENCE.mW} GeV/c²</span>

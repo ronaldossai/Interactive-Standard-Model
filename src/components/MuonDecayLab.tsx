@@ -3,7 +3,7 @@
  *
  * The classic cosmic-ray-muon argument for special relativity: muons
  * produced ~15km up have a mean lifetime of just 2.2μs, and classically
- * almost none should survive the trip to sea level — yet they're detected
+ * almost none should survive the trip to sea level, yet they're detected
  * constantly. Time dilation (ground frame) and length contraction (muon
  * frame) are two descriptions of the same effect, shown side by side, and
  * are checked against each other for consistency.
@@ -95,7 +95,7 @@ const MuonDecayLab = () => {
                 />
                 <div className="slider-value">{formatSpeed(v)}</div>
                 <div className="slider-hint">
-                  Real cosmic-ray muons typically have γ of 10-40 — push the slider toward the
+                  Real cosmic-ray muons typically have γ of 10-40, push the slider toward the
                   right to reach that regime.
                 </div>
               </div>
@@ -116,7 +116,7 @@ const MuonDecayLab = () => {
                   aria-valuetext={formatDepth(h)}
                 />
                 <div className="slider-value">{formatDepth(h)}</div>
-                <div className="slider-hint">How high up the muon is created — cosmic ray showers peak around 15km</div>
+                <div className="slider-hint">How high up the muon is created, cosmic ray showers peak around 15km</div>
               </div>
             </section>
 
@@ -204,7 +204,7 @@ const MuonDecayLab = () => {
               <h3>Through the Atmosphere</h3>
               <div className="muon-atmosphere-visual">
                 <div className="atmosphere-column" style={{ height: `${ATMOSPHERE_PX}px` }}>
-                  <span className="atmosphere-label atmosphere-label-top">Production — {formatDepth(h)}</span>
+                  <span className="atmosphere-label atmosphere-label-top">Production : {formatDepth(h)}</span>
                   <span
                     className="altitude-marker classical-marker"
                     style={{ top: `${classicalMarkerPx}px` }}
@@ -223,7 +223,7 @@ const MuonDecayLab = () => {
                       {relativisticReachesGround ? 'Relativistic: reaches ground' : 'Relativistic mean decay'}
                     </span>
                   </span>
-                  <span className="atmosphere-label atmosphere-label-bottom">Ground — 0km</span>
+                  <span className="atmosphere-label atmosphere-label-bottom">Ground : 0km</span>
                 </div>
               </div>
             </section>
@@ -302,7 +302,7 @@ const MuonDecayLab = () => {
                   </div>
                 </div>
                 <p className="graph-note">
-                  The dashed white line marks the chosen production altitude — where it crosses each
+                  The dashed white line marks the chosen production altitude : where it crosses each
                   curve is the predicted fraction of muons reaching the ground.
                 </p>
               </div>
@@ -311,14 +311,14 @@ const MuonDecayLab = () => {
             <section className="viz-section">
               <div className="force-comparison">
                 <div className="force-panel">
-                  <span className="force-panel-title">Ground Frame — Dilated Lifetime</span>
+                  <span className="force-panel-title">Ground Frame : Dilated Lifetime</span>
                   <span className="force-panel-value">
                     {formatFraction(state.survivalFractionRelativisticGroundFrame)}
                   </span>
                   <span className="force-panel-detail">e^(−t/γτ0)</span>
                 </div>
                 <div className="force-panel">
-                  <span className="force-panel-title">Muon Frame — Contracted Height</span>
+                  <span className="force-panel-title">Muon Frame : Contracted Height</span>
                   <span className="force-panel-value">
                     {formatFraction(state.survivalFractionRelativisticMuonFrame)}
                   </span>

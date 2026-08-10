@@ -95,7 +95,7 @@ export const CORNELL_PRESETS: CornellPreset[] = [
   {
     id: 'tight',
     name: 'Tightly Confined',
-    description: 'Strong string tension — the potential rises steeply with separation',
+    description: 'Strong string tension: the potential rises steeply with separation',
     alphaS: 0.3,
     sigma: 1.5,
     mMeson: 0.5,
@@ -103,7 +103,7 @@ export const CORNELL_PRESETS: CornellPreset[] = [
   {
     id: 'loose',
     name: 'Loosely Confined',
-    description: 'Weak string tension — the potential rises gently with separation',
+    description: 'Weak string tension: the potential rises gently with separation',
     alphaS: 0.3,
     sigma: 0.5,
     mMeson: 0.5,
@@ -111,7 +111,7 @@ export const CORNELL_PRESETS: CornellPreset[] = [
   {
     id: 'light-new-quark',
     name: 'Light New Quark',
-    description: 'The string breaks early — cheap to pop a light quark-antiquark pair',
+    description: 'The string breaks early: cheap to pop a light quark-antiquark pair',
     alphaS: 0.35,
     sigma: 1.0,
     mMeson: 0.3,
@@ -119,7 +119,7 @@ export const CORNELL_PRESETS: CornellPreset[] = [
   {
     id: 'heavy-new-quark',
     name: 'Heavy New Quark',
-    description: 'The string stretches far before breaking — a heavy pair costs more energy',
+    description: 'The string stretches far before breaking: a heavy pair costs more energy',
     alphaS: 0.35,
     sigma: 1.0,
     mMeson: 1.5,

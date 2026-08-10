@@ -105,7 +105,7 @@ function AppContent() {
       {/* Tau Decay Length Lab */}
       <TauDecayLab />
 
-      {/* Composite particle hint — bottom-left, quark-only */}
+      {/* Composite particle hint : bottom-left, quark-only */}
       <CompositeHint />
       
       {/* Current Particle Popup */}

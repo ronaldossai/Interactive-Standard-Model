@@ -35,7 +35,7 @@ export const COMPOSITE_DATA: CompositeData[] = [
     charge: '+1',
     category: 'baryon',
     description:
-      'Two up quarks and one down quark held together by gluons. The proton is the nucleus of a hydrogen atom and is stable — it has never been observed to decay.',
+      'Two up quarks and one down quark held together by gluons. The proton is the nucleus of a hydrogen atom and is stable : it has never been observed to decay.',
   },
   {
     id: 'neutron',
@@ -61,7 +61,7 @@ export const COMPOSITE_DATA: CompositeData[] = [
     charge: '+2',
     category: 'baryon',
     description:
-      'Three up quarks — the only known hadron with charge +2. It is extremely short-lived (~6×10⁻²⁴ s), decaying almost instantly into a proton and a pion.',
+      'Three up quarks, the only known hadron with charge +2. It is extremely short-lived (~6×10⁻²⁴ s), decaying almost instantly into a proton and a pion.',
   },
   {
     id: 'lambda',
@@ -102,7 +102,7 @@ export const COMPOSITE_DATA: CompositeData[] = [
     charge: '-1',
     category: 'meson',
     description:
-      'An anti-up quark paired with a down quark — the antiparticle of the π⁺. Like all charged pions it decays (~26 ns) predominantly into a muon and a neutrino.',
+      'An anti-up quark paired with a down quark, the antiparticle of the π⁺. Like all charged pions it decays (~26 ns) predominantly into a muon and a neutrino.',
   },
   {
     id: 'kaon-plus',

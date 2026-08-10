@@ -117,19 +117,19 @@ export const TAU_PRESETS: TauPreset[] = [
   {
     id: 'threshold',
     name: 'Near Rest Mass',
-    description: 'γ ≈ 1.1 — barely moving, decays essentially at the production point',
+    description: 'γ ≈ 1.1 : barely moving, decays essentially at the production point',
     energy: 2,
   },
   {
     id: 'lep',
     name: 'LEP-Era Collider Tau',
-    description: 'γ ≈ 25 — a typical tau produced at the LEP e⁺e⁻ collider',
+    description: 'γ ≈ 25 : a typical tau produced at the LEP e⁺e⁻ collider',
     energy: 45,
   },
   {
     id: 'lhc',
     name: 'High-Energy Collider Tau',
-    description: 'γ ≈ 113 — LHC-scale energy, flight length approaches 1cm',
+    description: 'γ ≈ 113 : LHC-scale energy, flight length approaches 1cm',
     energy: 200,
   },
 ]

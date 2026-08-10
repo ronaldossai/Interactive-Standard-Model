@@ -1,6 +1,6 @@
 # Interactive Standard Model
 
-An interactive 3D visualization of the Standard Model of particle physics, built with Three.js, React, and TypeScript. Click any particle to explore its properties, then open a dedicated "Lab" to interact with the physics behind it — Malus's Law, spontaneous symmetry breaking, color confinement, time dilation, and more.
+An interactive 3D visualization of the Standard Model of particle physics, built with Three.js, React, and TypeScript. Click any particle to explore its properties, then open a dedicated "Lab" to interact with the physics behind it: Malus's Law, spontaneous symmetry breaking, color confinement, time dilation, and more.
 
 ## Features
 
@@ -51,7 +51,7 @@ Each lab is a focused, self-contained simulation of one real physics concept, op
 - **Vite** (via `rolldown-vite`) as the build tool and dev server
 - **ESLint** / `typescript-eslint` for linting
 
-All physics: relativity, QCD running coupling, neutrino oscillation, decay lengths, etc. — is computed client-side in TypeScript (`src/utils/`); there is no backend.
+All physics: relativity, QCD running coupling, neutrino oscillation, decay lengths, etc., is computed client-side in TypeScript (`src/utils/`); there is no backend.
 
 ## Getting Started
 

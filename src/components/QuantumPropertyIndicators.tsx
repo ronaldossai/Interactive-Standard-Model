@@ -128,7 +128,7 @@ const QuantumPropertyIndicators = ({ particle, showAntimatter = false }: Quantum
             {isSpinTwo && (
               <div className="spin-two-tensor" title="Spin-2 tensor boson">
                 <svg width="50" height="50" viewBox="0 0 50 50">
-                  {/* Outer loop — full closed circle */}
+                  {/* Outer loop : full closed circle */}
                   <circle
                     cx="25" cy="25" r="17"
                     fill="none"
@@ -137,7 +137,7 @@ const QuantumPropertyIndicators = ({ particle, showAntimatter = false }: Quantum
                   />
                   {/* Arrowhead at top of outer loop (0°) */}
                   <path d="M 21 9.5 L 25 7 L 29 9.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-                  {/* Inner loop — full closed circle (second full revolution) */}
+                  {/* Inner loop : full closed circle (second full revolution) */}
                   <circle
                     cx="25" cy="25" r="9"
                     fill="none"

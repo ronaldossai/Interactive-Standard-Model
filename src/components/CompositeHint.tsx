@@ -72,7 +72,7 @@ function QuarkNode({
       <circle cx={cx} cy={cy} r={r + 4} fill={color} opacity={0.15} />
       {/* Main filled circle */}
       <circle cx={cx} cy={cy} r={r} fill={color} stroke="#ffffff22" strokeWidth={1} />
-      {/* Symbol — slightly smaller font for two-char antiquark labels */}
+      {/* Symbol: slightly smaller font for two-char antiquark labels */}
       <text
         x={cx}
         y={cy}

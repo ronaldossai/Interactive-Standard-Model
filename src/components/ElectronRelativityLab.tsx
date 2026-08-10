@@ -6,7 +6,7 @@
  * argument, thematically descended from the reasoning Einstein pioneered
  * in his 1905 relativity paper). A current-carrying wire is neutral in
  * the lab frame, but boosting into the drift electrons' rest frame reveals
- * a net charge density — and the resulting electric force, transformed
+ * a net charge density: and the resulting electric force, transformed
  * back, exactly reproduces the "magnetic" force computed in the lab frame.
  */
 
@@ -119,7 +119,7 @@ const ElectronRelativityLab = () => {
                 />
                 <div className="slider-value">{formatSpeed(v)}</div>
                 <div className="slider-hint">
-                  Real wires drift at ~mm/s (v/c ≈ 10⁻¹²) — this slider exaggerates v by many
+                  Real wires drift at ~mm/s (v/c ≈ 10⁻¹²) : this slider exaggerates v by many
                   orders of magnitude so the effect is visible.
                 </div>
               </div>
@@ -206,7 +206,7 @@ const ElectronRelativityLab = () => {
           {/* Right Panel: Visualization */}
           <div className="electron-lab-viz">
             <section className="viz-section">
-              <h3>The Wire — {frame === 'lab' ? 'Lab Frame' : "Electron's Rest Frame"}</h3>
+              <h3>The Wire : {frame === 'lab' ? 'Lab Frame' : "Electron's Rest Frame"}</h3>
               <div className="wire-visual">
                 <WireRow spacing={ionSpacing} className="ion-dot" label="Positive ions" />
                 <WireRow spacing={electronSpacing} className="electron-dot" label="Conduction electrons" />
@@ -223,12 +223,12 @@ const ElectronRelativityLab = () => {
               <h3>Force Comparison</h3>
               <div className="force-comparison">
                 <div className="force-panel">
-                  <span className="force-panel-title">Lab Frame — Magnetic Force</span>
+                  <span className="force-panel-title">Lab Frame : Magnetic Force</span>
                   <span className="force-panel-value">{formatNumber(wireState.forceLabMagnetic)}</span>
                   <span className="force-panel-detail">F = qvB(r)</span>
                 </div>
                 <div className="force-panel">
-                  <span className="force-panel-title">Electron Frame — Electric Force</span>
+                  <span className="force-panel-title">Electron Frame : Electric Force</span>
                   <span className="force-panel-value">{formatNumber(wireState.forceElectronFrameElectric)}</span>
                   <span className="force-panel-detail">F′ = qE′(r)</span>
                 </div>
@@ -316,7 +316,7 @@ const ElectronRelativityLab = () => {
                   </div>
                 </div>
                 <p className="graph-note">
-                  Each curve is normalized to its own peak to compare the 1/r falloff shape — see
+                  Each curve is normalized to its own peak to compare the 1/r falloff shape, see
                   Force Comparison above for how their actual magnitudes relate.
                 </p>
               </div>

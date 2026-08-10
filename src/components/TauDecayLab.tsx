@@ -262,19 +262,19 @@ const TauDecayLab = () => {
                     strokeWidth="1.5"
                   />
                 </svg>
-                <p className="graph-note">Both axes are log-scaled — the tau's decay length spans two orders of magnitude across this energy range.</p>
+                <p className="graph-note">Both axes are log-scaled : the tau's decay length spans two orders of magnitude across this energy range.</p>
               </div>
             </section>
 
             <section className="viz-section">
               <div className="force-comparison">
                 <div className="force-panel">
-                  <span className="force-panel-title">Tau — Flight Distance</span>
+                  <span className="force-panel-title">Tau : Flight Distance</span>
                   <span className="force-panel-value">{formatDecayLength(state.tauDecayLengthMm)}</span>
                   <span className="force-panel-detail">L = γβ·cτ0(τ)</span>
                 </div>
                 <div className="force-panel">
-                  <span className="force-panel-title">Muon — Flight Distance (same γ)</span>
+                  <span className="force-panel-title">Muon : Flight Distance (same γ)</span>
                   <span className="force-panel-value">{formatDecayLength(state.muonDecayLengthMm)}</span>
                   <span className="force-panel-detail">L = γβ·cτ0(μ)</span>
                 </div>

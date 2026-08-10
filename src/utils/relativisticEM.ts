@@ -200,7 +200,7 @@ export const RELATIVISTIC_EM_PRESETS: RelativisticEMPreset[] = [
   {
     id: 'everyday',
     name: 'Everyday Wire',
-    description: 'A realistic household current — the effect is real, but far too small to see',
+    description: 'A realistic household current : the effect is real, but far too small to see',
     v: 1e-6,
     r: 1.5,
   },
@@ -214,7 +214,7 @@ export const RELATIVISTIC_EM_PRESETS: RelativisticEMPreset[] = [
   {
     id: 'near-light-speed',
     name: 'Near Light Speed',
-    description: 'Drift speed close to c — strong length contraction',
+    description: 'Drift speed close to c : strong length contraction',
     v: 0.95,
     r: 1.5,
   },

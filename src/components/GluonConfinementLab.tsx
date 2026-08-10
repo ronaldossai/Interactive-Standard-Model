@@ -2,9 +2,9 @@
  * GluonConfinementLab.tsx
  *
  * Two faces of the gluon's self-interaction, in two switchable sections:
- * (1) the Cornell potential — why quarks can never be pulled apart, the
+ * (1) the Cornell potential, why quarks can never be pulled apart, the
  * "string" between them snapping into two new mesons instead of stretching
- * forever; (2) the one-loop running coupling — asymptotic freedom, the
+ * forever; (2) the one-loop running coupling, asymptotic freedom, the
  * coupling getting weaker at short distance, the opposite of how electric
  * charge screening works. Both are two views of the same running coupling.
  */
@@ -201,7 +201,7 @@ const GluonConfinementLab = () => {
                       aria-valuetext={sigma.toFixed(2)}
                     />
                     <div className="slider-value">σ = {sigma.toFixed(2)}</div>
-                    <div className="slider-hint">String tension — how fast the potential rises with distance</div>
+                    <div className="slider-hint">String tension, how fast the potential rises with distance</div>
                   </div>
                   <div className="slider-control">
                     <input
