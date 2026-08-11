@@ -7,6 +7,16 @@ import weakForceIcon from '../assets/weak-force.png'
 import electromagneticForceIcon from '../assets/electromagentism.png'
 import strongForceIcon from '../assets/strong-force.png'
 import hadronLabIcon from '../assets/hadron-lab-icon.png'
+import neutrinoOscillationIcon from '../assets/neutrino-oscillation-icon.png'
+import polarizationLabIcon from '../assets/polarization-lab-icon.png'
+import relativityLabIcon from '../assets/relativity-lab-icon.png'
+import higgsMechanismLabIcon from '../assets/Higgs-Mechanism-Lab.png'
+import parityViolationLabIcon from '../assets/parity-violation-lab.png'
+import confinementLabIcon from '../assets/confinement-lab-icon.png'
+import muonDecayLabIcon from '../assets/muon-decay-lab-icon.png'
+import decayLengthLabIcon from '../assets/decay-length-lab-icon.png'
+import undetectabilityLabIcon from '../assets/Undetectability-lab-icon.png'
+import nonHadronizationLabIcon from '../assets/Non-hadronization-icon.png'
 
 // Map interaction types to their icon assets
 const getForceIcon = (interaction: string): string | null => {
@@ -197,7 +207,7 @@ const ParticleInfo = () => {
           <h3>Interactive Labs</h3>
           {displayParticle.type === 'lepton' && displayParticle.name.includes('NEUTRINO') && (
             <button className="quantum-phenomena-button" onClick={openNeutrinoOscillation}>
-              <span className="button-icon">〜</span>
+              <img src={neutrinoOscillationIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Neutrino Oscillation</span>
                 <span className="button-description">Explore flavor mixing</span>
@@ -215,7 +225,7 @@ const ParticleInfo = () => {
           )}
           {displayParticle.id === 'top' && (
             <button className="quantum-phenomena-button" onClick={openTopQuarkLab}>
-              <span className="button-icon">⏱</span>
+              <img src={nonHadronizationLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Non-Hadronization Lab</span>
                 <span className="button-description">The quark too fast to bind</span>
@@ -224,7 +234,7 @@ const ParticleInfo = () => {
           )}
           {displayParticle.id === 'photon' && (
             <button className="quantum-phenomena-button" onClick={openPhotonLab}>
-              <span className="button-icon">✳</span>
+              <img src={polarizationLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Polarization Lab</span>
                 <span className="button-description">Explore Malus's Law</span>
@@ -233,7 +243,7 @@ const ParticleInfo = () => {
           )}
           {displayParticle.id === 'electron' && (
             <button className="quantum-phenomena-button" onClick={openElectronLab}>
-              <span className="button-icon">⚡</span>
+              <img src={relativityLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Relativity Lab</span>
                 <span className="button-description">Magnetism from a moving frame</span>
@@ -242,7 +252,7 @@ const ParticleInfo = () => {
           )}
           {displayParticle.id === 'higgs' && (
             <button className="quantum-phenomena-button" onClick={openHiggsLab}>
-              <span className="button-icon">◎</span>
+              <img src={higgsMechanismLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Higgs Mechanism Lab</span>
                 <span className="button-description">Explore symmetry breaking</span>
@@ -251,7 +261,7 @@ const ParticleInfo = () => {
           )}
           {(displayParticle.id === 'w-boson' || displayParticle.id === 'z-boson') && (
             <button className="quantum-phenomena-button" onClick={openHiggsLab}>
-              <span className="button-icon">◎</span>
+              <img src={higgsMechanismLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Higgs Mechanism Lab</span>
                 <span className="button-description">See how this boson gets its mass</span>
@@ -260,7 +270,7 @@ const ParticleInfo = () => {
           )}
           {displayParticle.id === 'w-boson' && (
             <button className="quantum-phenomena-button" onClick={openParityLab}>
-              <span className="button-icon">🪞</span>
+              <img src={parityViolationLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Parity Violation Lab</span>
                 <span className="button-description">Why nature isn't its own mirror image</span>
@@ -269,7 +279,7 @@ const ParticleInfo = () => {
           )}
           {displayParticle.id === 'gluon' && (
             <button className="quantum-phenomena-button" onClick={openGluonLab}>
-              <span className="button-icon">⛓</span>
+              <img src={confinementLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Confinement Lab</span>
                 <span className="button-description">Explore the strong force</span>
@@ -278,7 +288,7 @@ const ParticleInfo = () => {
           )}
           {displayParticle.id === 'muon' && (
             <button className="quantum-phenomena-button" onClick={openMuonLab}>
-              <span className="button-icon">⏳</span>
+              <img src={muonDecayLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Muon Decay Lab</span>
                 <span className="button-description">See time dilation in action</span>
@@ -287,7 +297,7 @@ const ParticleInfo = () => {
           )}
           {displayParticle.id === 'tau' && (
             <button className="quantum-phenomena-button" onClick={openTauLab}>
-              <span className="button-icon">🔬</span>
+              <img src={decayLengthLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Decay Length Lab</span>
                 <span className="button-description">Why taus need vertex detectors</span>
@@ -296,7 +306,7 @@ const ParticleInfo = () => {
           )}
           {displayParticle.id === 'graviton' && (
             <button className="quantum-phenomena-button" onClick={openGravitonLab}>
-              <span className="button-icon">🕳</span>
+              <img src={undetectabilityLabIcon} alt="Lab" className="button-icon" style={{ width: '48px', height: '48px' }} />
               <div className="button-content">
                 <span className="button-title">Undetectability Lab</span>
                 <span className="button-description">Why gravitons can't be caught</span>
