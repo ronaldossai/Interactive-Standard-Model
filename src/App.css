@@ -5338,7 +5338,11 @@
 /* Top Quark Lab timeline markers (reuses .detector-scale-* base rules) */
 .detector-scale-marker.top-quark-marker {
   color: #e74c3c;
-  transform: translate(-50%, -18px);
+}
+
+.detector-scale-marker.top-quark-marker .detector-scale-marker-label,
+.detector-scale-marker.d-meson-marker .detector-scale-marker-label {
+  margin-top: -3.2rem;
 }
 
 .detector-scale-marker.hadronization-marker {
@@ -5347,7 +5351,6 @@
 
 .detector-scale-marker.d-meson-marker {
   color: #3498db;
-  transform: translate(-50%, -18px);
 }
 
 .detector-scale-marker.b-meson-marker {

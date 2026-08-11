@@ -88,7 +88,7 @@ const ParityViolationLab = () => {
                   aria-valuetext={formatPolarization(polarization)}
                 />
                 <div className="slider-value">{formatPolarization(polarization)}</div>
-                <div className="slider-hint">How well-aligned the Co-60 nuclear spins are — higher polarization needs a colder sample</div>
+                <div className="slider-hint">How well-aligned the Co-60 nuclear spins are , higher polarization needs a colder sample</div>
               </div>
             </section>
 
@@ -135,11 +135,11 @@ const ParityViolationLab = () => {
                   <span className="param-value">−1 (Co-60, fixed)</span>
                 </div>
                 <div className="pmns-param">
-                  <span className="param-label">W(0°) — along spin</span>
+                  <span className="param-label">W(0°) : along spin</span>
                   <span className="param-value">{formatW(angularState.wAligned)}</span>
                 </div>
                 <div className="pmns-param">
-                  <span className="param-label">W(180°) — opposite spin</span>
+                  <span className="param-label">W(180°) : opposite spin</span>
                   <span className="param-value">{formatW(angularState.wOpposed)}</span>
                 </div>
               </div>
@@ -149,7 +149,7 @@ const ParityViolationLab = () => {
           {/* Right Panel: Visualization */}
           <div className="parity-lab-viz">
             <section className="viz-section">
-              <h3>Angular Distribution — Real vs. Mirror Image</h3>
+              <h3>Angular Distribution : Real vs. Mirror Image</h3>
               <div className="parity-polar-graph">
                 <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
                   <circle
@@ -192,22 +192,22 @@ const ParityViolationLab = () => {
                     <span className="legend-label">Mirror image (parity-flipped)</span>
                   </div>
                 </div>
-                <p className="graph-note">The dashed grey circle marks W = 1 — the isotropic pattern a parity-conserving process would produce.</p>
+                <p className="graph-note">The dashed grey circle marks W = 1 : the isotropic pattern a parity-conserving process would produce.</p>
               </div>
             </section>
 
             <section className="viz-section">
               <div className={`force-match-badge ${curvesCoincide ? 'match' : 'mismatch'}`}>
                 {curvesCoincide
-                  ? '✓ No polarization or no electron speed — the real and mirror patterns coincide (parity-conserving edge case)'
-                  : '✗ The real and mirror patterns differ — this is parity violation, made visible'}
+                  ? '✓ No polarization or no electron speed, the real and mirror patterns coincide (parity-conserving edge case)'
+                  : '✗ The real and mirror patterns differ, this is parity violation, made visible'}
               </div>
             </section>
 
             <section className="viz-section educational-content">
               <h3>Nature Doesn't Match Its Mirror Image</h3>
               <p>
-                Before 1956, physicists assumed every interaction was symmetric under parity — that
+                Before 1956, physicists assumed every interaction was symmetric under parity ; that
                 a mirror-image version of any process would be equally valid physics. Theorists T.D.
                 Lee and C.N. Yang pointed out that this had never actually been tested for the weak
                 interaction, and proposed cobalt-60 beta decay as a clean test.
@@ -223,7 +223,7 @@ const ParityViolationLab = () => {
               </p>
               <div className="educational-highlight">
                 <strong>Try this:</strong> Drag Polarization down to 0 and watch the two lobes snap
-                into a single perfect circle — with no aligned spins, there's no axis left to measure
+                into a single perfect circle ; with no aligned spins, there's no axis left to measure
                 a handed effect against, so parity violation becomes invisible even though the
                 underlying physics hasn't changed.
               </div>

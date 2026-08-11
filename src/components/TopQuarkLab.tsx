@@ -87,7 +87,7 @@ const TopQuarkLab = () => {
                 />
                 <div className="slider-value">{formatLambda(lambdaQcd)}</div>
                 <div className="slider-hint">
-                  Real extractions of Λ_QCD range from about 150-400MeV depending on scheme — drag
+                  Real extractions of Λ_QCD range from about 150-400MeV depending on scheme, drag
                   across the whole range and see if the conclusion below ever changes.
                 </div>
               </div>
@@ -137,7 +137,7 @@ const TopQuarkLab = () => {
                   <span
                     className="detector-scale-marker top-quark-marker"
                     style={{ left: `${logPercent(TOP_LIFETIME_S, SCALE_MIN_S, SCALE_MAX_S)}%` }}
-                    title="Top quark lifetime — measured"
+                    title="Top quark lifetime : measured"
                   >
                     <span className="detector-scale-marker-label">
                       Top quark
@@ -159,7 +159,7 @@ const TopQuarkLab = () => {
                   <span
                     className="detector-scale-marker d-meson-marker"
                     style={{ left: `${logPercent(D_MESON_LIFETIME_S, SCALE_MIN_S, SCALE_MAX_S)}%` }}
-                    title="D0 meson lifetime — measured"
+                    title="D0 meson lifetime : measured"
                   >
                     <span className="detector-scale-marker-label">
                       D⁰ meson
@@ -170,7 +170,7 @@ const TopQuarkLab = () => {
                   <span
                     className="detector-scale-marker b-meson-marker"
                     style={{ left: `${logPercent(B_MESON_LIFETIME_S, SCALE_MIN_S, SCALE_MAX_S)}%` }}
-                    title="B meson lifetime — measured"
+                    title="B meson lifetime : measured"
                   >
                     <span className="detector-scale-marker-label">
                       B meson
@@ -190,7 +190,7 @@ const TopQuarkLab = () => {
               <div className={`force-match-badge ${state.topDecaysFirst ? 'match' : 'mismatch'}`}>
                 {state.topDecaysFirst
                   ? `✓ The top quark decays ${formatRatio(state.ratio)} faster than hadronization can occur`
-                  : '✗ At this Λ_QCD, hadronization would win — outside the physically supported range'}
+                  : '✗ At this Λ_QCD, hadronization would win ; outside the physically supported range'}
               </div>
             </section>
 
@@ -198,20 +198,20 @@ const TopQuarkLab = () => {
               <h3>Too Fast to Hadronize</h3>
               <p>
                 Every other quark, once produced, gets bound into a colorless hadron within roughly
-                the confinement timescale ℏ/Λ_QCD — a few times 10⁻²⁴ seconds. Bottom and charm
+                the confinement timescale ℏ/Λ_QCD ; a few times 10⁻²⁴ seconds. Bottom and charm
                 quarks hadronize into B and D mesons on that timescale, and only then does the
                 resulting hadron decay via the weak interaction, roughly a billion times later.
               </p>
               <p>
                 <strong>Why it matters:</strong> The top quark is uniquely heavy enough that its
                 decay t → Wb produces a real, on-shell W boson (m_top exceeds m_W + m_b, unlike any
-                lighter quark) — an unsuppressed two-body channel that finishes in about 5×10⁻²⁵
+                lighter quark) ; an unsuppressed two-body channel that finishes in about 5×10⁻²⁵
                 seconds. That's faster than hadronization can even begin, so top quarks decay as
                 bare quarks, and their spin and other properties pass directly to their decay
                 products instead of being scrambled by confinement first.
               </p>
               <div className="educational-highlight">
-                <strong>Try this:</strong> Drag Λ_QCD across its entire real quoted range — the top
+                <strong>Try this:</strong> Drag Λ_QCD across its entire real quoted range, the top
                 quark marker never catches up to the hadronization marker. The conclusion isn't a
                 delicate coincidence of exactly which number you pick for Λ_QCD.
               </div>
