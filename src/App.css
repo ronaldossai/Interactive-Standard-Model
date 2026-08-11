@@ -4078,7 +4078,7 @@
 }
 
 .higgs-field-point {
-  transition: cx 0.15s ease, cy 0.15s ease, fill 0.25s ease;
+  transition: fill 0.25s ease;
 }
 
 .higgs-field-space-legend {
