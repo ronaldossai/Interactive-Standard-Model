@@ -20,7 +20,6 @@ export const DELTA_M21_SQ = 7.53e-5   // Δm²₂₁ (solar)
 export const DELTA_M31_SQ = 2.453e-3  // Δm³₁ (atmospheric, normal ordering)
 
 // Physical constants
-const HBAR_C = 197.3269804  // ℏc in MeV·fm
 const CONVERSION = 1.267     // Conversion factor: (Δm² [eV²] × L [km]) / (E [GeV])
 
 export type NeutrinoFlavor = 'electron' | 'muon' | 'tau'

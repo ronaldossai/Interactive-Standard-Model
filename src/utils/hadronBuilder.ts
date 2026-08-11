@@ -145,7 +145,6 @@ export function validateHadron(quarks: QuarkSelection[]): HadronValidation {
   
   // Check antiquark rules
   const antiquarkCount = quarks.filter(q => q.isAntiquark).length
-  const normalQuarkCount = quarks.length - antiquarkCount
   
   if (quarks.length === 3 && antiquarkCount > 0) {
     errors.push('Baryons must have 3 normal quarks (no antiquarks). For antibaryons, use 3 antiquarks.')

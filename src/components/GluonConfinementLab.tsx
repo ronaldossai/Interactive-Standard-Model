@@ -31,7 +31,6 @@ import {
   sliderToQ,
   qToSlider,
   formatDistance,
-  formatEnergy,
   formatAlpha,
   formatQ,
   Q0,
