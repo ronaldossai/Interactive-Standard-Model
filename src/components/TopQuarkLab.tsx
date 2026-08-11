@@ -62,7 +62,7 @@ const TopQuarkLab = () => {
 
       <div className="top-quark-lab-container">
         <div className="top-quark-lab-header">
-          <h2>Top Quark Lab — The One That Never Hadronizes</h2>
+          <h2>Top Quark Lab : The One That Never Hadronizes</h2>
           <button className="close-button" onClick={closeTopQuarkLab} aria-label="Close">
             ✕
           </button>
