@@ -4,6 +4,7 @@ import { resolveInteraction } from '../data/feynmanRules'
 import weakForceIcon from '../assets/weak-force.png'
 import electromagneticForceIcon from '../assets/electromagentism.png'
 import strongForceIcon from '../assets/strong-force.png'
+import compareIcon from '../assets/compare-icon.png'
 
 // Map force names to their icon assets
 const getForceIcon = (forceName: string): string | null => {
@@ -145,7 +146,7 @@ const MassComparison = () => {
 
           {/* Ratio Display */}
           <div className="comparison-ratio">
-            <div className="ratio-symbol">⚖️</div>
+            <img src={compareIcon} alt="Compare" className="ratio-symbol" style={{ width: '48px', height: '48px' }} />
             <div className="ratio-number">{getRatioLabel()}</div>
             <div className="ratio-text">{line1}</div>
             <div className="ratio-text"><strong>{line2}</strong></div>
